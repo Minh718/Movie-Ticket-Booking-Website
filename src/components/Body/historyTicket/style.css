@@ -1,0 +1,21 @@
+table,
+th,
+td {
+  border: 1px solid;
+}
+
+.table-ticket {
+  width: 700px;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 50px;
+}
+.table-ticket tr:first-child {
+  background-color: #ccc;
+}
+.table-ticket th {
+  padding: 2px;
+}
+.table-ticket td {
+  padding: 4px;
+}

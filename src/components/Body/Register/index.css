@@ -1,0 +1,62 @@
+.register-page{
+    background-color: #FFF;   
+    width: 27vw;
+    box-shadow: 0px 0px 14px 3px rgb(222, 224, 250);
+    font-size: 1.15rem;
+    margin:auto;
+    margin-top: 3rem;
+}
+.register-page h1{
+    font-size: 3rem;
+    color: #3d5a80;  
+    font-weight: 700;
+    text-align: center;
+    padding-top:2rem;
+    padding-bottom:1rem;
+}
+.infoform {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    margin-top: 1.5rem;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 2rem;
+}
+.infoform input {
+    height: 3rem;
+    border: solid 2px #000;
+    border-bottom: 1px solid black;
+    padding: 1.2rem;
+    outline: none;
+    border-radius: 1.5rem;
+    color: #3d5a80;   
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+  
+.infoform button {
+    cursor: pointer;
+    align-self: center;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    background-color: rgb(104, 187, 255);
+    border: none;
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    background-color: #3d5a80;  
+}
+.infoform button *{
+    color: white;
+}
+.infoform button:hover{
+    background-color: rgb(104, 187, 255);
+    transform: scale(1.1);
+}
+  
+.errorMsg {
+    max-width: 100%;
+    font-size: 1rem;
+    padding-left:1rem;
+    color:rgb(248, 106, 106);
+}

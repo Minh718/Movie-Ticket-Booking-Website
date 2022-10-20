@@ -1,0 +1,361 @@
+.home-page {
+  font-size: 3rem;
+}
+.slider-container {
+  width: 100vw;
+  height: 75vh;
+  position: relative;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+.slider-container .switchLeft,
+.slider-container .switchRight {
+  font-weight: bold;
+  line-height: 3rem;
+  font-size: 3rem;
+  text-align: center;
+  top: 45%;
+  z-index: 10;
+  opacity: 0.6;
+  background-color: rgb(170, 160, 160);
+}
+.slider-container .switchLeft:hover,
+.slider-container .switchRight:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+.slider-container .switchLeft {
+  position: absolute;
+  left: 2rem;
+}
+.slider-container .switchRight {
+  position: absolute;
+  right: 2rem;
+}
+
+.slider-container .slide {
+  /* transition: opacity ease-in-out 0.4s; */
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s linear;
+}
+.slider-container .slidePrev {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.slider-container .nextSlide {
+  transform: translateX(100%);
+  opacity: 0;
+}
+.slider-container .currentSlide {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slider-container img {
+  width: 100vw;
+  height: 75vh;
+  object-fit: cover;
+}
+
+.quick-booking {
+  display: flex;
+  width: 25vw;
+  height: 50vh;
+  flex-direction: column;
+  background-color: #262a32;
+  color: white;
+  position: absolute;
+  top: 10%;
+  right: 10%;
+}
+.quick-booking span {
+  background-color: #ee6c4d;
+  width: 50%;
+  height: 4.5rem;
+  font-size: 16px;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.quick-booking button {
+  font-size: 1.5rem;
+  width: 30%;
+}
+
+.quick-booking select {
+  color: white;
+  font-size: 1.5rem;
+  width: 90%;
+  margin-left: 5%;
+  height: 12%;
+  padding-left: 5px;
+  margin-top: 2rem;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.quick-booking #day {
+  margin-top: 1.5rem;
+}
+.quick-booking select option {
+  color: black;
+  font-size: 1.5rem;
+}
+
+.quick-booking button {
+  width: 25%;
+  height: 10%;
+  background-color: #ee6c4d;
+  color: white;
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+.quick-booking button:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.booking {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0);
+  transition: all 0.3s linear;
+  position: absolute;
+  color: #fff;
+  width: 100%;
+  height: 40vh;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+}
+.booking a {
+  display: none;
+  border: 1px solid #fff;
+  padding: 2rem 4rem;
+  font-size: 1.5rem;
+  z-index: 10;
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease-out;
+}
+
+.booking a:hover {
+  background: #ee6c4d;
+  cursor: pointer;
+}
+.movie:hover a {
+  display: block;
+}
+.movie:hover > .booking {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.movie-store {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.movie img {
+  width: 25vw;
+  height: 40vh;
+  object-fit: cover;
+}
+.movie span {
+  font-size: 2rem;
+  padding: 1rem;
+}
+.movie {
+  position: relative;
+  margin: 1.2rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.movie-nav {
+  margin-left: 10%;
+}
+.movie-nav span {
+  font-size: 2rem;
+  margin: 2rem;
+}
+.movie-nav hr {
+  width: 40%;
+}
+.movie-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+.movie-container .more-movies {
+  padding: 1.2rem 2rem;
+  font-size: 1.5rem;
+  background-color: #fff;
+  color: #ee6c4d;
+}
+.movie-container .more-movies-wraper {
+  align-self: flex-end;
+  margin: 1rem 10% 0 0;
+}
+.movie-container .more-movies:hover {
+  background-color: #ee6c4d;
+  color: #fff;
+}
+
+.news-store {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+}
+.news img {
+  width: 15vw;
+  height: 22vh;
+  object-fit: cover;
+}
+.news img:hover {
+  opacity: 0.7;
+}
+.news span {
+  font-size: 1.5rem;
+}
+.news {
+  position: relative;
+  margin: 1.2rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  display: flex;
+  width: 38vw;
+}
+.news-nav {
+  margin-left: 10%;
+}
+.news-nav span {
+  font-size: 2rem;
+  margin: 2rem;
+}
+.news-nav hr {
+  width: 40%;
+}
+.news-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+.news-container .more-news {
+  padding: 1.2rem 2rem;
+  font-size: 1.5rem;
+  background-color: #fff;
+  color: #ee6c4d;
+}
+.news-container .more-news-wraper {
+  align-self: flex-end;
+  margin: 1rem 10% 0 0;
+}
+.news .content {
+  padding-left: 1.5rem;
+}
+.news .content span {
+  font-size: 1.7rem;
+  margin: 0.5rem 0;
+}
+.news .content .rate span {
+  margin-left: 1rem;
+}
+.news-container .more-news:hover {
+  background-color: #ee6c4d;
+  color: #fff;
+}
+
+.voucher-detail {
+  display: none;
+}
+.voucher-detail a {
+  border: 1px solid #fff;
+  padding: 2rem 4rem;
+  font-size: 1.5rem;
+  z-index: 10;
+  color: #fff;
+  text-decoration: none;
+}
+.voucher-detail a:hover {
+  background: #ee6c4d;
+  cursor: pointer;
+}
+.vouchers:hover > .voucher-detail {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  position: absolute;
+  flex-direction: column;
+  width: 18vw;
+  height: 60vh;
+  top: 0;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  transition: opacity ease-in-out 0.4s;
+}
+.vouchers-store {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.vouchers img {
+  width: 18vw;
+  height: 60vh;
+  object-fit: cover;
+}
+.vouchers span {
+  font-size: 2rem;
+  padding: 1rem;
+}
+.vouchers {
+  position: relative;
+  margin: 1.2rem 2rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
+}
+.vouchers-nav {
+  margin-left: 10%;
+}
+.vouchers-nav span {
+  font-size: 2rem;
+  margin: 2rem;
+}
+.vouchers-nav hr {
+  width: 40%;
+}
+.vouchers-container {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+}
+.vouchers-container .more-vouchers {
+  padding: 1.2rem 2rem;
+  font-size: 1.5rem;
+  background-color: #fff;
+  color: #ee6c4d;
+}
+.vouchers-container .more-vouchers-wraper {
+  align-self: flex-end;
+  margin: 1rem 10% 0 0;
+}
+.vouchers-container .more-vouchers:hover {
+  background-color: #ee6c4d;
+  color: #fff;
+}
+
+.voucher-detail .info {
+  margin-bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+}
+.voucher-detail .info span {
+  text-align: center;
+}

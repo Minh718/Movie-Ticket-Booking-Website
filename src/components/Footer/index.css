@@ -1,0 +1,28 @@
+#footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	background: #1A1A1B;
+	padding: 0 80px;
+	color: #fff;
+	height: 100px;
+	margin-top: 5rem;
+}
+
+#footer .author {}
+
+#footer .author-name {
+	text-align: center;
+	font-size: 1.6rem;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+
+#footer .icon-wrapper {
+	display: flex;
+	justify-content: space-around;
+}
+
+/* #footer .author-icon {
+	margin-left: 20px;
+} */
