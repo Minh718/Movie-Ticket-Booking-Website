@@ -1,3 +1,116 @@
-.booking-page{
-    font-size:100px;
+/* GENERAL */
+.booking-page {}
+
+.booking-page hr {
+    width: 40%;
+    border-width: 4px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: aqua;
+}
+
+.booking-page-layout {
+    display: grid;
+    grid-template-columns: 60% 36%;
+    column-gap: 4%;
+    margin: 40px 80px;
+}
+
+.booking-page .movie-booking-header {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-top: 20px;
+}
+
+/* LEFT PART */
+.booking-page .left-part {
+    display: grid;
+    grid-template-columns: 40% 56%;
+    column-gap: 4%;
+}
+
+.booking-page .movie-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.booking-page .movie-poster img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
+    border: 2px solid var(--primary-orange-color);
+}
+
+.booking-page .movie-info {
+    position: relative;
+}
+
+.booking-page .rate-btn {
+    position: absolute;
+    bottom: 0;
+}
+
+/* BOTTOM PART */
+
+.booking-page .movie-overview-part {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.booking-page .movie-overview {
+    text-align: justify;
+}
+
+.booking-page .movie-rate>span {
+    margin-left: 8px;
+}
+
+.booking-page .movie-rate {
+    display: flex;
+    align-items: center;
+}
+
+.booking-page .movie-booking {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.booking-page .movie-booking-area {}
+
+.booking-page select {
+    min-width: 30%;
+    margin-right: 10px;
+}
+
+/*END LEFT PART*/
+
+
+
+/* RIGHT PART */
+/* .booking-page .right-part {
+    border: 2px solid red;
+} */
+
+.booking-page .right-part>h2 {
+    font-size: 1.0rem;
+}
+
+.booking-page .mini-movie-container {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.booking-page .mini-movie-container img {
+    width: 50%;
+    border-radius: 4px;
+}
+
+.booking-page .mini-movie-title {
+    display: block;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.booking-page .mini-right-part {
+    margin-left: 6px;
 }

@@ -4,3 +4,15 @@
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
 }
+
+:root {
+  --primary-orange-color: #ee6c4d;
+}
+
+.orange-btn {
+  background: var(--primary-orange-color);
+  margin: 10px 0;
+  padding: 4px 16px;
+  border: none;
+  border-radius: 4px;
+}

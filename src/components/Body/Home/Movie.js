@@ -70,7 +70,7 @@ export default function Movie() {
                 <img src={img_url + movie.backdrop_path} alt="" />
               </div>
               <div className="booking">
-                <Link href="/detailMovie">MUA VÉ</Link>
+                <Link to="/booking" state={{ movie, movies }}>MUA VÉ</Link>
               </div>
               <div className="namefilm">{movie.title}</div>
             </div>
