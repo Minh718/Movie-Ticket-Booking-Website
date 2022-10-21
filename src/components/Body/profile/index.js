@@ -1,47 +1,49 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 export default function Profile() {
   return (
     <div className="container-profile">
-      <div className="breadcrumb">
-        <Link to={"/"} className="prev-bread">
-          Trang chủ{" "}
-        </Link>
-        {">"}
-        <Link className="current-bread"> Thông tin cá nhân</Link>
-      </div>
+      <Breadcrumb listTag="div">
+        <BreadcrumbItem>
+          <Link to={"/"}>Trang chủ</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active tag="span">
+          Bootstrap
+        </BreadcrumbItem>
+      </Breadcrumb>
       <div className="form-profile">
         <h2>Thông tin cá nhân</h2>
         <div className="control-info">
           <div className="one">
-            <p>Họ và tên</p>
+            <span>Họ và tên</span>
             <div className="input-div">Lò văn tèn</div>
           </div>
           <div className="two">
-            <p>Điểm đổi thưởng</p>
+            <span>Điểm đổi thưởng</span>
             <div className="input-div">20</div>
           </div>
         </div>
         <div className="control-info">
           <div className="one">
-            <p>Số Điện thoại</p>
+            <span>Số Điện thoại</span>
             <div className="input-div">012345698</div>
           </div>
           <div className="two">
-            <p>Giới tính</p>
+            <span>Giới tính</span>
             <div className="input-div">name</div>
           </div>
         </div>
         <div className="control-info">
           <div className="full">
-            <p>Email</p>
+            <span>Email</span>
             <div className="input-div">minhkuku@mguadfs</div>
           </div>
         </div>
         <div className="control-info">
           <div className="full">
-            <p>Đổi mật khẩu</p>
+            <span>Đổi mật khẩu</span>
             <input
               type="text"
               className="input-div"
@@ -59,7 +61,7 @@ export default function Profile() {
             />
           </div>
         </div>
-        <button className="btn-save">lưu lại</button>
+        <Button color="primary">Lưu lại</Button>
       </div>
     </div>
   );

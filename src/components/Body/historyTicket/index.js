@@ -1,20 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
+import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
+
 export default function HistoryTicket() {
   return (
     <div className="container-profile">
-      <div className="breadcrumb">
-        <Link to={"/"} className="prev-bread">
-          Trang chủ{" "}
-        </Link>
-        {">"}
-        <Link className="current-bread"> Lịch sử giao dịch</Link>
-      </div>
+      <Breadcrumb listTag="div">
+        <BreadcrumbItem>
+          <Link to={"/"}>Trang chủ</Link>
+        </BreadcrumbItem>
+        <BreadcrumbItem active tag="span">
+          Lịch sử giao dịch
+        </BreadcrumbItem>
+      </Breadcrumb>
       <div className="form-profile">
         <h2>Thông tin cá nhân</h2>
         <table className="table-ticket">
-          {/* <thead> */}
           <tr>
             <th>Ngày</th>
             <th>Số giao dịch</th>
@@ -22,7 +24,6 @@ export default function HistoryTicket() {
             <th>Phim</th>
             <th>Mã vé</th>
           </tr>
-          {/* </thead> */}
           <tr>
             <td>20-12-2020</td>
             <td>34</td>

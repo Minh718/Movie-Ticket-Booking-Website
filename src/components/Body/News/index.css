@@ -1,3 +1,140 @@
-.news-page{
-    font-size:100px;
+.news-grand-container {
+  margin: auto;
+  margin-top: 5vh;
+  max-width: 80vw;
+  height: auto;
+  background-color: #a8b5c9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.news-search-container {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.news-search-box {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 70%;
+}
+
+.news-search-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #ee6c4d;
+  color: white;
+}
+
+.news-search-button:hover {
+  cursor: pointer;
+  background-color: #eb4820;
+}
+
+.news-list-container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.news-item-card {
+  background-color: #e0fbfc;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.news-item-top {
+  display: flex;
+}
+
+.news-image-container {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.news-image {
+  height: 120px;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+.news-item-content {
+  margin: 5px 10px;
+}
+
+.news-overview {
+  text-align: justify;
+  font-size: 15px;
+}
+
+.news-item-link {
+  text-decoration: none;
+  color: black;
+}
+
+.news-title {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-item-top-right {
+  flex-grow: 0;
+  flex-shrink: 0;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-status {
+  font-weight: 500;
+  align-self: flex-end;
+  margin-right: 5px;
+}
+
+.pagination {
+  display: flex;
+  width: 30%;
+  justify-content: space-around;
+  margin: 20px 0;
+}
+
+.pagination-info {
+  margin-top: 10px;
+}
+
+.pagination-input {
+  border: none;
+  border-radius: 10px;
+  width: 30%;
+  padding: 10px;
+}
+
+.pagination-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #ee6c4d;
+  color: white;
+}
+
+.pagination-button:hover {
+  cursor: pointer;
+  background-color: #eb4820;
 }

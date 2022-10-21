@@ -8,7 +8,6 @@ td {
   width: 700px;
   border-collapse: collapse;
   margin-top: 20px;
-  font-size: 50px;
 }
 .table-ticket tr:first-child {
   background-color: #ccc;
@@ -18,4 +17,7 @@ td {
 }
 .table-ticket td {
   padding: 4px;
+}
+.container-profile {
+  min-height: 80vh;
 }

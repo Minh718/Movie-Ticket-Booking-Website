@@ -1,9 +1,7 @@
 .breadcrumb {
-  font-size: 2rem;
   color: #ccc;
 }
 .current-bread {
-  font-size: 2rem;
   text-decoration: none;
   color: #000;
 }
@@ -11,7 +9,6 @@
   padding: 40px 30px;
 }
 .prev-bread {
-  font-size: 2rem;
   color: #ccc;
 }
 .prev-bread,
@@ -21,7 +18,9 @@
 .form-profile {
   margin-top: 30px;
   width: 500px;
-  font-size: 65px;
+}
+.form-profile > h2 {
+  margin-bottom: 15px;
 }
 .control-info {
   display: flex;
@@ -47,7 +46,6 @@
   margin-top: 5px;
 }
 .btn-save {
-  font-size: 20px;
   cursor: pointer;
   padding: 2px 7px;
   background: #ff731d;
@@ -55,6 +53,7 @@
   border-color: transparent;
   color: #fff;
   transition: all 0.3s linear;
+  text-transform: uppercase;
 }
 .btn-save:hover {
   opacity: 0.7;

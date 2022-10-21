@@ -10,7 +10,9 @@ import UserPage from "./components/Body/User/index";
 import BookingTicket from "./components/Body/BookingTicket/index";
 import { useGlobalContext } from "./context";
 import Profile from "./components/Body/profile";
+import "bootstrap/dist/css/bootstrap.min.css";
 import HistoryTicket from "./components/Body/historyTicket";
+import NewsDetail from "./components/Body/News/NewsDetail";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
           <Route path="/booking" element={<BookingTicket />}></Route>
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/historyTicket" element={<HistoryTicket />}></Route>
+
+          <Route path="/detailArticle/:id" element={<NewsDetail />}></Route>
         </Routes>
         <Footer />
       </Router>

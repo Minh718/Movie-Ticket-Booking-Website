@@ -9,9 +9,12 @@
 
 #header .title {
   color: #e5e5e5;
-  font-size: 3rem;
+  margin-bottom: 0;
+  font-size: 32px;
 }
-
+a {
+  text-decoration: none !important;
+}
 #header .user-btn * {
   color: white;
 }
@@ -44,7 +47,6 @@
 
 #header .header-lower *,
 #header .header-lower span {
-  font-size: 1.8rem;
   color: #fff;
   text-decoration: none;
   font-weight: 600;
@@ -60,7 +62,7 @@
   box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
     rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
     rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
-  font-size: 3rem;
+
   z-index: 99;
 }
 .setting-user a {
@@ -68,6 +70,8 @@
   padding: 7px 15px;
   display: block;
   color: black !important;
+  font-size: 20px;
+  transition: all 0.3s ease-out;
 }
 .setting-user > a:hover {
   background-color: #a8b5c9;
@@ -85,7 +89,6 @@
 .right-part .login-nav {
   text-decoration: none;
   color: #fff;
-  font-size: 1.5rem;
   padding-left: 1rem;
 }
 a {
@@ -99,10 +102,11 @@ a {
   display: flex;
   align-items: center;
   color: #000;
-  padding: 6px 10px;
-  min-width: 300px;
-  font-size: 2.5rem;
+  padding: 6px 15px;
+  min-width: 500px;
   background: #fff;
+  position: relative;
+  font-size: 20px;
   /* border-radius: 4px; */
 }
 #header .search-input {
@@ -112,7 +116,32 @@ a {
   border-color: transparent;
 }
 .icon-search svg {
-  font-size: 1.7rem;
-  margin-bottom: -3px;
   cursor: pointer;
+}
+.contaier-movies-search {
+  position: absolute;
+  z-index: 99;
+  background: #fff;
+  width: 100%;
+  top: 62px;
+  left: 0;
+  max-height: 450px;
+  overflow-y: scroll;
+}
+.container-single-movie {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 150px;
+  margin-bottom: 10px;
+}
+.contaier-movies-search .container-single-movie {
+  padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  cursor: pointer;
+}
+.contaier-movies-search .container-img img {
+  object-fit: cover;
+  width: 150px;
+  height: 150px;
 }
