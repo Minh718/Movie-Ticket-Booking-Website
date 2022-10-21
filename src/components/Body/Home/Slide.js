@@ -40,35 +40,34 @@ export default function Slide() {
   console.log(moviesArePlaying);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
-
+  const movies = moviesArePlaying.slice(0, 7);
+  console.log(movies);
   const next = () => {
     if (animating) return;
-    const nextIndex =
-      activeIndex === moviesArePlaying.length - 1 ? 0 : activeIndex + 1;
+    const nextIndex = activeIndex === movies.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
     if (animating) return;
-    const nextIndex =
-      activeIndex === 0 ? moviesArePlaying.length - 1 : activeIndex - 1;
+    const nextIndex = activeIndex === 0 ? movies.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
   const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
-  const slides = moviesArePlaying.map((movieArePlaying) => {
+  const slides = movies.map((movie) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={moviesArePlaying.id}
+        key={movie.id}
       >
-        <img src={img_url + movieArePlaying.backdrop_path} />
+        <img src={img_url + movie.backdrop_path} />
         <CarouselCaption
-          captionText={movieArePlaying.release_date}
-          captionHeader={movieArePlaying.title}
+          captionText={movie.release_date}
+          captionHeader={movie.title}
         />
       </CarouselItem>
     );
@@ -77,7 +76,7 @@ export default function Slide() {
     <div className="slider-container">
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
-          items={moviesArePlaying}
+          items={movies}
           activeIndex={activeIndex}
           onClickHandler={goToIndex}
         />
