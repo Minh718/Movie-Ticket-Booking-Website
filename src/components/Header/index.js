@@ -6,12 +6,12 @@ import { useGlobalContext } from "../../context";
 import { FaSearch } from "react-icons/fa";
 import { Spinner } from "reactstrap";
 function Header() {
-  const { openSetting, setOpenSetting, user, setUser } = useGlobalContext();
-  const [query, setQuery] = useState("");
+  const { openSetting, setOpenSetting, user, setUser, query, setQuery } =
+    useGlobalContext();
+  // const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const img_url = "http://image.tmdb.org/t/p/w500";
-
   useEffect(() => {
     const fetchMovies = async () => {
       const parsedQuery = query.replaceAll(" ", "+");
@@ -66,15 +66,17 @@ function Header() {
               </div>
             ) : (
               movies.map((movie) => (
-                <div key={movie.id} className="container-single-movie">
-                  <div>
-                    <p>{movie.title}</p>
-                    <p>{movie.release_date}</p>
+                <Link to="/booking" state={{ movie }}>
+                  <div key={movie.id} className="container-single-movie">
+                    <div>
+                      <p className="title-movie">{movie.title}</p>
+                      <p>{movie.release_date}</p>
+                    </div>
+                    <div className="container-img">
+                      <img src={img_url + movie.poster_path}></img>
+                    </div>
                   </div>
-                  <div className="container-img">
-                    <img src={img_url + movie.poster_path}></img>
-                  </div>
-                </div>
+                </Link>
               ))
             )}
           </div>

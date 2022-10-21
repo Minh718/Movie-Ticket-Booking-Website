@@ -4,8 +4,11 @@ import {
   CarouselControl,
   CarouselIndicators,
   CarouselItem,
+  CarouselCaption,
 } from "reactstrap";
+import { useGlobalContext } from "../../../context";
 import "./index.css";
+import { img_url } from "../api";
 const Thumbnails = [
   {
     id: "v1",
@@ -33,34 +36,40 @@ const Thumbnails = [
   },
 ];
 export default function Slide() {
+  const { moviesArePlaying } = useGlobalContext();
+  console.log(moviesArePlaying);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
   const next = () => {
     if (animating) return;
     const nextIndex =
-      activeIndex === Thumbnails.length - 1 ? 0 : activeIndex + 1;
+      activeIndex === moviesArePlaying.length - 1 ? 0 : activeIndex + 1;
     setActiveIndex(nextIndex);
   };
 
   const previous = () => {
     if (animating) return;
     const nextIndex =
-      activeIndex === 0 ? Thumbnails.length - 1 : activeIndex - 1;
+      activeIndex === 0 ? moviesArePlaying.length - 1 : activeIndex - 1;
     setActiveIndex(nextIndex);
   };
   const goToIndex = (newIndex) => {
     if (animating) return;
     setActiveIndex(newIndex);
   };
-  const slides = Thumbnails.map((Thumbnail) => {
+  const slides = moviesArePlaying.map((movieArePlaying) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
-        key={Thumbnail.src}
+        key={moviesArePlaying.id}
       >
-        <img src={Thumbnail.src} />
+        <img src={img_url + movieArePlaying.backdrop_path} />
+        <CarouselCaption
+          captionText={movieArePlaying.release_date}
+          captionHeader={movieArePlaying.title}
+        />
       </CarouselItem>
     );
   });
@@ -68,7 +77,7 @@ export default function Slide() {
     <div className="slider-container">
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
         <CarouselIndicators
-          items={Thumbnails}
+          items={moviesArePlaying}
           activeIndex={activeIndex}
           onClickHandler={goToIndex}
         />

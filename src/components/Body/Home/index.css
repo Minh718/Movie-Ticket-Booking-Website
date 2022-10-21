@@ -1,6 +1,6 @@
 .slider-container {
   width: 100vw;
-  height: 75vh;
+  height: 85vh;
   position: relative;
   user-select: none;
   -moz-user-select: none;
@@ -138,6 +138,13 @@
 }
 .movie:hover a {
   display: block;
+}
+.booking .viewDetail {
+  background: #66bfbf;
+}
+.booking .viewDetail:hover {
+  color: #66bfbf;
+  border-color: #66bfbf;
 }
 .movie:hover > .booking {
   background-color: rgba(0, 0, 0, 0.5);
@@ -369,16 +376,16 @@
 }
 .movie-nav::after {
   content: "";
-  left: 10%;
+  left: 3%;
   position: absolute;
-  width: 30%;
+  width: 40%;
   height: 3px;
   background: #dd5353;
   transition: all 0.3s linear;
   bottom: -6px;
 }
 .ative-movie-nav::after {
-  left: 62%;
+  left: 54%;
 }
 .btn-category-film:first-child {
   padding-right: 5px;

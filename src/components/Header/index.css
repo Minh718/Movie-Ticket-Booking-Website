@@ -134,6 +134,15 @@ a {
   justify-content: space-between;
   height: 150px;
   margin-bottom: 10px;
+  color: #000;
+}
+.container-single-movie .title-movie {
+  font-size: 22px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+.container-single-movie .title-movie + p {
+  opacity: 0.7;
 }
 .contaier-movies-search .container-single-movie {
   padding: 10px 20px;

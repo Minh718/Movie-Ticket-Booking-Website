@@ -1,0 +1,25 @@
+.detail-movie .header-left img {
+  object-fit: cover;
+  height: 500px;
+}
+.detail-movie {
+  padding: 40px 60px;
+}
+.detail-movie .header-movie {
+  display: flex;
+}
+.detail-movie .header-left {
+  margin-right: 80px;
+}
+.bold {
+  font-weight: bold;
+}
+.detail-movie p {
+  margin-bottom: 4px;
+}
+.detail-movie .genre {
+  display: inline-block;
+  padding: 1px 3px;
+  background: #fdfdbd;
+  margin-left: 10px;
+}

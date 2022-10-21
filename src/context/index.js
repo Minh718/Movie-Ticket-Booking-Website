@@ -4,9 +4,22 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [openSetting, setOpenSetting] = useState(false);
-  const [user,setUser] = useState("Rey");
+  const [user, setUser] = useState("Rey");
+  const [moviesArePlaying, setMoviesArePlaying] = useState([]);
+  const [query, setQuery] = useState("");
   return (
-    <AppContext.Provider value={{ openSetting, setOpenSetting,user,setUser }}>
+    <AppContext.Provider
+      value={{
+        moviesArePlaying,
+        setMoviesArePlaying,
+        openSetting,
+        setOpenSetting,
+        user,
+        setUser,
+        query,
+        setQuery,
+      }}
+    >
       {children}
     </AppContext.Provider>
   );
