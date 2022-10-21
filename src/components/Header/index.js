@@ -38,10 +38,13 @@ function Header() {
     <div id="header">
       <div className="header-left nav-left">
         <Link to={"/"}>
-          <h1 className="title">Booking Website</h1>
+          <img className="logo-web" src="./cinemaBK.png" />
         </Link>
         {/* <div className="right-part"> */}
         <div className="nav-middle">
+          <span className="icon-search">
+            <FaSearch />
+          </span>
           <input
             className="search-input"
             value={query}
@@ -80,9 +83,6 @@ function Header() {
               ))
             )}
           </div>
-          <span className="icon-search">
-            <FaSearch />
-          </span>
         </div>
         <div className="right-part">
           <div

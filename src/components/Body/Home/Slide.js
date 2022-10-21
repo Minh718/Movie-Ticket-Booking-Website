@@ -117,7 +117,7 @@ export default function Slide() {
           <option value="20/10/202">20/10/2022</option>
           <option value="21/10/202">21/10/2022</option>
         </select>
-        <div className="container-btn">
+        <div className="btn-buy-ticket">
           <button type="submit">MUA VÉ</button>
         </div>
       </form>

@@ -78,8 +78,8 @@
 .quick-booking select {
   margin: 10px 20px;
   color: white;
-  font-size: 20px;
-  padding: 15px 12px;
+  font-size: 18px;
+  padding: 10px;
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }
@@ -92,12 +92,13 @@
 
 .quick-booking button {
   margin: 10px 12px;
-  padding: 10px 20px;
+  padding: 8px 18px;
   background-color: #dd5353;
   color: white;
   border-color: transparent;
+  transition: all 0.3s linear;
 }
-.container-btn {
+.btn-buy-ticket {
   display: flex;
   flex-direction: row-reverse;
 }
