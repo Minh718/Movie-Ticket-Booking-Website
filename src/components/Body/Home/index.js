@@ -108,7 +108,6 @@ const Home = () => {
           <button className="more-news">XEM THÊM</button>
         </Link>
       </div>
-
       <div className="vouchers-container">
         <div className="vouchers-nav">
           <span>Tin khuyến mãi</span>

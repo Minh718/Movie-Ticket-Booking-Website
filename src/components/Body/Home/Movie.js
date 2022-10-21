@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { fetchTopRatedMovies, img_url } from "../api";
+import { fetchTopRatedMovies, img_url, fetchPopularMovies } from "../api";
 const movieStore = [
   {
     id: "m1",
@@ -36,16 +36,22 @@ const movieStore = [
 
 export default function Movie() {
   const [toggleFilm, setToggleFilm] = useState(false);
-  const [movies, setMovies] = useState([]);
+  const [premierMovies, setPremierMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
       const res = await fetch(fetchTopRatedMovies(1));
+      const res2 = await fetch(fetchPopularMovies(1));
       const data = await res.json();
-      setMovies(data.results.slice(0, 6));
-      // console.log(data.results.slice(0, 6));
+      const data2 = await res2.json();
+      setPopularMovies(data2.results.slice(0, 6));
+
+      setPremierMovies(data.results.slice(0, 6));
     };
     fetchMovies();
-  });
+  }, []);
+  const movies = toggleFilm ? popularMovies : premierMovies;
+  console.log(movies);
   return (
     <div className="movie-container">
       <span className={toggleFilm ? "movie-nav ative-movie-nav" : "movie-nav"}>
@@ -63,14 +69,14 @@ export default function Movie() {
         </button>
       </span>
       <div className="movie-store">
-        {movies.map((movie, index) => {
+        {movies.map((movie) => {
           return (
             <div className="movie" key={movie.id}>
               <div className="movie-img">
                 <img src={img_url + movie.backdrop_path} alt="" />
               </div>
               <div className="booking">
-                <Link href="/detailMovie">MUA VÉ</Link>
+                <Link to={`/detailMovie/${movie.id}`}>MUA VÉ</Link>
               </div>
               <div className="namefilm">{movie.title}</div>
             </div>
