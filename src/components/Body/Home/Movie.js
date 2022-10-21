@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { fetchTopRatedMovies, img_url } from "../api";
 const movieStore = [
   {
     id: "m1",
@@ -32,8 +33,19 @@ const movieStore = [
     name: "Ame wo Tsugeru Hyouryuu Danchi",
   },
 ];
+
 export default function Movie() {
   const [toggleFilm, setToggleFilm] = useState(false);
+  const [movies, setMovies] = useState([]);
+  useEffect(() => {
+    const fetchMovies = async () => {
+      const res = await fetch(fetchTopRatedMovies(1));
+      const data = await res.json();
+      setMovies(data.results.slice(0, 6));
+      // console.log(data.results.slice(0, 6));
+    };
+    fetchMovies();
+  });
   return (
     <div className="movie-container">
       <span className={toggleFilm ? "movie-nav ative-movie-nav" : "movie-nav"}>
@@ -47,20 +59,20 @@ export default function Movie() {
           className="btn-category-film"
           onClick={() => setToggleFilm(true)}
         >
-          Phim sắp chiếu
+          Phim top rated
         </button>
       </span>
       <div className="movie-store">
-        {movieStore.map((movie, index) => {
+        {movies.map((movie, index) => {
           return (
-            <div className="movie" key={index}>
+            <div className="movie" key={movie.id}>
               <div className="movie-img">
-                <img src={process.env.PUBLIC_URL + movie.url} alt="" />
+                <img src={img_url + movie.backdrop_path} alt="" />
               </div>
               <div className="booking">
-                <Link href="/">MUA VÉ</Link>
+                <Link href="/detailMovie">MUA VÉ</Link>
               </div>
-              <div className="namefilm">{movie.name}</div>
+              <div className="namefilm">{movie.title}</div>
             </div>
           );
         })}
