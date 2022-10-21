@@ -87,29 +87,22 @@ export default function Slide() {
 
       <form className="quick-booking" action="#">
         <span>MUA VÉ NHANH</span>
-        <select name="day" id="day" required>
-          <option selected>Chọn ngày</option>
+        <select name="movie" id="movie" required>
+          <option selected>Chọn phim</option>
           <option value="18/10/202">18/10/2022</option>
           <option value="19/10/202">19/10/2022</option>
           <option value="20/10/202">20/10/2022</option>
           <option value="21/10/202">21/10/2022</option>
         </select>
-        <select name="movie" id="movie" required>
-          <option selected>Chọn phim</option>
+        <select name="day" id="day" required>
+          <option selected>Chọn ngày</option>
           <option value="SG">Alo alo</option>
           <option value="19/10/202">19/10/2022</option>
           <option value="20/10/202">20/10/2022</option>
           <option value="21/10/202">21/10/2022</option>
         </select>
-        <select name="theater" id="theater" required>
-          <option selected>Chọn rạp</option>
-          <option value="SG">SG</option>
-          <option value="19/10/202">19/10/2022</option>
-          <option value="20/10/202">20/10/2022</option>
-          <option value="21/10/202">21/10/2022</option>
-        </select>
         <select name="time" id="time" required>
-          <option selected>Chọn xuất xem</option>
+          <option selected>Chọn suất xem</option>
           <option value="SG">13h</option>
           <option value="19/10/202">19/10/2022</option>
           <option value="20/10/202">20/10/2022</option>
