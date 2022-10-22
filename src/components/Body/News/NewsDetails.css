@@ -132,6 +132,7 @@
 .news-detail-comment-avatar {
   width: 100px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .news-detail-comment-right {

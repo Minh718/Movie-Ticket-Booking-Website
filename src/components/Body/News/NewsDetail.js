@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NewsDetails.css";
 import data from "../json/data.json";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 const NewsDetail = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const navigate = useNavigate();
   const articleId = useParams().id;
   const item = data.data[articleId];
-  const temp = item.comments.map((cmt, index) => (
+  const commentList = item.comments.map((cmt, index) => (
     <div className="news-detail-comment-container" key={index}>
       <div className="news-detail-comment-left">
         <img
-          src="http://genk.mediacdn.vn/k:thumb_w/640/2015/screen-shot-2015-07-30-at-2-31-57-pm-1438334096188/cau-chuyen-ve-nguoi-tao-ra-chu-ech-xanh-than-thanh.png"
+          src={cmt.avatar ? cmt.avatar : "http://genk.mediacdn.vn/k:thumb_w/640/2015/screen-shot-2015-07-30-at-2-31-57-pm-1438334096188/cau-chuyen-ve-nguoi-tao-ra-chu-ech-xanh-than-thanh.png"}
           alt=""
           className="news-detail-comment-avatar"
         />
@@ -50,11 +56,12 @@ const NewsDetail = () => {
       <p className="news-detail-source">Nguồn: {item.source}</p>
       <div className="news-detail-more-actions">
         <button className="news-detail-action">Thích ({item.likes})</button>
-        <button className="news-detail-action">Bình luận</button>
+        <button onClick={() => document.getElementById('commentSection').scrollIntoView()} className="news-detail-action">Bình luận</button>
         <button className="news-detail-action">Chia sẻ</button>
+        <button className="news-detail-action" onClick={() => navigate("/news")}>Tin tức khác</button>
         <button className="news-detail-action">Báo cáo</button>
       </div>
-      <div className="news-detail-comment-section">
+      <div className="news-detail-comment-section" id="commentSection">
         <h1 className="news-detail-comment-header">Bình luận</h1>
         <input
           type="text"
@@ -71,7 +78,7 @@ const NewsDetail = () => {
         </div>
         <div className="news-detail-comments-list">
           {item.comments.length ? (
-            temp
+            commentList
           ) : (
             <p>Hãy là người đầu tiên bình luận về bài viết này.</p>
           )}

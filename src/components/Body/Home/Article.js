@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import data from "../json/data.json";
 import "./index.css";
-const articles = data.data.slice(0, 6);
 export default function Article({ article }) {
   const { id, image, title, timestamp, summary } = article;
   const [isSliced, setIsSliced] = React.useState(true);
@@ -22,7 +21,7 @@ export default function Article({ article }) {
         {isSliced ? (
           <p className="summary-article">
             {summary.slice(0, 100)}{" "}
-            <span onClick={() => setIsSliced(false)}>...xem thêm</span>
+            <span onClick={() => setIsSliced(false)}>...Xem thêm</span>
           </p>
         ) : (
           <p className="summary-article">
@@ -30,7 +29,7 @@ export default function Article({ article }) {
           </p>
         )}
         <div style={{ textAlign: "right" }}>
-          <Link to={`/detailArticle/${id - 1}`}>
+          <Link to={`/news/${parseInt(id) - 1}`}>
             {" "}
             <Button color="info" size="lg">
               Chi tiết

@@ -42,7 +42,7 @@ function App() {
           <Route path="/historyTicket" element={<HistoryTicket />}></Route>
           <Route path="/detailMovie/:id" element={<DetailMovie />}></Route>
           <Route path="/admin-page" element={<AdminPage />}></Route>
-          <Route path="/detailArticle/:id" element={<NewsDetail />}></Route>
+          <Route path="/news/:id" element={<NewsDetail />}></Route>
         </Routes>
         <Footer />
       </Router>
