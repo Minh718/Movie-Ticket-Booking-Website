@@ -40,8 +40,7 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/historyTicket" element={<HistoryTicket />}></Route>
           <Route path="/detailMovie/:id" element={<DetailMovie />}></Route>
-
-          <Route path="/detailArticle/:id" element={<NewsDetail />}></Route>
+          <Route path="/news/:id" element={<NewsDetail />}></Route>
         </Routes>
         <Footer />
       </Router>

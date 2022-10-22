@@ -12,7 +12,7 @@ function Items({ currentItems }) {
       {currentItems &&
         currentItems.map((item, index) => (
           <div className="news-item-card" key={index}>
-            <Link to={`/news/${item.id}`} className="news-item-link">
+            <Link to={`/news/${parseInt(item.id) - 1}`} className="news-item-link">
               <div className="news-item-top">
                 <div className="news-image-container">
                   <img
