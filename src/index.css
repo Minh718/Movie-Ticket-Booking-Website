@@ -8,7 +8,9 @@
 :root {
   --primary-orange-color: #ee6c4d;
 }
-
+#App{
+  overflow-x: hidden;
+}
 .orange-btn {
   background: var(--primary-orange-color);
   margin: 10px 0;
