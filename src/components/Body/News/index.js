@@ -44,24 +44,51 @@ function NewsPage() {
   const [page, setPage] = useState(1);
   const [displayData, setDisplayData] = useState([]);
   const [paginationText, setPaginationtext] = useState("");
+  const [searchNews, setSearchNews] = useState("");
+  const [maxNoPages, setMaxNoPages] = useState(Math.ceil(list.length / itemsPerPage));
+  const [resIsEmpty, setResIsEmpty] = useState(false);
+
+  // useEffect(() => {
+  //   const currentPage = parseInt(localStorage.getItem("page"));
+  //   const listAfterSearch = list.filter(item => item.title.includes(searchNews))
+  //   const fetchData = () => {
+  //     setDisplayData(
+  //       list.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+  //     );
+  //     setPageNumber(currentPage);
+  //     setPaginationtext(
+  //       `Hiển thị ${(currentPage - 1) * itemsPerPage + 1} đến ${
+  //         currentPage * itemsPerPage > list.length
+  //           ? list.length
+  //           : currentPage * itemsPerPage
+  //       } trên tổng số ${list.length}`
+  //     );
+  //   };
+  //   fetchData();
+  // }, [page]);
 
   useEffect(() => {
     const currentPage = parseInt(localStorage.getItem("page"));
+    const searchQuery = localStorage.getItem("searchQuery")
+    const listAfterSearch = list.filter(item => item.title.toLowerCase().includes(searchQuery ? searchQuery.toLowerCase() : ""))
+    if (!listAfterSearch.length) setResIsEmpty(true);
+    else setResIsEmpty(false);
     const fetchData = () => {
       setDisplayData(
-        list.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+        listAfterSearch.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
       );
       setPageNumber(currentPage);
       setPaginationtext(
         `Hiển thị ${(currentPage - 1) * itemsPerPage + 1} đến ${
-          currentPage * itemsPerPage > list.length
-            ? list.length
+          currentPage * itemsPerPage > listAfterSearch.length
+            ? listAfterSearch.length
             : currentPage * itemsPerPage
-        } trên tổng số ${list.length}`
+        } trên tổng số ${listAfterSearch.length}`
       );
+      setMaxNoPages(Math.ceil(listAfterSearch.length / itemsPerPage))
     };
     fetchData();
-  }, [page]);
+  }, [page, searchNews]);
 
   const handlePageChange = (pageNo) => {
     setPage(pageNo);
@@ -72,17 +99,31 @@ function NewsPage() {
     <>
       <main className="news-page news-grand-container">
         <div className="news-search-container">
+          <label htmlFor="search-news" >Tìm kiếm</label>
           <input
             className="news-search-box"
+            id="search-news"
             type="text"
-            placeholder="Tìm kiếm..."
+            placeholder="Tìm theo tựa đề..."
+            value={localStorage.getItem("searchQuery") ?? ""}
+            onChange={(e) => {
+              e.preventDefault();
+              setSearchNews(e.target.value);
+              localStorage.setItem("searchQuery", e.target.value);
+              setPageNumber(1);
+              setPage(1);
+              localStorage.setItem("page", 1);
+            }}
           />
-          <button className="news-search-button">Tìm kiếm</button>
+          <button className="news-search-button" onClick={() => {
+            setSearchNews("");
+            localStorage.setItem("searchQuery", "");
+          }}>Xóa</button>
         </div>
         <div className="news-list-container">
           <Items currentItems={displayData} />
         </div>
-        <p className="pagination-info">{paginationText}</p>
+        {!resIsEmpty ? <><p className="pagination-info">{paginationText}</p>
         <form
           className="pagination"
           onSubmit={() => handlePageChange(parseInt(pageNumber))}
@@ -90,7 +131,7 @@ function NewsPage() {
           <input
             type="number"
             min="1"
-            max={`${Math.ceil(list.length / itemsPerPage)}`}
+            max={maxNoPages}
             className="pagination-input"
             value={pageNumber}
             onChange={(e) => {
@@ -100,9 +141,8 @@ function NewsPage() {
           <button type="submit" className="pagination-button">
             Go
           </button>
-        </form>
+        </form></> : <h6>Không có kết quả tìm kiếm!</h6>}
       </main>
-      {/* <NewsDetail item={list[2]} /> */}
     </>
   );
 }
