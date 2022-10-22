@@ -279,24 +279,11 @@
   color: #fff;
 }
 
+
 .voucher-detail {
-  display: none;
-}
-.voucher-detail a {
-  border: 1px solid #fff;
-  padding: 2rem 4rem;
-  z-index: 10;
-  color: #fff;
-  text-decoration: none;
-}
-.voucher-detail a:hover {
-  background: #ee6c4d;
-  cursor: pointer;
-}
-.vouchers:hover > .voucher-detail {
   display: flex;
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(255, 255, 255,0);
   position: absolute;
   flex-direction: column;
   width: 18vw;
@@ -305,7 +292,31 @@
   left: 0;
   justify-content: center;
   align-items: center;
-  transition: opacity ease-in-out 0.4s;
+  transition: all 0.3s linear;
+}
+.voucher-detail a {
+  display: none;
+  padding: 15px 25px;
+  z-index: 10;
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: all 0.3s linear;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+  background: #dd5353;
+  font-weight: bold;
+}
+.voucher-detail:hover a{
+  display: block;
+}
+.voucher-detail a:hover {
+  background: rgba(0, 0, 0, 0.5);
+  color: #dd5353;
+  border-color: #dd5353;
+  cursor: pointer;
+}
+.vouchers:hover > .voucher-detail {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255,1);
 }
 .vouchers-store {
   display: flex;
@@ -328,12 +339,13 @@
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
     rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
+
 .vouchers-nav {
   margin-left: 10%;
 }
 .vouchers-nav span {
   margin: 1rem;
-  font-size: 20px;
+  font-size: 30px;
 }
 .vouchers-nav hr {
   width: 40%;
