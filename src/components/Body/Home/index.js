@@ -110,7 +110,7 @@ const Home = () => {
       </div>
       <div className="vouchers-container">
         <div className="vouchers-nav">
-          <span>Tin khuyến mãi</span>
+          <span>TIN KHUYẾN MÃI</span>
           <hr />
         </div>
         <div className="vouchers-store">

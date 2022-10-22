@@ -14,6 +14,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import HistoryTicket from "./components/Body/historyTicket";
 import NewsDetail from "./components/Body/News/NewsDetail";
 import DetailMovie from "./components/Body/detailMovie";
+import AdminPage from "./components/Body/Admin";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 function App() {
@@ -40,7 +41,7 @@ function App() {
           <Route path="/profile" element={<Profile />}></Route>
           <Route path="/historyTicket" element={<HistoryTicket />}></Route>
           <Route path="/detailMovie/:id" element={<DetailMovie />}></Route>
-
+          <Route path="/admin-page" element={<AdminPage />}></Route>
           <Route path="/detailArticle/:id" element={<NewsDetail />}></Route>
         </Routes>
         <Footer />

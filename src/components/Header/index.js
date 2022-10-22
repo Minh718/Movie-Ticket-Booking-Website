@@ -38,7 +38,7 @@ function Header() {
     <div id="header">
       <div className="header-left nav-left">
         <Link to={"/"}>
-          <img className="logo-web" src="./cinemaBK.png" />
+          <img className="logo-web" src="./BK-cinema_1.png" />
         </Link>
         {/* <div className="right-part"> */}
         <div className="nav-middle">

@@ -33,13 +33,13 @@ export default function Movie() {
           className="btn-category-film"
           onClick={() => setCanPlaceTicket(true)}
         >
-          Công chiếu tại rạp
+          PHIM ĐANG CHIẾU
         </button>
         <button
           className="btn-category-film"
           onClick={() => setCanPlaceTicket(false)}
         >
-          Phim sắp công chiếu
+          PHIM SẮP CHIẾU
         </button>
       </span>
       {/* <div className="movie-store"> */}
