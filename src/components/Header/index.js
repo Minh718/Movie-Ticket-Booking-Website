@@ -100,7 +100,7 @@ function Header() {
                 <Link to="/profile">Hồ sơ của tôi</Link>
                 <Link to="/historyTicket">Giao dịch của tôi</Link>
                 <Link to="/">Vouchers</Link>
-                <Link to="/admin">Admin</Link>
+                <Link to="/admin-page">Admin</Link>
 
                 <Link
                   to="/"
