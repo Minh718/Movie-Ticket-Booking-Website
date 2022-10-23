@@ -27,7 +27,7 @@ const RegisterPage = () => {
     return ( 
         <>
             <div className="register-page">
-                <h1>Sign up</h1>
+                <h1>ĐĂNG KÍ</h1>
                 <form action="" className="infoform" onSubmit={formik.handleSubmit}>
                     <input type="text" id="username" name="username" placeholder="Tên đăng nhập" value={formik.values.name} onChange={formik.handleChange}/>
                     {formik.errors.username && (

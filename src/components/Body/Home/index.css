@@ -359,6 +359,7 @@
   padding: 1.2rem 2rem;
   background-color: #fff;
   color: #ee6c4d;
+  transition: all 0.3s linear;
 }
 .vouchers-container .more-vouchers-wraper {
   align-self: flex-end;
