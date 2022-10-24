@@ -5,10 +5,9 @@ import { useGlobalContext } from "../../../../context";
 import { useNavigate } from "react-router-dom";
 function Common({ children }) {
   const navigate = useNavigate();
-  const { openBar, setOpenBar } = useGlobalContext();
+  const { openBar, setInPageAdmin } = useGlobalContext();
   const [index, setIndex] = useState(0);
   useEffect(() => {
-    console.log(openBar);
     setInPageAdmin(true);
   }, []);
   return (
@@ -70,6 +69,7 @@ function Common({ children }) {
           Danh sách voucher
         </div>
       </div>
+      <div className="right-page">{children}</div>
     </div>
   );
 }
