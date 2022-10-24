@@ -6,6 +6,15 @@
   background-color: #293241;
   padding: 0 80px;
 }
+.header-left .container-btn-bar {
+  color: #fff;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.active-bar {
+  transform: rotate(90deg);
+}
 .logo-web {
   height: 100px;
   object-fit: cover;

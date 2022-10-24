@@ -37,11 +37,9 @@ const Thumbnails = [
 ];
 export default function Slide() {
   const { moviesArePlaying } = useGlobalContext();
-  console.log(moviesArePlaying);
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
   const movies = moviesArePlaying.slice(0, 7);
-  console.log(movies);
   const next = () => {
     if (animating) return;
     const nextIndex = activeIndex === movies.length - 1 ? 0 : activeIndex + 1;

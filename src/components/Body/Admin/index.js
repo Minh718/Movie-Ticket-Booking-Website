@@ -1,11 +1,10 @@
-import './index.css'
+import React from "react";
+import Common from "./common";
 
-function AdminPage() {
-	return (
-		<div id='admin-page'>
-			<h1 style={{ fontSize: "3rem" }}>Đây là trang Admin</h1>
-		</div>
-	)
+export default function Index() {
+  return (
+    <>
+      <Common>ffd</Common>
+    </>
+  );
 }
-
-export default AdminPage;

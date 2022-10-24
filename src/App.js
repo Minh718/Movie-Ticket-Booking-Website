@@ -15,10 +15,11 @@ import HistoryTicket from "./components/Body/historyTicket";
 import NewsDetail from "./components/Body/News/NewsDetail";
 import DetailMovie from "./components/Body/detailMovie";
 import AdminPage from "./components/Body/Admin";
+import Client from "./components/Body/Admin/pages/Client";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 function App() {
-  const { setOpenSetting, setQuery } = useGlobalContext();
+  const { setOpenSetting, setQuery, inPageAdmin } = useGlobalContext();
   return (
     <div
       id="App"
@@ -30,21 +31,25 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
-          <Route path="/register" element={<RegisterPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/news" element={<NewsPage />}></Route>
-          <Route path="/movies" element={<MoviesPage />}></Route>
-          <Route path="/support" element={<SupportPage />}></Route>
-          <Route path="/user" element={<UserPage />}></Route>
-          <Route path="/booking" element={<BookingTicket />}></Route>
-          <Route path="/profile" element={<Profile />}></Route>
-          <Route path="/historyTicket" element={<HistoryTicket />}></Route>
-          <Route path="/detailMovie/:id" element={<DetailMovie />}></Route>
-          <Route path="/admin-page" element={<AdminPage />}></Route>
-          <Route path="/news/:id" element={<NewsDetail />}></Route>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/support" element={<SupportPage />} />
+          <Route path="/user" element={<UserPage />} />
+          <Route path="/booking" element={<BookingTicket />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/historyTicket" element={<HistoryTicket />} />
+          <Route path="/detailMovie/:id" element={<DetailMovie />} />
+          <Route path="/admin-page" element={<AdminPage />}>
+            {/* <Route path="client" element={<Client />} /> */}
+          </Route>
+          {/* <Route path="/admin-page/client" element={<Client />} /> */}
+
+          <Route path="/news/:id" element={<NewsDetail />} />
         </Routes>
-        <Footer />
+        {!inPageAdmin && <Footer />}
       </Router>
     </div>
   );

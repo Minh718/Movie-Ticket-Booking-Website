@@ -23,7 +23,6 @@ export default function Movie() {
     fetchMovies();
   }, []);
   const movies = canPlaceTicket ? moviesArePlaying : upcomingMovies;
-  console.log(movies);
   return (
     <div className="movie-container">
       <span

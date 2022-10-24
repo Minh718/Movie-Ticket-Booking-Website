@@ -4,9 +4,11 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [openSetting, setOpenSetting] = useState(false);
-  const [user, setUser] = useState("Rey");
+  const [user, setUser] = useState({ name: "kaka", isAdmin: true });
   const [moviesArePlaying, setMoviesArePlaying] = useState([]);
   const [query, setQuery] = useState("");
+  const [inPageAdmin, setInPageAdmin] = useState(false);
+  const [openBar, setOpenBar] = useState(true);
   return (
     <AppContext.Provider
       value={{
@@ -18,6 +20,10 @@ export const AppProvider = ({ children }) => {
         setUser,
         query,
         setQuery,
+        inPageAdmin,
+        setInPageAdmin,
+        setOpenBar,
+        openBar,
       }}
     >
       {children}
