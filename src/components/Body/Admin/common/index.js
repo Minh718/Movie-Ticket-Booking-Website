@@ -18,11 +18,11 @@ function Common({ children }) {
           className="accordion"
           onClick={() => (index !== 1 ? setIndex(1) : setIndex(0))}
         >
-          Khách hàng
+          Quản trị Tài khoản
           {index === 1 ? <FaAngleUp /> : <FaAngleDown />}
         </div>
         <div className={index === 1 ? "click-down active" : "click-down"}>
-          Thêm admin
+          Cấp quyền admin
         </div>
         <div
           className={index === 1 ? "click-down active" : "click-down"}
@@ -34,33 +34,33 @@ function Common({ children }) {
           className="accordion"
           onClick={() => (index !== 2 ? setIndex(2) : setIndex(0))}
         >
-          Movies
+          Quản trị Phim
           {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
         </div>
         <div className={index === 2 ? "click-down active" : "click-down"}>
-          Thêm movie
+          Thêm phim
         </div>
         <div className={index === 2 ? "click-down active" : "click-down"}>
-          Danh sách movie
+          Danh sách phim
         </div>
         <div
           className="accordion"
           onClick={() => (index !== 3 ? setIndex(3) : setIndex(0))}
         >
-          Articles
+          Quản trị Tin tức
           {index === 3 ? <FaAngleUp /> : <FaAngleDown />}
         </div>
         <div className={index === 3 ? "click-down active" : "click-down"}>
-          Thêm article
+          Thêm tin tức
         </div>
         <div className={index === 3 ? "click-down active" : "click-down"}>
-          Danh sách articles
+          Danh sách tin tức
         </div>
         <div
           className="accordion"
           onClick={() => (index !== 4 ? setIndex(4) : setIndex(0))}
         >
-          Vouchers
+          Quản trị Voucher
           {index === 4 ? <FaAngleUp /> : <FaAngleDown />}
         </div>
         <div className={index === 4 ? "click-down active" : "click-down"}>
@@ -69,22 +69,6 @@ function Common({ children }) {
         <div className={index === 4 ? "click-down active" : "click-down"}>
           Danh sách voucher
         </div>
-        <div
-          className="accordion"
-          onClick={() => (index !== 5 ? setIndex(5) : setIndex(0))}
-        >
-          Showes movie
-          {index === 5 ? <FaAngleUp /> : <FaAngleDown />}
-        </div>
-        <div className={index === 5 ? "click-down active" : "click-down"}>
-          Thêm show
-        </div>
-        <div className={index === 5 ? "click-down active" : "click-down"}>
-          Danh sách showes
-        </div>
-      </div>
-      <div className={openBar ? "right-page" : "right-page move-right-page"}>
-        {children}
       </div>
     </div>
   );

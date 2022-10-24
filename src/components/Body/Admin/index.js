@@ -1,10 +1,10 @@
 import React from "react";
 import Common from "./common";
 
-export default function Index() {
+export default function AdminPage() {
   return (
     <>
-      <Common>ffd</Common>
+      <Common>a</Common>
     </>
   );
 }
