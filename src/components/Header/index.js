@@ -124,7 +124,7 @@ function Header() {
                 <Link to="/profile">Hồ sơ của tôi</Link>
                 <Link to="/historyTicket">Giao dịch của tôi</Link>
 
-                <Link to="/">Vouchers</Link>
+                <Link to="/vouchers">Vouchers</Link>
 
                 {user?.isAdmin && !inPageAdmin && (
                   <Link to="/admin-page" onClick={() => setInPageAdmin(true)}>

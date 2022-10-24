@@ -1,0 +1,20 @@
+.page-voucher {
+  min-height: calc(100vh - 180px);
+  padding: 40px 30px;
+}
+.table-voucher {
+  width: 700px;
+  border-collapse: collapse;
+  margin-top: 5px;
+}
+.table-voucher tr:first-child {
+  background-color: #ccc;
+}
+.table-voucher th {
+  padding: 2px;
+  padding-left: 10px;
+}
+.table-voucher td {
+  padding: 4px;
+  padding-left: 10px;
+}

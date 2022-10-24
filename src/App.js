@@ -1,5 +1,10 @@
 import { Header, Footer, Body } from "./components";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 import Home from "./components/Body/Home/index";
 import RegisterPage from "./components/Body/Register/index";
 import LoginPage from "./components/Body/Login/index";
@@ -16,10 +21,12 @@ import NewsDetail from "./components/Body/News/NewsDetail";
 import DetailMovie from "./components/Body/detailMovie";
 import AdminPage from "./components/Body/Admin";
 import Client from "./components/Body/Admin/pages/Client";
+import Error from "./components/Body/Error";
+import Vouchers from "./components/Body/vouchers";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 function App() {
-  const { setOpenSetting, setQuery, inPageAdmin } = useGlobalContext();
+  const { setOpenSetting, setQuery, inPageAdmin, user } = useGlobalContext();
   return (
     <div
       id="App"
@@ -41,13 +48,18 @@ function App() {
           <Route path="/booking" element={<BookingTicket />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/historyTicket" element={<HistoryTicket />} />
-          <Route path="/detailMovie/:id" element={<DetailMovie />} />
-          <Route path="/admin-page" element={<AdminPage />}>
-            {/* <Route path="client" element={<Client />} /> */}
-          </Route>
-          {/* <Route path="/admin-page/client" element={<Client />} /> */}
+          <Route path="/vouchers" element={<Vouchers />} />
 
+          <Route path="/detailMovie/:id" element={<DetailMovie />} />
+
+          <Route
+            path="/admin-page"
+            element={user && user.isAdmin ? <AdminPage /> : <Navigate to="/" />}
+          />
+          <Route path="/admin-page/client" element={<Client />} />
           <Route path="/news/:id" element={<NewsDetail />} />
+
+          <Route path="/*" element={<Error />} />
         </Routes>
         {!inPageAdmin && <Footer />}
       </Router>

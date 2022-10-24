@@ -10,7 +10,7 @@ export default function Profile() {
           <Link to={"/"}>Trang chủ</Link>
         </BreadcrumbItem>
         <BreadcrumbItem active tag="span">
-          Bootstrap
+          Thông tin cá nhân
         </BreadcrumbItem>
       </Breadcrumb>
       <div className="form-profile">

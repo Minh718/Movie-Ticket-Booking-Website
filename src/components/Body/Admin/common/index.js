@@ -1,12 +1,16 @@
 import "./index.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useGlobalContext } from "../../../../context";
 import { useNavigate } from "react-router-dom";
 function Common({ children }) {
   const navigate = useNavigate();
-  const { openBar } = useGlobalContext();
+  const { openBar, setOpenBar } = useGlobalContext();
   const [index, setIndex] = useState(0);
+  useEffect(() => {
+    console.log(openBar);
+    setInPageAdmin(true);
+  }, []);
   return (
     <div class="admin-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>

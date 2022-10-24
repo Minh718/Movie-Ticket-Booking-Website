@@ -14,29 +14,40 @@ export default function HistoryTicket() {
           Lịch sử giao dịch
         </BreadcrumbItem>
       </Breadcrumb>
-      <div className="form-profile">
-        <h2>Thông tin cá nhân</h2>
+      <div className="table-tickets">
+        <h2>Lịch sử giao dịch</h2>
         <table className="table-ticket">
           <tr>
             <th>Ngày</th>
-            <th>Số giao dịch</th>
+            <th>Giờ</th>
             <th>Giá</th>
             <th>Phim</th>
-            <th>Mã vé</th>
+            <th>qrcode</th>
           </tr>
           <tr>
             <td>20-12-2020</td>
-            <td>34</td>
+            <td>8:00</td>
             <td>59.000đ</td>
             <td>film red</td>
-            <td>KTLDM</td>
+            <td>
+              <img
+                className="img-qrcode"
+                src="https://www.qrcode-gen.com/images/qrcode-default.png"
+              />
+            </td>
           </tr>
           <tr>
             <td>30-10-1945</td>
-            <td>93</td>
-            <td>989999 triệu</td>
-            <td>phim nhí</td>
-            <td>KTLDM</td>
+            <td>12:00</td>
+
+            <td>98999đ</td>
+            <td>phim nhím</td>
+            <td>
+              <img
+                className="img-qrcode"
+                src="https://www.qrcode-gen.com/images/qrcode-default.png"
+              />
+            </td>
           </tr>
         </table>
       </div>

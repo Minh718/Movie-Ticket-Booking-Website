@@ -3,9 +3,13 @@ th,
 td {
   border: 1px solid;
 }
-
+.table-tickets {
+  width: 600px;
+  text-align: center;
+  margin: auto;
+}
 .table-ticket {
-  width: 700px;
+  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
 }
@@ -19,5 +23,9 @@ td {
   padding: 4px;
 }
 .container-profile {
-  min-height: 80vh;
+  min-height: calc(100vh - 180px);
+}
+.img-qrcode {
+  height: 100px;
+  width: 100px;
 }
