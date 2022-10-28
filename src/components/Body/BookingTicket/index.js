@@ -1,14 +1,59 @@
 import "./index.css";
-import { useLocation, Link } from "react-router-dom";
-import { img_url, fetchTopRatedMovies } from "../api";
+import { Link, useLocation } from "react-router-dom";
+import { img_url } from "../api";
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../context";
+import { useEffect, useState } from "react";
+import Select from 'react-select'
 
 function BookingTicket() {
   const movie = useLocation().state.movie;
   // const topMovie = useLocation().state.moviesArePlaying?.splice(0, 3);
   const canPlaceTicket = useLocation().state.canPlaceTicket || false;
   const { moviesArePlaying } = useGlobalContext();
+  const [showtimeSelected, setShowtimeSelected] = useState({ date: "", time: "" });
+  const [dateOptions, setDateOptions] = useState([]);
+  const [timeOptions, setTimeOptions] = useState([]);
+
+  const [showtime, setShowtime] = useState([
+    {
+      date: '15/10/2022',
+      time: ["09:30", "13:30", "15:30", "20:30"]
+    },
+    {
+      date: '16/10/2022',
+      time: ["09:30", "13:30", "15:30", "20:30"]
+    },
+    {
+      date: '17/10/2022',
+      time: ["09:30", "13:30", "15:30", "20:30"]
+    },
+    {
+      date: '18/10/2022',
+      time: ["09:30", "13:30", "15:30", "20:30"]
+    },
+    {
+      date: '19/10/2022',
+      time: ["09:30", "13:30", "15:30", "20:30"]
+    }
+  ])
+
+  useEffect(() => {
+    setDateOptions(showtime.map(item => ({ value: item.date, label: item.date })));
+    setTimeOptions([
+      { value: "09:30", label: "09:30" },
+      { value: "13:30", label: "13:30" }
+    ]);
+  }, [showtime])
+
+  function handleDateSelect(option) {
+    setShowtimeSelected({ ...showtimeSelected, date: option.value });
+  }
+
+  function handleTimeSelect(option) {
+    setShowtimeSelected({ ...showtimeSelected, time: option.value });
+  }
+
   return (
     <div className="booking-page">
       <div className="booking-page-layout">
@@ -42,26 +87,14 @@ function BookingTicket() {
               <h2 className="movie-booking-header">Đặt Vé Ngay</h2>
               <hr />
               <div className="movie-booking-area">
-                <select className="date-selection">
-                  <option value="" hidden>
-                    Chọn ngày
-                  </option>
-                  <option>15/10/2022</option>
-                  <option>16/10/2022</option>
-                  <option>17/10/2022</option>
-                  <option>18/10/2022</option>
-                  <option>19/10/2022</option>
-                </select>
-                <select className="time-selection">
-                  <option value="" hidden>
-                    Chọn giờ
-                  </option>
-                  <option>09:30</option>
-                  <option>13:30</option>
-                  <option>15:30</option>
-                  <option>20:30</option>
-                </select>
-                <button className="orange-btn">Mua Vé</button>
+                <Select options={dateOptions} className="date-selection" onChange={handleDateSelect} />
+                <Select options={timeOptions} className='time-selection' onChange={handleTimeSelect} />
+
+                <button className="btn-buy-ticket orange-btn">
+                  <Link to='/seatSelection' color="black" state={{ movie, showtimeSelected }}>
+                    Mua vé
+                  </Link>
+                </button>
               </div>
             </div>
           )}
