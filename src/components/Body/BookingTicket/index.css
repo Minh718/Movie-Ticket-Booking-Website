@@ -1,6 +1,4 @@
 /* GENERAL */
-.booking-page {}
-
 .booking-page hr {
     width: 40%;
     border-width: 4px;
@@ -20,6 +18,14 @@
     font-size: 1.8rem;
     font-weight: bold;
     padding-top: 20px;
+}
+
+.booking-page a {
+    color: #000;
+}
+
+.booking-page a:hover {
+    color: #000;
 }
 
 /* LEFT PART */
@@ -77,9 +83,11 @@
 
 .booking-page .movie-booking-area {}
 
-.booking-page select {
-    min-width: 30%;
+.booking-page .date-selection,
+.booking-page .time-selection {
+    width: 30%;
     margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 /*END LEFT PART*/

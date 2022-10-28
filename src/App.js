@@ -1,4 +1,4 @@
-import { Header, Footer, Body } from "./components";
+import { Header, Footer, Body, BookingSeat } from "./components";
 import {
   BrowserRouter as Router,
   Routes,
@@ -49,6 +49,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/historyTicket" element={<HistoryTicket />} />
           <Route path="/vouchers" element={<Vouchers />} />
+          <Route path="/seatSelection" element={<BookingSeat />} />
 
           <Route path="/detailMovie/:id" element={<DetailMovie />} />
 
