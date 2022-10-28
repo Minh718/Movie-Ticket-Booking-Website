@@ -71,22 +71,6 @@ const voucherStore = [
     id: "v8",
     url: "/images/voucher4.jpg",
   },
-  {
-    id: "v9",
-    url: "/images/voucher1.jpg",
-  },
-  {
-    id: "v10",
-    url: "/images/voucher2.jpg",
-  },
-  {
-    id: "v11",
-    url: "/images/voucher3.jpg",
-  },
-  {
-    id: "v12",
-    url: "/images/voucher4.jpg",
-  },
 ];
 const Home = () => {
   return (
