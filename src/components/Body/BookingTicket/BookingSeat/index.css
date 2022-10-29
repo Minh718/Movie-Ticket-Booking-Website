@@ -16,6 +16,10 @@
 	height: 30px;
 }
 
+.booking-seat-layout .seat:hover {
+	cursor: pointer;
+}
+
 .booking-seat-layout .screen-position {
 	height: 20px;
 	line-height: 20px;
@@ -86,4 +90,9 @@
 .booking-movie-card .ticket-price {
 	font-weight: bold;
 	font-size: 1.8rem;
+}
+
+.booking-movie-card .count-update-btn {
+	width: 30px;
+	margin: 0 4px;
 }

@@ -81,7 +81,10 @@
     grid-column-end: 3;
 }
 
-.booking-page .movie-booking-area {}
+.booking-page .movie-booking-area {
+    display: flex;
+    align-items: center;
+}
 
 .booking-page .date-selection,
 .booking-page .time-selection {

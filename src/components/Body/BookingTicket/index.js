@@ -1,5 +1,5 @@
 import "./index.css";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { img_url } from "../api";
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../context";
@@ -8,15 +8,14 @@ import Select from 'react-select'
 
 function BookingTicket() {
   const movie = useLocation().state.movie;
-  // const topMovie = useLocation().state.moviesArePlaying?.splice(0, 3);
   const canPlaceTicket = useLocation().state.canPlaceTicket || false;
   const { moviesArePlaying } = useGlobalContext();
-
-  const [showtimeSelected, setShowtimeSelected] = useState({ date: "", time: "" });
+  const [selectedShowtime, setSelectedShowtime] = useState({ date: "", time: "" });
   const [dateOptions, setDateOptions] = useState([]);
   const [timeOptions, setTimeOptions] = useState([]);
+  const [canBooking, setCanBooking] = useState(false);
 
-  const [showtime, setShowtime] = useState([
+  const [allShowtime, setAllShowtime] = useState([
     {
       date: '15/10/2022',
       time: ["09:30", "13:30", "15:30", "20:30"]
@@ -37,22 +36,32 @@ function BookingTicket() {
       date: '19/10/2022',
       time: ["09:30", "13:30", "15:30", "20:30"]
     }
-  ])
+  ]);
 
   useEffect(() => {
-    setDateOptions(showtime.map(item => ({ value: item.date, label: item.date })));
-    setTimeOptions([
-      { value: "09:30", label: "09:30" },
-      { value: "13:30", label: "13:30" }
-    ]);
-  }, [showtime]);
+    setDateOptions(allShowtime.map(item => ({ value: item.date, label: item.date })));
+    if (selectedShowtime.date)
+    {
+      setTimeOptions([
+        { value: "09:30", label: "09:30" },
+        { value: "13:30", label: "13:30" }
+      ]);
+    }
+  }, [allShowtime, selectedShowtime.date]);
+
+  useEffect(() => {
+    if (selectedShowtime.time)
+    {
+      setCanBooking(true);
+    }
+  }, [selectedShowtime.time]);
 
   function handleDateSelect(option) {
-    setShowtimeSelected({ ...showtimeSelected, date: option.value });
+    setSelectedShowtime({ ...selectedShowtime, date: option.value });
   }
 
   function handleTimeSelect(option) {
-    setShowtimeSelected({ ...showtimeSelected, time: option.value });
+    setSelectedShowtime({ ...selectedShowtime, time: option.value });
   }
 
   return (
@@ -93,18 +102,26 @@ function BookingTicket() {
                   options={dateOptions}
                   className="date-selection"
                   onChange={handleDateSelect} />
+
                 <Select
                   placeholder="Chọn giờ"
                   options={timeOptions}
                   className='time-selection'
-                  onChange={handleTimeSelect} />
-
-                <button className="btn-buy-ticket orange-btn">
-                  <Link to='/seatSelection' color="black" state={{ movie, showtimeSelected }}>
-                    Mua vé
-                  </Link>
-                </button>
+                  onChange={handleTimeSelect}
+                  noOptionsMessage={() => 'Vui lòng chọn ngày'} />
               </div>
+              {
+                canBooking &&
+                <Link
+                  to='/seatSelection'
+                  className="orange-btn"
+                  style={{ margin: 0 }}
+                  color="black"
+                  state={{ movie, selectedShowtime }}>
+                  Mua vé
+                </Link>
+              }
+
             </div>
           )}
         </div>
@@ -112,16 +129,15 @@ function BookingTicket() {
         <div className="right-part">
           <h2 className="movie-booking-header">Phim Thịnh Hành</h2>
           <hr />
-
           {moviesArePlaying?.map((item, idx) => {
-            if (idx > 3) return <></>
+            if (idx > 2) return <></>
 
             return (
               <div className="mini-movie-container" key={idx}>
                 <img src={img_url + item.backdrop_path} alt="Movie poster here" />
                 <div className="mini-right-part">
                   <h2 className="mini-movie-title">{item.title}</h2>
-                  <button className="orange-btn">Mua Vé</button>
+                  <Link className="orange-btn">Mua Vé</Link>
                 </div>
               </div>
             );
