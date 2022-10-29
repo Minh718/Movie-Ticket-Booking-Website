@@ -390,6 +390,7 @@
 }
 .ative-movie-nav::after {
   left: 59%;
+  background: #66bfbf;
 }
 .btn-category-film:first-child {
   padding-right: 20px;

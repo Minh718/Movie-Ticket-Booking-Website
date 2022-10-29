@@ -1,8 +1,7 @@
-.admin-page {
-  background: #ccc;
+.common-page {
   display: flex;
 }
-.admin-page .left-page {
+.common-page .left-page {
   width: 220px;
   height: 100%;
   background: #293241;
@@ -11,8 +10,12 @@
   bottom: 0px;
   left: 0px;
   transition: all 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* align-items: center; */
 }
-.admin-page .left-page.move-left-page {
+.common-page .left-page.move-left-page {
   left: -220px;
 }
 .click-down {
@@ -50,10 +53,19 @@
   align-items: center;
   justify-content: space-between;
 }
-.admin-page .right-page {
+.common-page .right-page {
   margin-left: 220px;
   transition: all 0.3s ease-out;
+  width: 100%;
+  height: calc(100vh - 80px);
 }
-.admin-page .right-page.move-right-page {
+.common-page .right-page.move-right-page {
   margin-left: 0;
+}
+.common-page .btn-out {
+  width: 80%;
+}
+.ctn-btn-out {
+  text-align: center;
+  margin-bottom: 20px;
 }

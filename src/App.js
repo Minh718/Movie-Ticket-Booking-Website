@@ -5,6 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+import HeaderAdmin from "./components/Header/HeaderAdmin";
 import Home from "./components/Body/Home/index";
 import RegisterPage from "./components/Body/Register/index";
 import LoginPage from "./components/Body/Login/index";
@@ -36,11 +37,14 @@ function App() {
       }}
     >
       <Router>
-        <Header />
+        {inPageAdmin ? <HeaderAdmin /> : <Header />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
+          <Route
+            path="login"
+            element={user ? <Navigate to={"/"} /> : <LoginPage />}
+          />
           <Route path="/news" element={<NewsPage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/support" element={<SupportPage />} />

@@ -4,7 +4,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [openSetting, setOpenSetting] = useState(false);
-  const [user, setUser] = useState({ name: "kaka", isAdmin: true });
+  const [user, setUser] = useState(null);
   const [moviesArePlaying, setMoviesArePlaying] = useState([]);
   const [query, setQuery] = useState("");
   const [inPageAdmin, setInPageAdmin] = useState(false);
