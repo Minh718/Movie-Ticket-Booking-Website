@@ -123,6 +123,10 @@ function BookingSeat() {
 							<h3>Giá vé: </h3>
 							<span className='ticket-price'>60.000đ</span>
 						</div>
+
+						<button className='orange-btn'>
+							Đặt vé
+						</button>
 					</div>
 				</div>
 			</div>
