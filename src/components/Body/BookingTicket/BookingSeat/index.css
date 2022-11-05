@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 66% 30%;
 	column-gap: 4%;
-	margin: 40px;
+	margin: 40px 80px;
 }
 
 .booking-seat-layout .left-part {
@@ -14,6 +14,10 @@
 	margin: 4px;
 	width: 30px;
 	height: 30px;
+}
+
+.booking-seat-layout .seat:hover {
+	cursor: pointer;
 }
 
 .booking-seat-layout .screen-position {
@@ -33,9 +37,8 @@
 	margin: 20px auto;
 }
 
-.booking-seat-layout .seat-manual>span {
-	margin-right: 8px;
-}
+/* .booking-seat-layout .seat-manual>span {
+} */
 
 .booking-seat-layout .seat-selected {
 	background: var(--primary-orange-color);
@@ -63,6 +66,10 @@
 	padding: 10px 20px;
 }
 
+.booking-movie-card .booking-info {
+	margin: 8px 0;
+}
+
 .booking-movie-card .movie-title {
 	font-weight: bold;
 	font-size: 2rem;
@@ -77,10 +84,15 @@
 }
 
 .booking-movie-card .booking-info-row {
-	padding: 4px 0;
+	padding: 2px 0;
 }
 
 .booking-movie-card .ticket-price {
 	font-weight: bold;
 	font-size: 1.8rem;
+}
+
+.booking-movie-card .count-update-btn {
+	width: 30px;
+	margin: 0 4px;
 }
