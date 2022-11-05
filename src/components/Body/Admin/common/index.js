@@ -20,7 +20,7 @@ function Common({ children }) {
               className="accordion"
               onClick={() => (index !== 1 ? setIndex(1) : setIndex(0))}
             >
-              Quản trị Tài khoản
+              Quản lý Tài khoản
               {index === 1 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div className={index === 1 ? "click-down active" : "click-down"}>
@@ -38,7 +38,7 @@ function Common({ children }) {
               className="accordion"
               onClick={() => (index !== 2 ? setIndex(2) : setIndex(0))}
             >
-              Quản trị movie
+              Quản lý movie
               {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div className={index === 2 ? "click-down active" : "click-down"}>
@@ -53,7 +53,7 @@ function Common({ children }) {
               className="accordion"
               onClick={() => (index !== 3 ? setIndex(3) : setIndex(0))}
             >
-              Quản trị Tin tức
+              Quản lý Tin tức
               {index === 3 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div className={index === 3 ? "click-down active" : "click-down"}>

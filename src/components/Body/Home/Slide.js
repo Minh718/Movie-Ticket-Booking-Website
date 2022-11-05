@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselControl,
@@ -112,7 +113,9 @@ export default function Slide() {
           <option value="20/10/202">13-15h</option>
         </select>
         <div className="btn-buy-ticket">
-          <button type="submit">MUA VÉ</button>
+          <Link to="/seatSelection" state={{ movie: moviesArePlaying[0] }}>
+            <button type="button">MUA VÉ</button>
+          </Link>
         </div>
       </form>
     </div>
