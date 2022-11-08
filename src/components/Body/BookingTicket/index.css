@@ -20,14 +20,6 @@
     padding-top: 20px;
 }
 
-.booking-page a {
-    color: #000;
-}
-
-.booking-page a:hover {
-    color: #000;
-}
-
 /* LEFT PART */
 .booking-page .left-part {
     display: grid;

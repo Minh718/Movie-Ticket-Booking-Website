@@ -13,9 +13,9 @@ function BookingSeat() {
 
 	const [seatArray, setSeatArray] = useState([
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+		[0, 0, 0, 0, 0, 0, 2, 2, 0, 0, 0, 0],
+		[0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0],
+		[0, 0, 0, 2, 0, 0, 2, 2, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 	]);
 
@@ -141,9 +141,12 @@ function BookingSeat() {
 							<span className='ticket-price'>60.000đ</span>
 						</div>
 
-						<button className='orange-btn'>
+						<Link
+							to='/seatSelection/payment'
+							className='orange-btn'
+							state={{ movie, selectedShowtime, selectedSeatList }}>
 							Đặt vé
-						</button>
+						</Link>
 					</div>
 				</div>
 			</div>

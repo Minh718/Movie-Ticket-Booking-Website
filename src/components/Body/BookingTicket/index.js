@@ -137,7 +137,9 @@ function BookingTicket() {
                 <img src={img_url + item.backdrop_path} alt="Movie poster here" />
                 <div className="mini-right-part">
                   <h2 className="mini-movie-title">{item.title}</h2>
-                  <Link className="orange-btn">Mua Vé</Link>
+                  <Link className="orange-btn">
+                    Mua Vé
+                  </Link>
                 </div>
               </div>
             );
