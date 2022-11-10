@@ -1,65 +1,76 @@
 import "./index.css";
-import { useFormik } from "formik";
+import { FastField, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../../context";
-
+import React, { useState } from "react";
+import InputField from "../../../customField/InputField/InputField";
+import { Button } from "reactstrap";
+import Register from "../register3";
 const LoginPage = () => {
-  const { setUser } = useGlobalContext();
-  const formik = useFormik({
-    initialValues: {
-      username: "",
-      password: "",
-    },
-    validationSchema: Yup.object({
-      username: Yup.string()
-        .required("Required")
-        .min(4, "Nhập ít nhất 4 kí tự"),
-      password: Yup.string()
-        .required("Required")
-        .min(3, "Mật khẩu có ít nhất 3 kí tự"),
-    }),
-    onSubmit: (values) => {
-      window.alert("Form submitted");
-      console.log(values);
-    },
-  });
-  const handleSubmit = () => {
-    setUser({ name: "Nhóm 7", isAdmin: true });
-  };
+  const [openRegister, setOpenRegister] = useState(false);
   return (
-    <div className="login-page">
-      <h1>Đăng nhập</h1>
-      <form action="" className="infoform" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          placeholder="Tên đăng nhập"
-          value={formik.values.name}
-          // onChange={formik.handleChange}
-        />
-        {formik.errors.username && (
-          <p className="errorMsg"> {formik.errors.username} </p>
-        )}
-        <input
-          type="password"
-          id="password"
-          name="password"
-          placeholder="Mật khẩu"
-          // value={formik.values.password}
-          // onChange={formik.handleChange}
-        />
-        {formik.errors.password && (
-          <p className="errorMsg"> {formik.errors.password} </p>
-        )}
-        <button type="button" onClick={handleSubmit}>
-          Đăng nhập
-        </button>
-        <Link to="/register">Đăng kí tài khoản mới</Link>
-        <a href="#">Quên mật khẩu</a>
-      </form>
-    </div>
+    <>
+      <div className="page-login">
+        <div className="slide-film">
+          <img src="https://cdn.oneesports.vn/cdn-data/sites/4/2022/08/op-film-thumb.jpg" />
+        </div>
+        <div className="container-form">
+          <h1>Đăng nhập</h1>
+          <Formik
+            initialValues={{
+              PhoneEmail: "",
+              password: "",
+            }}
+            validationSchema={Yup.object({
+              PhoneEmail: Yup.string().required("Vui lòng nhập trường này"),
+              password: Yup.string()
+                .min(8, "Mật khẩu ít nhất 8 ký tự")
+                .required("Vui lòng nhập trường này"),
+            })}
+            onSubmit={(values, { setSubmitting }) => {
+              alert(JSON.stringify(values, null, 2));
+              setSubmitting(false);
+            }}
+          >
+            <Form className="formLogin">
+              <FastField name="PhoneEmail">
+                {(props) => (
+                  <InputField
+                    {...props}
+                    type="text"
+                    placeholder="Email hoặc số điện thoại"
+                    label="Email hoặc số điện thoại"
+                  />
+                )}
+              </FastField>
+              <FastField name="password">
+                {(props) => (
+                  <InputField
+                    {...props}
+                    type="password"
+                    placeholder="Mật khẩu"
+                    label="Mật khẩu"
+                  />
+                )}
+              </FastField>
+              <Button type="submit" className="button-primary">
+                Đăng nhập
+              </Button>
+              <Button
+                type="button"
+                onClick={() => setOpenRegister(true)}
+                className="button-primary"
+                outline
+              >
+                Đăng ký
+              </Button>
+            </Form>
+          </Formik>
+        </div>
+      </div>
+      {openRegister && <Register setOpenRegister={setOpenRegister} />}
+    </>
   );
 };
 
