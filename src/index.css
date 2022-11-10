@@ -18,12 +18,15 @@
   display: inline-block;
   background: var(--primary-orange-color);
   margin: 10px 0;
+  color: #fff;
   padding: 4px 16px;
   border: 2px solid var(--primary-orange-color);
   border-radius: 4px;
+  transition: ease-in 0.3s;
 }
 
 .orange-btn:hover {
   cursor: pointer;
-  background: #eee;
+  color: black;
+  background: #fff;
 }

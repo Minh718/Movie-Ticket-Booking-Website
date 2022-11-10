@@ -144,7 +144,9 @@ function BookingTicket() {
                 />
                 <div className="mini-right-part">
                   <h2 className="mini-movie-title">{item.title}</h2>
-                  <Link className="orange-btn">Mua Vé</Link>
+                  <Link className="orange-btn">
+                    Mua Vé
+                  </Link>
                 </div>
               </div>
             );
