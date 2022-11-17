@@ -89,3 +89,8 @@
   width: 100%;
   object-fit: cover;
 }
+.forget-password {
+  padding-top: 10px;
+  display: block;
+  cursor: pointer;
+}

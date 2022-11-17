@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import "./style.css";
 import { ErrorMessage, FastField, Form, Formik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { url_database } from "../api/index";
 import InputField from "../../../customField/InputField/InputField";
-import SelectField from "../../../customField/selectField";
+import SelectField from "../../../customField/selectField/SelectField";
 import { Button } from "reactstrap";
 export default function Register({ setOpenRegister }) {
   const [goToLogin, setGoToLogin] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorRegister, setErrorRegister] = useState(false);
+  const refPhone = useRef();
   const handleGoToLogin = () => {
-    setIsSuccess(true);
+    // setTimeout(() => {
+    setGoToLogin(true);
     setTimeout(() => {
-      setGoToLogin(true);
-      setTimeout(() => {
-        setOpenRegister(false);
-      }, 380);
-    }, 2000);
+      setOpenRegister(false);
+    }, 380);
+    // }, 2000);
   };
-  console.log(isSuccess);
+  console.log(refPhone);
   if (isSuccess) {
     return (
       <div className="container-register">
@@ -37,9 +40,9 @@ export default function Register({ setOpenRegister }) {
           lastName: "",
           phone: "",
           email: "",
-          password: "123123123",
-          gender: "nam",
-          passwordConfirmation: "123123123",
+          password: "",
+          gender: "",
+          passwordConfirmation: "",
         }}
         validationSchema={Yup.object({
           firstName: Yup.string().required("Vui lòng nhập trường này"),
@@ -62,9 +65,25 @@ export default function Register({ setOpenRegister }) {
             "Passwords must match"
           ),
         })}
-        onSubmit={(values) => {
-          console.log(values);
-          handleGoToLogin();
+        onSubmit={async (values, { setValues }) => {
+          try {
+            const { passwordConfirmation, ...rest } = values;
+
+            await axios.post(`${url_database}/users`, rest);
+            setIsSuccess(true);
+            setTimeout(() => {
+              handleGoToLogin();
+            }, 2000);
+          } catch (err) {
+            values.phone = "";
+            values.email = "";
+            refPhone.current.focus();
+            setTimeout(() => {
+              setErrorRegister(false);
+            }, 3000);
+            setErrorRegister(true);
+            console.log(err.response);
+          }
         }}
       >
         <Form
@@ -94,6 +113,11 @@ export default function Register({ setOpenRegister }) {
             </FastField>
           </div>
           <div className="container-2field">
+            {errorRegister && (
+              <p className="error-register">
+                Số điện thoại hay email đã được sử dụng
+              </p>
+            )}
             <FastField name="phone">
               {(props) => (
                 <InputField
@@ -101,6 +125,7 @@ export default function Register({ setOpenRegister }) {
                   {...props}
                   placeholder="e.g, 0123456789"
                   label="Phone"
+                  ref={refPhone}
                 />
               )}
             </FastField>

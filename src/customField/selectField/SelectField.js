@@ -6,7 +6,11 @@ export default function SelectField({ field, value, meta, form, ...props }) {
     <div className="container-select">
       <label htmlFor={field.name}>{props.label}</label>
       <select {...field} {...props} />
-      <ErrorMessage name={field.name} />
+      <ErrorMessage
+        name={field.name}
+        component="div"
+        className="message-error"
+      />
     </div>
   );
 }

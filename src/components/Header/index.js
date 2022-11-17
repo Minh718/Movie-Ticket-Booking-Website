@@ -117,7 +117,7 @@ function Header() {
                   setOpenSetting(!openSetting);
                 }}
               >
-                {user.name}
+                {user.lastName}
               </span>
               {openSetting && (
                 <div className="setting-user">
@@ -125,7 +125,7 @@ function Header() {
                   <Link to="/historyTicket">Giao dịch của tôi</Link>
                   <Link to="/vouchers">Vouchers</Link>
 
-                  {user?.isAdmin && (
+                  {!!user?.isAdmin && (
                     <Link to="/admin-page" onClick={() => setInPageAdmin(true)}>
                       Admin
                     </Link>
@@ -140,28 +140,10 @@ function Header() {
                   >
                     Đăng xuất
                   </Link>
-
-                  {/* <li className="option">Giao dịch của tôi</li>
-                <li className="option">Vouchers</li>
-                <li className="option">Đăng xuất</li> */}
                 </div>
               )}
             </div>
           ) : (
-            // <>
-            //   <button className="btn-setting">
-            //     <HiOutlineUserCircle size={40} />
-            //   </button>
-            //   <span
-            //     className="login-nav"
-            //     onClick={(e) => {
-            //       e.stopPropagation();
-            //       setOpenSetting(!openSetting);
-            //     }}
-            //   >
-            //     {user.name}
-            //   </span>
-            // </>
             <Link to="/login" className="login-nav">
               <Button color="info" outline>
                 Đăng nhập
