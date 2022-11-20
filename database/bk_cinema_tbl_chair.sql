@@ -23,9 +23,9 @@ DROP TABLE IF EXISTS `tbl_chair`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_chair` (
-  `position` varchar(10) NOT NULL,
+  `chair` varchar(10) NOT NULL,
   `idTicket` int NOT NULL,
-  PRIMARY KEY (`idTicket`,`position`),
+  PRIMARY KEY (`idTicket`,`chair`),
   CONSTRAINT `tbl_chair_ibfk_1` FOREIGN KEY (`idTicket`) REFERENCES `tbl_ticket` (`idTicket`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -36,6 +36,7 @@ CREATE TABLE `tbl_chair` (
 
 LOCK TABLES `tbl_chair` WRITE;
 /*!40000 ALTER TABLE `tbl_chair` DISABLE KEYS */;
+INSERT INTO `tbl_chair` VALUES ('A0',18),('A1',18),('A10',18),('A2',18),('A3',18),('A4',18),('A5',18),('A6',18),('A7',18),('A8',18),('A9',18),('B0',18),('B10',18),('C0',18),('C10',18),('D0',18),('D10',18),('E0',18),('E10',18),('F0',18),('F10',18),('G0',18),('G10',18),('H0',18),('H1',18),('H10',18),('H2',18),('H3',18),('H4',18),('H5',18),('H6',18),('H7',18),('H8',18),('H9',18),('C6',19),('C7',19),('D4',19),('D5',19),('D7',19),('E7',19),('E8',19),('E9',19),('F6',19),('F7',19),('G7',19),('G8',19),('C9',20),('D9',20),('F6',20),('F7',20),('G7',20);
 /*!40000 ALTER TABLE `tbl_chair` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -48,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-18  6:42:22
+-- Dump completed on 2022-11-21  2:22:05

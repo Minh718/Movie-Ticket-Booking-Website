@@ -9,7 +9,6 @@ export default function DetailMovie() {
   const id = useParams().id;
   useEffect(() => {
     const fetchData = async () => {
-      console.log("//");
       const resCasts = await fetch(
         `https://api.themoviedb.org/3/movie/${id}/credits?api_key=14ccdb96456935bbb41591e99697d262`
       );

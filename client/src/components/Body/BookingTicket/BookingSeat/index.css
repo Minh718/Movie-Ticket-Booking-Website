@@ -1,99 +1,118 @@
 .booking-seat-layout {
-	display: grid;
-	grid-template-columns: 66% 30%;
-	column-gap: 4%;
-	margin: 40px 80px;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: 66% 30%;
+  column-gap: 4%;
+  margin: 20px auto;
+  height: calc(100vh - 180px - 40px - 50px);
+  align-items: start;
 }
 
 .booking-seat-layout .left-part {
-	border: 5px solid var(--primary-orange-color);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 5px solid var(--primary-orange-color);
 }
 
 .booking-seat-layout .seat {
-	display: inline-block;
-	margin: 4px;
-	width: 30px;
-	height: 30px;
-	border-radius: 4px;
+  display: inline-block;
+  margin: 4px;
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
 }
 
 .booking-seat-layout .seat:hover {
-	cursor: pointer;
+  cursor: pointer;
 }
 
 .booking-seat-layout .screen-position {
-	height: 20px;
-	line-height: 20px;
-	width: 80%;
-	background-color: #ccc;
-	margin: 20px auto;
-	text-align: center;
+  height: 20px;
+  line-height: 20px;
+  width: 80%;
+  background-color: #ccc;
+  margin: 20px auto;
+  text-align: center;
 }
 
 .booking-seat-layout .seat-manual {
-	width: 60%;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	margin: 20px auto;
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px auto;
 }
 
 /* .booking-seat-layout .seat-manual>span {
 } */
 
 .booking-seat-layout .seat-selected {
-	background: var(--primary-orange-color);
+  background: var(--primary-orange-color);
 }
 
 .booking-seat-layout .seat-sold {
-	background-color: aqua;
+  background-color: aqua;
 }
 
 .booking-seat-layout .seat-empty {
-	background-color: var(--gray-color);
+  background-color: var(--gray-color);
 }
 
 .booking-seat-layout .right-part {
-	background-color: var(--blue-light-color);
+  background-color: var(--blue-light-color);
 }
 
 .booking-seat-layout .seats-area {
-	text-align: center;
+  text-align: center;
 }
-
 
 /* Booking-movie-card */
 .booking-movie-card {
-	padding: 10px 20px;
+  padding: 10px 20px;
 }
 
 .booking-movie-card .booking-info {
-	margin: 8px 0;
+  margin: 8px 0;
 }
 
 .booking-movie-card .movie-title {
-	font-weight: bold;
-	font-size: 2rem;
+  font-weight: bold;
+  font-size: 2rem;
 }
 
 .booking-movie-card .booking-info-row h3 {
-	display: inline-block;
-	padding-right: 8px;
-	font-size: 1.0rem;
-	font-weight: bold;
-	color: #555;
+  display: inline-block;
+  padding-right: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #555;
 }
 
 .booking-movie-card .booking-info-row {
-	padding: 2px 0;
+  padding: 2px 0;
 }
 
 .booking-movie-card .ticket-price {
-	font-weight: bold;
-	font-size: 1.8rem;
+  font-weight: bold;
+  font-size: 1.8rem;
 }
 
 .booking-movie-card .count-update-btn {
-	width: 30px;
-	margin: 0 4px;
+  width: 30px;
+  margin: 0 4px;
+}
+.paymentMethods {
+  flex: 2 1;
+  display: inline-block;
+  /* padding: 4px 8px; */
+  margin-left: -8px;
+  outline: none;
+  border-radius: 4px;
+}
+.error-message {
+  color: red;
+  text-align: right;
+  margin-top: 20px;
 }

@@ -24,14 +24,14 @@ DROP TABLE IF EXISTS `tbl_ticket`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_ticket` (
   `idTicket` int NOT NULL AUTO_INCREMENT,
-  `idShow` int NOT NULL,
+  `idHour` int NOT NULL,
   `idUser` int NOT NULL,
   PRIMARY KEY (`idTicket`),
-  KEY `idShow` (`idShow`),
+  KEY `idHour` (`idHour`),
   KEY `idUser` (`idUser`),
-  CONSTRAINT `tbl_ticket_ibfk_1` FOREIGN KEY (`idShow`) REFERENCES `tbl_show` (`idShow`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_ticket_ibfk_1` FOREIGN KEY (`idHour`) REFERENCES `tbl_hour_show` (`idHour`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_ticket_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `tbl_user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +40,7 @@ CREATE TABLE `tbl_ticket` (
 
 LOCK TABLES `tbl_ticket` WRITE;
 /*!40000 ALTER TABLE `tbl_ticket` DISABLE KEYS */;
+INSERT INTO `tbl_ticket` VALUES (18,1,1),(19,1,2),(20,2,2);
 /*!40000 ALTER TABLE `tbl_ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-18  6:42:22
+-- Dump completed on 2022-11-21  2:22:06

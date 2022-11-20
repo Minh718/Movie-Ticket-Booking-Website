@@ -1,24 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../../../context";
-import { fetchUpcomingMovies, img_url, fetchPopularMovies } from "../api";
+import {
+  fetchUpcomingMovies,
+  img_url,
+  fetchPopularMovies,
+  url_database,
+} from "../api";
 import sliderSettings from "./Slider";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import axios from "axios";
 export default function Movie() {
   const { moviesArePlaying, setMoviesArePlaying } = useGlobalContext();
   const [canPlaceTicket, setCanPlaceTicket] = useState(true);
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   useEffect(() => {
     const fetchMovies = async () => {
-      const res = await fetch(fetchUpcomingMovies(1));
-      const res2 = await fetch(fetchPopularMovies(1));
-      const data = await res.json();
-      const data2 = await res2.json();
-      setMoviesArePlaying(data2.results);
+      const resUpcongming = await fetch(fetchUpcomingMovies(1));
+      // const resPlaying = await fetch(fetchPopularMovies(1));
+      const resPlaying = await axios.get(`${url_database}/movies`);
 
-      setUpcomingMovies(data.results);
+      const dataUpcongming = await resUpcongming.json();
+      // const dataPlaying = await resPlaying.json();
+      setMoviesArePlaying(resPlaying.data);
+      // console.log(resPlaying.data);
+      setUpcomingMovies(dataUpcongming.results);
     };
     fetchMovies();
   }, []);
@@ -55,7 +63,7 @@ export default function Movie() {
                   <Link
                     to="/booking"
                     className={!canPlaceTicket && "viewDetail"}
-                    state={{ movie, canPlaceTicket }}
+                    state={{ idMovie: movie.id, canPlaceTicket }}
                   >
                     {canPlaceTicket ? "MUA VÉ" : "Xem Nội dung"}
                   </Link>

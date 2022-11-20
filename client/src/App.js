@@ -25,6 +25,7 @@ import Client from "./components/Body/Admin/pages/Client";
 import Error from "./components/Body/Error";
 import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
+import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
           <Route path="/booking" element={<BookingTicket />} />
           <Route path="/seatSelection" element={<BookingSeat />} />
           <Route path="/seatSelection/payment" element={<Payment />} />
+          <Route path="/paymentSuccess" element={<PaymentSuccess />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/historyTicket" element={<HistoryTicket />} />
           <Route path="/vouchers" element={<Vouchers />} />

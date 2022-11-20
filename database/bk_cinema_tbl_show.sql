@@ -24,18 +24,10 @@ DROP TABLE IF EXISTS `tbl_show`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_show` (
   `idShow` int NOT NULL AUTO_INCREMENT,
-  `Date` varchar(11) DEFAULT NULL,
-  `Day` int DEFAULT NULL,
-  `Hour` varchar(15) DEFAULT NULL,
   `idMovie` int NOT NULL,
   `price` int DEFAULT NULL,
-  `name` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idShow`),
-  KEY `idMovie` (`idMovie`),
-  KEY `name` (`name`),
-  CONSTRAINT `tbl_show_ibfk_1` FOREIGN KEY (`idMovie`) REFERENCES `tbl_movie` (`idMovie`),
-  CONSTRAINT `tbl_show_ibfk_2` FOREIGN KEY (`name`) REFERENCES `tbl_room` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`idShow`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,6 +36,7 @@ CREATE TABLE `tbl_show` (
 
 LOCK TABLES `tbl_show` WRITE;
 /*!40000 ALTER TABLE `tbl_show` DISABLE KEYS */;
+INSERT INTO `tbl_show` VALUES (1,436270,90000);
 /*!40000 ALTER TABLE `tbl_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-18  6:42:22
+-- Dump completed on 2022-11-21  2:22:05

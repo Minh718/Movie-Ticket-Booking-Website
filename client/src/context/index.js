@@ -11,6 +11,7 @@ export const AppProvider = ({ children }) => {
   const [query, setQuery] = useState("");
   const [inPageAdmin, setInPageAdmin] = useState(false);
   const [openBar, setOpenBar] = useState(true);
+  console.log(moviesArePlaying);
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);

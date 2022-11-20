@@ -16,29 +16,28 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_movie`
+-- Table structure for table `tbl_date_show`
 --
 
-DROP TABLE IF EXISTS `tbl_movie`;
+DROP TABLE IF EXISTS `tbl_date_show`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_movie` (
-  `id` int NOT NULL,
-  `title` varchar(100) DEFAULT NULL,
-  `poster_path` varchar(100) DEFAULT NULL,
-  `backdrop_path` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `tbl_date_show` (
+  `idShow` int NOT NULL,
+  `dateShow` varchar(11) NOT NULL,
+  PRIMARY KEY (`idShow`,`dateShow`),
+  CONSTRAINT `tbl_date_show_ibfk_1` FOREIGN KEY (`idShow`) REFERENCES `tbl_show` (`idShow`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_movie`
+-- Dumping data for table `tbl_date_show`
 --
 
-LOCK TABLES `tbl_movie` WRITE;
-/*!40000 ALTER TABLE `tbl_movie` DISABLE KEYS */;
-INSERT INTO `tbl_movie` VALUES (436270,'Black Adam','/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(505642,'Black Panther: Wakanda Forever','/lZOODJzwuQo0etJJyBBZJOSdZcW.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(882598,'Smile','/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg','/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg');
-/*!40000 ALTER TABLE `tbl_movie` ENABLE KEYS */;
+LOCK TABLES `tbl_date_show` WRITE;
+/*!40000 ALTER TABLE `tbl_date_show` DISABLE KEYS */;
+INSERT INTO `tbl_date_show` VALUES (1,'19-11-2022'),(1,'20-11-2022'),(1,'21-11-2022'),(1,'25-11-2022');
+/*!40000 ALTER TABLE `tbl_date_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-21  2:22:04
+-- Dump completed on 2022-11-21  2:22:05

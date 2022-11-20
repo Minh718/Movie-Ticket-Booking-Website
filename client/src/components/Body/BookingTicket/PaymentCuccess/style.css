@@ -1,0 +1,16 @@
+.left-part-top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.left-part-top > h2 {
+  font-weight: bold;
+}
+.left-part-top img {
+  width: 200px;
+}
+.left-part-bottom {
+  padding: 20px;
+}

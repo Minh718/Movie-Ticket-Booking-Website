@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `tbl_movie`
+-- Table structure for table `tbl_hour_show`
 --
 
-DROP TABLE IF EXISTS `tbl_movie`;
+DROP TABLE IF EXISTS `tbl_hour_show`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `tbl_movie` (
-  `id` int NOT NULL,
-  `title` varchar(100) DEFAULT NULL,
-  `poster_path` varchar(100) DEFAULT NULL,
-  `backdrop_path` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `tbl_hour_show` (
+  `idShow` int NOT NULL,
+  `dateShow` varchar(15) NOT NULL,
+  `idHour` int NOT NULL AUTO_INCREMENT,
+  `hour` varchar(15) NOT NULL,
+  `room` varchar(5) NOT NULL,
+  PRIMARY KEY (`idHour`),
+  KEY `tbl_hour_show_ibfk_1` (`idShow`,`dateShow`),
+  KEY `tbl_hour_show_ibfk_1_idx` (`room`),
+  CONSTRAINT `tbl_hour_show_ibfk_1` FOREIGN KEY (`idShow`, `dateShow`) REFERENCES `tbl_date_show` (`idShow`, `dateShow`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `tbl_movie`
+-- Dumping data for table `tbl_hour_show`
 --
 
-LOCK TABLES `tbl_movie` WRITE;
-/*!40000 ALTER TABLE `tbl_movie` DISABLE KEYS */;
-INSERT INTO `tbl_movie` VALUES (436270,'Black Adam','/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(505642,'Black Panther: Wakanda Forever','/lZOODJzwuQo0etJJyBBZJOSdZcW.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(882598,'Smile','/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg','/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg');
-/*!40000 ALTER TABLE `tbl_movie` ENABLE KEYS */;
+LOCK TABLES `tbl_hour_show` WRITE;
+/*!40000 ALTER TABLE `tbl_hour_show` DISABLE KEYS */;
+INSERT INTO `tbl_hour_show` VALUES (1,'19-11-2022',1,'7:00','01'),(1,'19-11-2022',2,'8:00','03'),(1,'19-11-2022',3,'9:00','01'),(1,'19-11-2022',4,'10:00','02'),(1,'20-11-2022',5,'10:00','05'),(1,'20-11-2022',6,'7:00','04'),(1,'21-11-2022',7,'4:00','03');
+/*!40000 ALTER TABLE `tbl_hour_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
