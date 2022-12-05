@@ -9,6 +9,7 @@ import axios from "axios";
 import { FaGenderless } from "react-icons/fa";
 
 function BookingTicket() {
+  // console.log(useLocation());
   const idMovie = useLocation().state.idMovie;
   const canPlaceTicket = useLocation().state.canPlaceTicket || false;
   const { moviesArePlaying } = useGlobalContext();
@@ -26,6 +27,7 @@ function BookingTicket() {
   // const [timeOptions, setTimeOptions] = useState([]);
   const [canBooking, setCanBooking] = useState(false);
   const [show, setShow] = useState(null);
+  const navigate = useNavigate();
   // const [allShowtime, setAllShowtime] = useState([
   //   {
   //     date: "15/10/2022",
@@ -155,7 +157,6 @@ function BookingTicket() {
             <hr />
             <div className="movie-overview">{movie?.overview}</div>
           </div>
-
           {canPlaceTicket && (
             <div className="movie-booking">
               <h2 className="movie-booking-header">Đặt Vé Ngay</h2>

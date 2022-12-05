@@ -64,10 +64,7 @@ export default function Slide() {
         key={movie.id}
       >
         <img src={img_url + movie.backdrop_path} />
-        <CarouselCaption
-          captionText={movie.release_date}
-          captionHeader={movie.title}
-        />
+        <CarouselCaption captionText="" captionHeader={movie?.title} />
       </CarouselItem>
     );
   });
@@ -94,20 +91,20 @@ export default function Slide() {
 
       <form className="quick-booking" action="#">
         <span>MUA VÉ NHANH</span>
-        <select name="movie" id="movie" required>
-          <option selected>Chọn phim</option>
+        <select name="movie" id="movie" required defaultValue="">
+          <option value="">Chọn phim</option>
           <option value="18/10/202">Avatar</option>
           <option value="19/10/202">Film red</option>
           <option value="20/10/202">Bố già</option>
         </select>
-        <select name="day" id="day" required>
-          <option selected>Chọn ngày</option>
+        <select name="day" id="day" required defaultValue="">
+          <option value="">Chọn ngày</option>
           <option value="19/10/202">Thứ 2, 31/11/2022</option>
           <option value="20/10/202">Thứ 3, 01/11/2022</option>
           <option value="21/10/202">Thứ 4, 02/11/2022</option>
         </select>
-        <select name="time" id="time" required>
-          <option selected>Chọn suất xem</option>
+        <select name="time" id="time" required defaultValue="">
+          <option value="">Chọn suất xem</option>
           <option value="SG">7-9h</option>
           <option value="19/10/202">9-11h</option>
           <option value="20/10/202">13-15h</option>

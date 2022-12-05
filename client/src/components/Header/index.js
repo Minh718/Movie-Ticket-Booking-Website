@@ -1,25 +1,21 @@
-import "./index.css";
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import { FaSearch } from "react-icons/fa";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../context";
-import { FaSearch } from "react-icons/fa";
 import { Button, Spinner } from "reactstrap";
-import { FaBars } from "react-icons/fa";
+import { useGlobalContext } from "../../context";
+import "./index.css";
 function Header() {
   const {
     openSetting,
-    setInPageAdmin,
     setOpenSetting,
     user,
     setUser,
     query,
     setQuery,
-    inPageAdmin,
     openBar,
     setOpenBar,
   } = useGlobalContext();
-  // const [query, setQuery] = useState("");
   const [movies, setMovies] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const img_url = "http://image.tmdb.org/t/p/w500";
@@ -125,11 +121,7 @@ function Header() {
                   <Link to="/historyTicket">Giao dịch của tôi</Link>
                   <Link to="/vouchers">Vouchers</Link>
 
-                  {!!user?.isAdmin && (
-                    <Link to="/admin-page" onClick={() => setInPageAdmin(true)}>
-                      Admin
-                    </Link>
-                  )}
+                  {!!user?.isAdmin && <Link to="/adminPage">Admin</Link>}
                   <Link
                     to="/"
                     onClick={(e) => {

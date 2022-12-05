@@ -5,6 +5,7 @@ import Article from "./Article";
 import "./index.css";
 import Movie from "./Movie";
 import Slide from "./Slide";
+
 const articles = data.data.slice(0, 6);
 const movieStore = [
   {
@@ -88,7 +89,7 @@ const Home = () => {
             return <Article key={index} article={article} />;
           })}
         </div>
-        <Link to="/news" class="more-news-wraper">
+        <Link to="/news" className="more-news-wraper">
           <button className="more-news">XEM THÊM</button>
         </Link>
       </div>
@@ -100,7 +101,7 @@ const Home = () => {
         <div className="vouchers-store">
           {voucherStore.map((voucher, index) => {
             return (
-              <div className="vouchers">
+              <div className="vouchers" key={index}>
                 <div className="vouchers-img">
                   <img
                     key={index + 1}
@@ -109,7 +110,7 @@ const Home = () => {
                   />
                 </div>
                 <div className="voucher-detail">
-                  <div class="info">
+                  <div className="info">
                     <span>Sieu khuyen mai</span>
                     <span>Uu dai len toi bla bla bla</span>
                   </div>
@@ -119,7 +120,7 @@ const Home = () => {
             );
           })}
         </div>
-        <Link to="/vouchers" class="more-vouchers-wraper">
+        <Link to="/vouchers" className="more-vouchers-wraper">
           <button className="more-vouchers">XEM THÊM</button>
         </Link>
       </div>

@@ -4,13 +4,10 @@ import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useGlobalContext } from "../../../../context";
 import { useNavigate } from "react-router-dom";
 import { Button } from "reactstrap";
-function Common({ children }) {
+function Common({ children, openBar }) {
   const navigate = useNavigate();
-  const { openBar, setInPageAdmin, setUser } = useGlobalContext();
+  const { setUser } = useGlobalContext();
   const [index, setIndex] = useState(0);
-  useEffect(() => {
-    setInPageAdmin(true);
-  }, []);
   return (
     <div class="common-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>
@@ -28,7 +25,7 @@ function Common({ children }) {
             </div>
             <div
               className={index === 1 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/admin-page/client")}
+              onClick={() => navigate("/adminPage/client")}
             >
               Danh sách khách hàng
             </div>
@@ -116,7 +113,6 @@ function Common({ children }) {
             outline
             onClick={() => {
               setUser(null);
-              setInPageAdmin(false);
               navigate("/login");
             }}
           >

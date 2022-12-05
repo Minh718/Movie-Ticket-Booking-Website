@@ -25,7 +25,7 @@ export default function Movie() {
       const dataUpcongming = await resUpcongming.json();
       // const dataPlaying = await resPlaying.json();
       setMoviesArePlaying(resPlaying.data);
-      // console.log(resPlaying.data);
+
       setUpcomingMovies(dataUpcongming.results);
     };
     fetchMovies();
@@ -53,8 +53,8 @@ export default function Movie() {
       <Slider {...sliderSettings}>
         {movies.map((movie) => {
           return (
-            <>
-              <div className="movie" key={movie.id}>
+            <div key={movie.id}>
+              <div className="movie">
                 <div className="movie-img">
                   <img src={img_url + movie.poster_path} alt="" />
                 </div>
@@ -62,7 +62,7 @@ export default function Movie() {
                   {/* <Link to={`/detailMovie/${movie.id}`}>MUA VÉ</Link> */}
                   <Link
                     to="/booking"
-                    className={!canPlaceTicket && "viewDetail"}
+                    className={!canPlaceTicket ? "viewDetail" : undefined}
                     state={{ idMovie: movie.id, canPlaceTicket }}
                   >
                     {canPlaceTicket ? "MUA VÉ" : "Xem Nội dung"}
@@ -70,7 +70,7 @@ export default function Movie() {
                 </div>
               </div>
               <div className="namefilm">{movie.title}</div>
-            </>
+            </div>
           );
         })}
       </Slider>

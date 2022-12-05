@@ -9,9 +9,7 @@ export const AppProvider = ({ children }) => {
   );
   const [moviesArePlaying, setMoviesArePlaying] = useState([]);
   const [query, setQuery] = useState("");
-  const [inPageAdmin, setInPageAdmin] = useState(false);
-  const [openBar, setOpenBar] = useState(true);
-  console.log(moviesArePlaying);
+
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(user));
   }, [user]);
@@ -26,10 +24,6 @@ export const AppProvider = ({ children }) => {
         setUser,
         query,
         setQuery,
-        inPageAdmin,
-        setInPageAdmin,
-        setOpenBar,
-        openBar,
       }}
     >
       {children}

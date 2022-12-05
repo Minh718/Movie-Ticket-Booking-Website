@@ -4,10 +4,12 @@ import {
   Routes,
   Route,
   Navigate,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Outlet,
+  RouterProvider,
 } from "react-router-dom";
-import HeaderAdmin from "./components/Header/HeaderAdmin";
 import Home from "./components/Body/Home/index";
-import RegisterPage from "./components/Body/Register/index";
 import LoginPage from "./components/Body/Login/index";
 import NewsPage from "./components/Body/News/index";
 import MoviesPage from "./components/Body/Movies/index";
@@ -21,15 +23,59 @@ import HistoryTicket from "./components/Body/historyTicket";
 import NewsDetail from "./components/Body/News/NewsDetail";
 import DetailMovie from "./components/Body/detailMovie";
 import AdminPage from "./components/Body/Admin";
-import Client from "./components/Body/Admin/pages/Client";
+import Client from "./components/Body/Admin/pages/client/Client";
 import Error from "./components/Body/Error";
 import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
+import HomeAdmin from "./components/Body/Admin/pages/home/Index";
 //Tim icon o day https://react-icons.github.io/react-icons
 
+const PageHome = () => {
+  return (
+    <>
+      <Header />
+      <Outlet />
+      <Footer />
+    </>
+  );
+};
+
 function App() {
-  const { setOpenSetting, setQuery, inPageAdmin, user } = useGlobalContext();
+  const { setOpenSetting, setQuery, user } = useGlobalContext();
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="">
+        <Route path="/" element={<PageHome />}>
+          <Route path="/" element={<Home />} />
+          <Route
+            path="login"
+            element={user ? <Navigate to={"/"} /> : <LoginPage />}
+          />
+          <Route path="/news" element={<NewsPage />} />
+          <Route path="movies" element={<MoviesPage />} />
+          <Route path="support" element={<SupportPage />} />
+          <Route path="user" element={<UserPage />} />
+          <Route path="booking" element={<BookingTicket />} />
+          <Route path="seatSelection" element={<BookingSeat />} />
+          <Route path="seatSelection/payment" element={<Payment />} />
+          <Route path="paymentSuccess" element={<PaymentSuccess />} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="historyTicket" element={<HistoryTicket />} />
+          <Route path="vouchers" element={<Vouchers />} />
+          <Route path="/detailMovie/:id" element={<DetailMovie />} />
+          <Route path="news/:id" element={<NewsDetail />} />
+        </Route>
+        {!!user?.isAdmin && (
+          <Route path="/adminPage" element={<AdminPage />}>
+            <Route path="" element={<HomeAdmin />} />
+            <Route path="client" element={<Client />} />
+          </Route>
+        )}
+      </Route>
+    )
+  );
   return (
     <div
       id="App"
@@ -38,40 +84,7 @@ function App() {
         setQuery("");
       }}
     >
-      <Router>
-        {inPageAdmin ? <HeaderAdmin /> : <Header />}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route
-            path="login"
-            element={user ? <Navigate to={"/"} /> : <LoginPage />}
-          />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/support" element={<SupportPage />} />
-          <Route path="/user" element={<UserPage />} />
-          <Route path="/booking" element={<BookingTicket />} />
-          <Route path="/seatSelection" element={<BookingSeat />} />
-          <Route path="/seatSelection/payment" element={<Payment />} />
-          <Route path="/paymentSuccess" element={<PaymentSuccess />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/historyTicket" element={<HistoryTicket />} />
-          <Route path="/vouchers" element={<Vouchers />} />
-
-          <Route path="/detailMovie/:id" element={<DetailMovie />} />
-
-          <Route
-            path="/admin-page"
-            element={user && user.isAdmin ? <AdminPage /> : <Navigate to="/" />}
-          />
-          <Route path="/admin-page/client" element={<Client />} />
-          <Route path="/news/:id" element={<NewsDetail />} />
-
-          <Route path="/*" element={<Error />} />
-        </Routes>
-        {!inPageAdmin && <Footer />}
-      </Router>
+      <RouterProvider router={router} />
     </div>
   );
 }

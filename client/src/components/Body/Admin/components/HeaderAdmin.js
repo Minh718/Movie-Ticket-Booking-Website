@@ -1,10 +1,8 @@
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import { useGlobalContext } from "../../context";
-import "./index.css";
-function HeaderAdmin() {
-  const { openBar, setOpenBar, setInPageAdmin } = useGlobalContext();
+import { useGlobalContext } from "../../../../context";
+function HeaderAdmin({ openBar, setOpenBar }) {
   return (
     <div id="header">
       <div className="header-left">
@@ -17,13 +15,12 @@ function HeaderAdmin() {
           <FaBars />
         </div>
 
-        <Link to={"/admin-page"}>
+        <Link to={"/adminPage"}>
           <img className="logo-web" src="./BK-cinema_1.png" />
         </Link>
 
         <div className="right-part">
-          <Link to="/" onClick={() => setInPageAdmin(false)}>
-            {" "}
+          <Link to="/">
             <Button color="info" outline>
               Trang chủ
             </Button>
