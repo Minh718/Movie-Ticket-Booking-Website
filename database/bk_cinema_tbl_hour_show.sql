@@ -27,10 +27,8 @@ CREATE TABLE `tbl_hour_show` (
   `dateShow` varchar(15) NOT NULL,
   `idHour` int NOT NULL AUTO_INCREMENT,
   `hour` varchar(15) NOT NULL,
-  `room` varchar(5) NOT NULL,
   PRIMARY KEY (`idHour`),
   KEY `tbl_hour_show_ibfk_1` (`idShow`,`dateShow`),
-  KEY `tbl_hour_show_ibfk_1_idx` (`room`),
   CONSTRAINT `tbl_hour_show_ibfk_1` FOREIGN KEY (`idShow`, `dateShow`) REFERENCES `tbl_date_show` (`idShow`, `dateShow`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-21  2:22:04
+-- Dump completed on 2022-12-05 22:22:02

@@ -30,10 +30,11 @@ CREATE TABLE `tbl_user` (
   `email` varchar(100) NOT NULL,
   `password` varchar(50) NOT NULL,
   `gender` varchar(5) DEFAULT NULL,
+  `isAdmin` tinyint DEFAULT '0',
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `phone` (`phone`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +43,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'1','1','0123456789','cuthemongcho380@gmail.com','123456789','nam'),(2,'Nguyễn Thanh','Minh','0919701101','minhprokute85209@gmail.com','123456789','nam');
+INSERT INTO `tbl_user` VALUES (1,'1','1','0123456789','cuthemongcho380@gmail.com','123456789','nam',1);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-21  2:22:05
+-- Dump completed on 2022-12-05 22:22:02

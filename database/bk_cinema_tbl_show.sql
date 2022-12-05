@@ -26,7 +26,9 @@ CREATE TABLE `tbl_show` (
   `idShow` int NOT NULL AUTO_INCREMENT,
   `idMovie` int NOT NULL,
   `price` int DEFAULT NULL,
-  PRIMARY KEY (`idShow`)
+  `room` varchar(5) NOT NULL,
+  PRIMARY KEY (`idShow`),
+  FOREIGN KEY (room) REFERENCES `tbl_room` (name) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-21  2:22:05
+-- Dump completed on 2022-12-05 22:22:03
