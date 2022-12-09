@@ -29,6 +29,8 @@ import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
 import HomeAdmin from "./components/Body/Admin/pages/home/Index";
+import { handleRefreshWeb } from "./apiRequest";
+import{ useEffect } from "react";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -42,8 +44,13 @@ const PageHome = () => {
 };
 
 function App() {
-  const { setOpenSetting, setQuery, user } = useGlobalContext();
-
+  const { setOpenSetting, setQuery, user,setUser } = useGlobalContext();
+  useEffect(() => {
+    const getUser = async () => {
+        setUser(await handleRefreshWeb() || null);
+    };
+    getUser();
+  }, []);
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="">

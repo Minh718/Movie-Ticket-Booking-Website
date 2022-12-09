@@ -37,7 +37,6 @@ CREATE TABLE `tbl_movie` (
 
 LOCK TABLES `tbl_movie` WRITE;
 /*!40000 ALTER TABLE `tbl_movie` DISABLE KEYS */;
-INSERT INTO `tbl_movie` VALUES (436270,'Black Adam','/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(505642,'Black Panther: Wakanda Forever','/lZOODJzwuQo0etJJyBBZJOSdZcW.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(882598,'Smile','/aPqcQwu4VGEewPhagWNncDbJ9Xp.jpg','/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg');
 /*!40000 ALTER TABLE `tbl_movie` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;

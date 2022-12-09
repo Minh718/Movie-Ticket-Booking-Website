@@ -4,6 +4,7 @@ import { HiOutlineUserCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Button, Spinner } from "reactstrap";
 import { useGlobalContext } from "../../context";
+import { logoutUser } from "../../apiRequest";
 import "./index.css";
 function Header() {
   const {
@@ -124,9 +125,9 @@ function Header() {
                   {!!user?.isAdmin && <Link to="/adminPage">Admin</Link>}
                   <Link
                     to="/"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setOpenSetting(!openSetting);
+                    onClick={async (e) => {
+                      e.preventDefault();
+                      await logoutUser()
                       setUser(null);
                     }}
                   >

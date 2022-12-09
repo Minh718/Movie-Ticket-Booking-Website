@@ -1,12 +1,18 @@
-import express from "express";
-import cors from "cors";
-import morgan from "morgan";
-import userRouter from "./routes/user.js";
-import movieRouter from "./routes/movie.js";
+const express = require('express');
+const cors = require('cors');
+const morgan = require('morgan');
+const cookieParser = require('cookie-parser');
+const userRouter = require('./routes/user')
+const movieRouter = require('./routes/movie')
 
 const port = 8800;
 const app = express();
-
+app.use(cookieParser());
+app.use(
+  express.urlencoded({
+      extended: true,
+  })
+);
 app.use(cors());
 app.use(morgan("common"));
 app.use(express.json());

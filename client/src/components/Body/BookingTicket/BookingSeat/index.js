@@ -1,11 +1,12 @@
 import "./index.css";
 import axios from "axios";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation,Navigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState, useRef } from "react";
 import { Button, Spinner } from "reactstrap";
 import { url_database } from "../../api";
 import BreadcrumbPayment from "../../BreadcrumbTicket";
+import { useGlobalContext } from "../../../../context";
 const column = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const row = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const placedSeat = ["A5", "B4", "C5"];
@@ -14,7 +15,7 @@ function BookingSeat() {
   const show = useLocation().state.show;
   const hour = useLocation().state.hour;
   const date = useLocation().state.date;
-
+  const { user } = useGlobalContext();
   // const seatRef = useRef();
   const seatClassNames = ["seat-empty", "seat-selected", "seat-sold"];
   const [selectedSeatList, setSelectedSeatList] = useState([]);
@@ -220,22 +221,29 @@ function BookingSeat() {
               <h3>Tổng đơn hàng: </h3>
               <span className="ticket-price">{handlePrice()}đ</span>
             </div>
-
-            <Link
-              to="/seatSelection/payment"
-              className="orange-btn"
-              state={{
-                selectedSeatList,
-                movie,
-                room,
-                date,
-                hour,
-                idShow: show.idShow,
-                price: handlePrice(),
-              }}
-            >
-              Đặt vé
-            </Link>
+              { 
+              user?<Link
+                    to="/seatSelection/payment"
+                    className="orange-btn"
+                    state={{
+                      selectedSeatList,
+                      movie,
+                      room,
+                      date,
+                      hour,
+                      idShow: show.idShow,
+                      price: handlePrice(),
+                    }}
+                  >
+                    Đặt vé
+                  </Link> : <Link
+                    to="/login"
+                    className="orange-btn"
+                  >
+                    Đặt vé
+                  </Link>
+              }
+            
           </div>
         </div>
       </div>

@@ -4,9 +4,7 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [openSetting, setOpenSetting] = useState(false);
-  const [user, setUser] = useState(
-    JSON.parse(localStorage.getItem("user")) || null
-  );
+  const [user, setUser] = useState(null);
   const [moviesArePlaying, setMoviesArePlaying] = useState([]);
   const [query, setQuery] = useState("");
 

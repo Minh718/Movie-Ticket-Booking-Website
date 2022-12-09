@@ -81,13 +81,13 @@ function BookingTicket() {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${idMovie}?api_key=14ccdb96456935bbb41591e99697d262`
       );
-      const resShow = await axios.get(`${url_database}/movies/${idMovie}/show`);
+      const resShow = await axios.get(`/movies/${idMovie}/show`);
       setShow(resShow.data[0]);
       const jsonMoive = await res.json();
       setMovie(jsonMoive);
       if (canPlaceTicket) {
         const resDates = await axios.get(
-          `${url_database}/movies/${idMovie}/dates`
+          `/movies/${idMovie}/dates`
         );
         setDateOptions(
           resDates.data.map((date) => ({
@@ -104,7 +104,7 @@ function BookingTicket() {
     setSelectedHour("");
     const fetchHours = async () => {
       const resHours = await axios.get(
-        `${url_database}/movies/${idMovie}/${selectedDate}/hours`
+        `/movies/${idMovie}/${selectedDate}/hours`
       );
       setHoursOptions(
         resHours.data.map((hour) => ({

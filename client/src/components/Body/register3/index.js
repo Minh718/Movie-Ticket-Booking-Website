@@ -6,6 +6,7 @@ import axios from "axios";
 import { url_database } from "../api/index";
 import InputField from "../../../customField/InputField/InputField";
 import SelectField from "../../../customField/selectField/SelectField";
+import { registerUser } from "../../../apiRequest";
 import { Button } from "reactstrap";
 export default function Register({ setOpenRegister }) {
   const [goToLogin, setGoToLogin] = useState(false);
@@ -68,9 +69,8 @@ export default function Register({ setOpenRegister }) {
         onSubmit={async (values, { setValues }) => {
           try {
             const { passwordConfirmation, ...rest } = values;
-
-            await axios.post(`${url_database}/users`, rest);
-            setIsSuccess(true);
+            await registerUser(rest);
+            setIsSuccess(true); 
             setTimeout(() => {
               handleGoToLogin();
             }, 2000);

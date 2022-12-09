@@ -7,13 +7,12 @@ import React, { useRef, useState } from "react";
 import InputField from "../../../customField/InputField/InputField";
 import { Button } from "reactstrap";
 import Register from "../register3";
-import axios from "axios";
-import { url_database } from "../api";
+import { loginUser } from "../../../apiRequest";
 const LoginPage = () => {
   const [openRegister, setOpenRegister] = useState(false);
   const refPassword = useRef();
   const refPhoneEmail = useRef();
-  const { setUser } = useGlobalContext();
+  const { user,setUser } = useGlobalContext();
   return (
     <>
       <div className="page-login">
@@ -22,7 +21,7 @@ const LoginPage = () => {
         </div>
         <div className="container-form">
           <h1>Đăng nhập</h1>
-          <Formik
+          <Formik 
             initialValues={{
               phoneEmail: "",
               password: "",
@@ -36,12 +35,7 @@ const LoginPage = () => {
             onSubmit={async (values, { setSubmitting, setFieldError }) => {
               // alert(JSON.stringify(values, null, 2));
               try {
-                const data = await axios.post(
-                  `${url_database}/users/login`,
-                  values
-                );
-                // console.log(data);
-                setUser(data.data);
+                setUser(await loginUser(values));
               } catch (err) {
                 const res = err.response.data;
                 console.log(res);
