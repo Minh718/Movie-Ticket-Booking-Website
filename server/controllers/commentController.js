@@ -1,11 +1,11 @@
 const createConnection = require('../config/database')
 
-const articleController = {
-	getAllArticles: async (req, res) => {
+const commentController = {
+	getAllComments: async (req, res) => {
 		const connection = await createConnection();
 		try
 		{
-			const sql = "select * from tbl_article";
+			const sql = "select * from tbl_commentarticle";
 			const result = await connection.query(sql);
 			res.status(200).json(result);
 		} catch (err)
@@ -16,13 +16,13 @@ const articleController = {
 			await connection.end();
 		}
 	},
-	getArticleById: async (req, res) => {
+	getCommentByArticleId: async (req, res) => {
 		const id = req.params.id;
 
 		const connection = await createConnection();
 		try
 		{
-			const sql = `select * from tbl_article where idArticle=${id}`;
+			const sql = `select * from tbl_commentarticle where idArticle=${id}`;
 			const result = await connection.query(sql);
 			res.status(200).json(result);
 		} catch (err)
@@ -33,13 +33,13 @@ const articleController = {
 			await connection.end();
 		}
 	},
-	deleteArticleById: async (req, res) => {
+	deleteArticleByArticleId: async (req, res) => {
 		const id = req.params.id;
 
 		const connection = await createConnection();
 		try
 		{
-			const sql = `delete from tbl_article where idArticle=${id}`;
+			const sql = `delete from tbl_commentarticle where idArticle=${id}`;
 			const result = await connection.query(sql);
 			res.status(200).json(result);
 		} catch (err)
@@ -50,20 +50,19 @@ const articleController = {
 			await connection.end();
 		}
 	},
-	updateArticle: async (req, res) => {
-		const id = req.body.id;
-		const title = req.body.title;
-		const summary = req.body.summary;
+	updateComment: async (req, res) => {
+		const idUser = req.body.idUser;
+		const idArticle = req.body.idArticle;
 		const content = req.body.content;
-		const img = req.body.img;
+
 
 		const connection = await createConnection();
 		try
 		{
 			const sql =
-				`update tbl_article 
-				set title='${title}', summary='${summary}', content='${content}', img='${img}'
-				where idArticle=${id}`;
+				`update tbl_commentarticle 
+				set content='${content}'
+				where idArticle=${idArticle} and idUser=${idUser}`;
 			const result = await connection.query(sql);
 			res.status(200).json(result);
 		} catch (err)
@@ -74,18 +73,17 @@ const articleController = {
 			await connection.end();
 		}
 	},
-	insertArticle: async (req, res) => {
-		const title = req.body.title;
-		const summary = req.body.summary;
+	insertComment: async (req, res) => {
+		const idUser = req.body.idUser;
+		const idArticle = req.body.idArticle;
 		const content = req.body.content;
-		const img = req.body.img;
 
 		const connection = await createConnection();
 		try
 		{
 			const sql =
-				`insert into tbl_article (title, summary, content, img)
-				values ('${title}', '${summary}', '${content}', '${img}')`;
+				`insert into tbl_commentarticle (content, idUser, idArticle)
+				values ('${content}', ${idUser}, ${idArticle})`;
 			const result = await connection.query(sql);
 			res.status(200).json(result);
 		} catch (err)
@@ -95,7 +93,7 @@ const articleController = {
 		{
 			await connection.end();
 		}
-	},
+	}
 }
 
 module.exports = articleController;
