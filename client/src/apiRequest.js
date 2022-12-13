@@ -17,6 +17,19 @@ export const registerUser = async (newUser) =>{
 }
 
 export const logoutUser = async () =>{
-    const data = await axios.post(`/users/logout`);
-    console.log(data)
+    await axios.post(`/users/logout`);
+}
+
+export const getAllShows = async () =>{
+    const data = await axios.get(`/show`);
+    return data.data;
+}
+
+export const getMovieDates = async (idMovie) => {
+    const data = await axios.get(`movies/${idMovie}/dates`);
+    return data.data;
+}
+export const getMovieDateHours = async (idMovie,date) => {
+    const data = await axios.get(`movies/${idMovie}/${date}/hours`);
+    return data.data;
 }
