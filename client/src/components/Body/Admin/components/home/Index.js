@@ -23,33 +23,7 @@ export default function HomeAdmin() {
     <>
       <div className="page-admin">
         <h2 className="title-page-admin">Trang chủ Admin</h2>
-        <h4 className="body-title-page-admin">Thống kê</h4>
         <div className="body-page-admin">
-          <div className="statistics">
-            <div className="statistic">
-              <h6>Tổng vé bán tháng này</h6>
-              {/* <div> */}
-              <div className="statistic-bottom">
-                {createStatistic("ticket")}
-                <div className="statistic-ticket">120 vé</div>
-              </div>
-              {/* </div> */}
-            </div>
-            <div className="statistic">
-              <h6>Doanh thu trong tháng này</h6>
-              <div className="statistic-bottom">
-                {createStatistic("danh-thu")}
-                <div className="statistic-danh-thu">12.000.000 đ</div>
-              </div>
-            </div>
-            <div className="statistic">
-              <h6>Số phim đang công chiếu</h6>
-              <div className="statistic-bottom">
-                {createStatistic("film-playing")}
-                <div className="statistic-film-playing">12 Bộ</div>
-              </div>
-            </div>
-          </div>
           <h4 className="bottom-title-page-admin">Quản lý</h4>
           <div className="bottom-page-admin">
             <Card
@@ -74,8 +48,17 @@ export default function HomeAdmin() {
                 </CardText>
                 <div className="container-btns">
                   {" "}
-                  <Button color="primary">Thêm phim</Button>{" "}
-                  <Button color="primary" outline>
+                  <Button
+                    color="primary"
+                    onClick={() => navigate("/adminPage/addMovie")}
+                  >
+                    Thêm phim
+                  </Button>{" "}
+                  <Button
+                    color="primary"
+                    outline
+                    onClick={() => navigate("/adminPage/movie")}
+                  >
                     Danh sách phim
                   </Button>
                 </div>
@@ -103,40 +86,23 @@ export default function HomeAdmin() {
                 </CardText>
                 <div className="container-btns">
                   {" "}
-                  <Button color="primary">Thêm giờ chiếu</Button>{" "}
-                  <Button color="primary" outline>
+                  <Button
+                    color="primary"
+                    onClick={() => navigate("/adminPage/addSlideShow")}
+                  >
+                    Thêm giờ chiếu
+                  </Button>{" "}
+                  <Button
+                    color="primary"
+                    outline
+                    onClick={() => navigate("/adminPage/slideShow")}
+                  >
                     Danh sách giờ chiếu
                   </Button>
                 </div>
               </CardBody>
             </Card>
-            <Card
-              className="my-2"
-              color="dark"
-              outline
-              style={{
-                maxWidth: "400px",
-              }}
-            >
-              {/* <CardHeader>Phim</CardHeader> */}
-              <CardBody
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <CardTitle tag="h5">Quản lý slides</CardTitle>
-                <CardText>Thêm slide và xem danh sách slides.</CardText>
-                <div className="container-btns">
-                  {" "}
-                  <Button color="primary">Thêm slide</Button>{" "}
-                  <Button color="primary" outline>
-                    Danh sách slides
-                  </Button>
-                </div>
-              </CardBody>
-            </Card>
+
             <Card
               className="my-2"
               color="dark"
@@ -159,36 +125,18 @@ export default function HomeAdmin() {
                 </CardText>
                 <div className="container-btns">
                   {" "}
-                  <Button color="primary">Thêm bài báo</Button>{" "}
-                  <Button color="primary" outline>
+                  <Button
+                    color="primary"
+                    onClick={() => navigate("/adminPage/addArticle")}
+                  >
+                    Thêm bài báo
+                  </Button>{" "}
+                  <Button
+                    color="primary"
+                    outline
+                    onClick={() => navigate("/adminPage/article")}
+                  >
                     Danh sách bài báo
-                  </Button>
-                </div>
-              </CardBody>
-            </Card>
-            <Card
-              className="my-2"
-              color="dark"
-              outline
-              style={{
-                maxWidth: "400px",
-              }}
-            >
-              {/* <CardHeader>Phim</CardHeader> */}
-              <CardBody
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                }}
-              >
-                <CardTitle tag="h5">Quản lý khách hàng</CardTitle>
-                <CardText>Thêm tài khoản và xem danh sách tài khoản</CardText>
-                <div className="container-btns">
-                  {" "}
-                  <Button color="primary">Thêm tài khoản</Button>{" "}
-                  <Button color="primary" outline>
-                    Danh sách tài khoản
                   </Button>
                 </div>
               </CardBody>
@@ -215,8 +163,17 @@ export default function HomeAdmin() {
                 </CardText>
                 <div className="container-btns">
                   {" "}
-                  <Button color="primary">Thêm voucher</Button>{" "}
-                  <Button color="primary" outline>
+                  <Button
+                    color="primary"
+                    onClick={() => navigate("/adminPage/addVoucher")}
+                  >
+                    Thêm voucher
+                  </Button>{" "}
+                  <Button
+                    color="primary"
+                    outline
+                    onClick={() => navigate("/adminPage/voucher")}
+                  >
                     Danh sách vouchers
                   </Button>
                 </div>
