@@ -1,5 +1,6 @@
 import "./index.css";
 import data from "../json/data.json";
+import { BsXLg, BsFillArrowRightCircleFill } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -99,7 +100,7 @@ function NewsPage() {
     <>
       <main className="news-page news-grand-container">
         <div className="news-search-container">
-          <label htmlFor="search-news" >Tìm kiếm</label>
+          <label htmlFor="search-news" className="news-search-label">Tìm kiếm</label>
           <input
             className="news-search-box"
             id="search-news"
@@ -118,7 +119,7 @@ function NewsPage() {
           <button className="news-search-button" onClick={() => {
             setSearchNews("");
             localStorage.setItem("searchQuery", "");
-          }}>Xóa</button>
+          }}>Xóa <BsXLg className="button-icon" /></button>
         </div>
         <div className="news-list-container">
           <Items currentItems={displayData} />
@@ -139,7 +140,7 @@ function NewsPage() {
             }}
           />
           <button type="submit" className="pagination-button">
-            Go
+            Go! <BsFillArrowRightCircleFill className="button-icon" />
           </button>
         </form></> : <h6>Không có kết quả tìm kiếm!</h6>}
       </main>

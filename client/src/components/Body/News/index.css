@@ -20,6 +20,11 @@
   margin-bottom: 20px;
 }
 
+.news-search-label {
+  font-size: xx-large;
+  font-weight: bold;
+}
+
 .news-search-box {
   padding: 10px;
   border: none;
@@ -141,3 +146,9 @@
   cursor: pointer;
   background-color: #eb4820;
 }
+
+.button-icon {
+  margin-left: 5px;
+}
+
+
