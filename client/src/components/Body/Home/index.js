@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import data from "../json/data.json";
 import Article from "./Article";
 import "./index.css";
 import Movie from "./Movie";
 import Slide from "./Slide";
+import { url_database } from "../api";
 
-const articles = data.data.slice(0, 6);
+// const articles = data.data.slice(0, 6);
 const movieStore = [
   {
     id: "m1",
@@ -74,6 +75,13 @@ const voucherStore = [
   },
 ];
 const Home = () => {
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+    fetch(url_database + '/articles')
+      .then(res => res.json())
+      .then(data => setArticles(data.slice(0, 6)))
+  }, [])
+
   return (
     <div className="home-page">
       <Slide />

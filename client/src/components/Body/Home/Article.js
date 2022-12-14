@@ -4,14 +4,14 @@ import { Button } from "reactstrap";
 import data from "../json/data.json";
 import "./index.css";
 export default function Article({ article }) {
-  const { id, image, title, timestamp, summary } = article;
+  const { idArticle, img, title, timestamp, summary } = article;
   const [isSliced, setIsSliced] = React.useState(true);
   //   const summarySliced = summary.slice(0, 100);
   //   console.log(summarySliced);
   return (
     <div className="news">
       <div className="news-img">
-        <img key={id} src={image} alt="" />
+        <img key={idArticle} src={img} alt="" />
       </div>
       <div className="content">
         <div className="header-content">
@@ -29,7 +29,7 @@ export default function Article({ article }) {
           </p>
         )}
         <div style={{ textAlign: "right" }}>
-          <Link to={`/news/${parseInt(id) - 1}`}>
+          <Link to={`/news/${parseInt(idArticle)}`}>
             {" "}
             <Button color="info" size="lg">
               Chi tiết

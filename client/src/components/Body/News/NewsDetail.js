@@ -1,61 +1,70 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./NewsDetails.css";
-import data from "../json/data.json";
+//import data from "../json/data.json";
 import { useNavigate, useParams } from "react-router-dom";
+import { url_database } from "../api";
 const NewsDetail = () => {
+  const [art, setArt] = useState({})
+  const articleId = useParams().id;
+  const navigate = useNavigate();
 
   useEffect(() => {
+    fetch(url_database + '/articles/' + articleId)
+      .then(res => res.json())
+      .then(data => {
+        const curArt = data[0]
+        const curArtContent = curArt.content.split('$')
+        setArt({ ...curArt, content: curArtContent })
+      })
     window.scrollTo(0, 0);
   }, []);
 
-  const navigate = useNavigate();
-  const articleId = useParams().id;
-  const item = data.data[articleId];
-  const commentList = item.comments.map((cmt, index) => (
-    <div className="news-detail-comment-container" key={index}>
-      <div className="news-detail-comment-left">
-        <img
-          src={cmt.avatar ? cmt.avatar : "http://genk.mediacdn.vn/k:thumb_w/640/2015/screen-shot-2015-07-30-at-2-31-57-pm-1438334096188/cau-chuyen-ve-nguoi-tao-ra-chu-ech-xanh-than-thanh.png"}
-          alt=""
-          className="news-detail-comment-avatar"
-        />
-      </div>
-      <div className="news-detail-comment-right">
-        <h1 className="news-detail-comment-author">{cmt.author}</h1>
-        <h6 className="news-detail-comment-content">{cmt.content}</h6>
-        <div className="news-detail-comment-actions">
-          <button className="news-detail-comment-action ">
-            Upvote ({cmt.votesDeficit})
-          </button>
-          <button className="news-detail-comment-action">Downvote</button>
-          <button className="news-detail-comment-action">Báo cáo</button>
-        </div>
-      </div>
-    </div>
-  ));
+  // const item = data.data[articleId];
+  // const commentList = item.comments.map((cmt, index) => (
+  //   <div className="news-detail-comment-container" key={index}>
+  //     <div className="news-detail-comment-left">
+  //       <img
+  //         src={cmt.avatar ? cmt.avatar : "http://genk.mediacdn.vn/k:thumb_w/640/2015/screen-shot-2015-07-30-at-2-31-57-pm-1438334096188/cau-chuyen-ve-nguoi-tao-ra-chu-ech-xanh-than-thanh.png"}
+  //         alt=""
+  //         className="news-detail-comment-avatar"
+  //       />
+  //     </div>
+  //     <div className="news-detail-comment-right">
+  //       <h1 className="news-detail-comment-author">{cmt.author}</h1>
+  //       <h6 className="news-detail-comment-content">{cmt.content}</h6>
+  //       <div className="news-detail-comment-actions">
+  //         <button className="news-detail-comment-action ">
+  //           Upvote ({cmt.votesDeficit})
+  //         </button>
+  //         <button className="news-detail-comment-action">Downvote</button>
+  //         <button className="news-detail-comment-action">Báo cáo</button>
+  //       </div>
+  //     </div>
+  //   </div>
+  // ));
 
   return (
     <main className="news-page news-grand-container">
-      <h1 className="news-detail-title">{item.title}</h1>
+      <h1 className="news-detail-title">{art.title}</h1>
       <h6 className="news-detail-info">
-        Bởi <span className="news-detail-info-special">{item.author}</span> vào{" "}
-        <span className="news-detail-info-special">{item.timestamp}</span>.
+        {/* Bởi <span className="news-detail-info-special">{art.author}</span> vào{" "} */}
+        {/* <span className="news-detail-info-special">{art.timestamp}</span>. */}
       </h6>
       <img
         className="news-detail-image"
-        src={item.image}
+        src={art.img}
         alt="If you can see this, something is wrong."
       />
       <article className="news-detail-content">
-        {item.content.map((p, index) => (
+        {art.content ? art.content.map((p, index) => (
           <p className="news-content-detail-paragraph" key={index}>
             {p}
           </p>
-        ))}
+        )) : ""}
       </article>
-      <p className="news-detail-source">Nguồn: {item.source}</p>
+      {/* <p className="news-detail-source">Nguồn: {item.source}</p> */}
       <div className="news-detail-more-actions">
-        <button className="news-detail-action">Thích ({item.likes})</button>
+        {/* <button className="news-detail-action">Thích ({item.likes})</button> */}
         <button onClick={() => document.getElementById('commentSection').scrollIntoView()} className="news-detail-action">Bình luận</button>
         <button className="news-detail-action">Chia sẻ</button>
         <button className="news-detail-action" onClick={() => navigate("/news")}>Tin tức khác</button>
@@ -77,11 +86,11 @@ const NewsDetail = () => {
           </button>
         </div>
         <div className="news-detail-comments-list">
-          {item.comments.length ? (
+          {/* {item.comments.length ? (
             commentList
           ) : (
             <p>Hãy là người đầu tiên bình luận về bài viết này.</p>
-          )}
+          )} */}
         </div>
       </div>
     </main>
