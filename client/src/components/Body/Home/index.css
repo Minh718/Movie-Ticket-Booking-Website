@@ -75,22 +75,21 @@
   padding: 10px;
 }
 
-.quick-booking select {
+.quick-booking .select_tag {
   margin: 10px 20px;
   color: white;
   font-size: 18px;
-  padding: 10px;
   margin-top: 10px;
   background-color: rgba(255, 255, 255, 0.5);
 }
-.quick-booking #movie {
+.quick-booking .select_tag {
   margin-top: 1.5rem;
 }
-.quick-booking select option {
+.quick-booking .select_tag > * {
   color: black;
 }
 
-.quick-booking button {
+.quick-booking .orange-btn {
   margin: 10px 12px;
   padding: 8px 18px;
   background-color: #dd5353;
@@ -102,7 +101,7 @@
   display: flex;
   flex-direction: row-reverse;
 }
-.quick-booking button:hover {
+.quick-booking .orange-btn:hover {
   opacity: 0.5;
 }
 
