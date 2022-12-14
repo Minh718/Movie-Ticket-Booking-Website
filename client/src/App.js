@@ -39,6 +39,7 @@ import { AddSlideShow } from "./components/Body/Admin/components/addSlideShow/in
 import { AddVoucher } from "./components/Body/Admin/components/addVoucher/index";
 
 import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
+import { EditVoucher } from "./components/Body/Admin/components/addVoucher/EditVoucher";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -93,6 +94,7 @@ function App() {
             <Route path="addVoucher" element={<AddVoucher />} />
             <Route path="addArticle" element={<AddArticle />} />
             <Route path="voucher" element={<Voucher />} />
+            <Route path="editVoucher" element={<EditVoucher />} />
           </Route>
         )}
       </Route>

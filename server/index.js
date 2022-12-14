@@ -8,6 +8,7 @@ const roomRouter = require("./routes/room");
 const showRouter = require("./routes/show");
 const showtimeRouter = require("./routes/showtime");
 const articleRouter = require("./routes/article");
+const voucherRouter = require("./routes/voucher");
 const commentRouter = require("./routes/comment");
 
 const port = 8800;
@@ -28,6 +29,7 @@ app.use("/api/show", showRouter);
 app.use("/api/showtime", showtimeRouter);
 app.use("/api/articles", articleRouter);
 app.use("/api/comments", commentRouter);
+app.use("/api/vouchers", voucherRouter);
 
 app.listen(port, (req, res) => {
   console.log("đã kết nối cổng 8800");
