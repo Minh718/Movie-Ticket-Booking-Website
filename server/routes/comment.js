@@ -1,5 +1,5 @@
 const commentRouter = require('express').Router();
-const commentController = require('../controllers/articleController');
+const commentController = require('../controllers/commentController');
 
 commentRouter.get("/", commentController.getAllComments);
 commentRouter.get("/:id", commentController.getCommentByArticleId);
@@ -8,4 +8,4 @@ commentRouter.post("/update", commentController.updateComment);
 commentRouter.post("/insert", commentController.insertComment);
 
 
-module.exports = articleRouter;
+module.exports = commentRouter;

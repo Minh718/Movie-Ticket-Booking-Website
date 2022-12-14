@@ -96,4 +96,4 @@ const commentController = {
 	}
 }
 
-module.exports = articleController;
+module.exports = commentController;

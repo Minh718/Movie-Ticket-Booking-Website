@@ -3,7 +3,7 @@ import createConnection from "./database.js"
 
 const json = JSON.parse(
 	await readFile(
-		new URL('./articleData.json', import.meta.url)
+		new URL('./json/articleData.json', import.meta.url)
 	)
 );
 const data = json.data;
