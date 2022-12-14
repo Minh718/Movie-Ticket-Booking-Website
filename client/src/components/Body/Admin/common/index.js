@@ -15,33 +15,21 @@ function Common({ children, openBar }) {
           <div>
             <div
               className="accordion"
-              onClick={() => (index !== 1 ? setIndex(1) : setIndex(0))}
-            >
-              Quản lý Tài khoản
-              {index === 1 ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            <div className={index === 1 ? "click-down active" : "click-down"}>
-              Thêm tài khoản
-            </div>
-            <div
-              className={index === 1 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/client")}
-            >
-              Danh sách khách hàng
-            </div>
-          </div>
-          <div>
-            <div
-              className="accordion"
               onClick={() => (index !== 2 ? setIndex(2) : setIndex(0))}
             >
               Quản lý movie
               {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 2 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 2 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/addMovie")}
+            >
               Thêm movie
             </div>
-            <div className={index === 2 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 2 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/movie")}
+            >
               Danh sách movies
             </div>
           </div>
@@ -53,28 +41,20 @@ function Common({ children, openBar }) {
               Quản lý Tin tức
               {index === 3 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 3 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 3 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/addArticle")}
+            >
               Thêm tin tức
             </div>
-            <div className={index === 3 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 3 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/article")}
+            >
               Danh sách tin tức
             </div>
           </div>
-          <div>
-            <div
-              className="accordion"
-              onClick={() => (index !== 4 ? setIndex(4) : setIndex(0))}
-            >
-              Slides
-              {index === 4 ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            <div className={index === 4 ? "click-down active" : "click-down"}>
-              Thêm slide
-            </div>
-            <div className={index === 4 ? "click-down active" : "click-down"}>
-              Danh sách slide
-            </div>
-          </div>
+
           <div>
             <div
               className="accordion"
@@ -83,10 +63,16 @@ function Common({ children, openBar }) {
               Vouchers
               {index === 5 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 5 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 5 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/addVoucher")}
+            >
               Thêm voucher
             </div>
-            <div className={index === 5 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 5 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/voucher")}
+            >
               Danh sách voucher
             </div>
           </div>
@@ -98,10 +84,16 @@ function Common({ children, openBar }) {
               Lịch chiếu
               {index === 6 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 6 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 6 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/addSlideShow")}
+            >
               Thêm giờ chiếu
             </div>
-            <div className={index === 6 ? "click-down active" : "click-down"}>
+            <div
+              className={index === 6 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/slideShow")}
+            >
               Danh sách lịch chiếu
             </div>
           </div>

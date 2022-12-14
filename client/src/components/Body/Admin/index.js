@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import Common from "./common";
-import HeaderAdmin from "./components/HeaderAdmin";
+import HeaderAdmin from "./components/header/HeaderAdmin";
 export default function AdminPage() {
   const [openBar, setOpenBar] = useState(true);
   return (

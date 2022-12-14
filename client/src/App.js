@@ -23,14 +23,22 @@ import HistoryTicket from "./components/Body/historyTicket";
 import NewsDetail from "./components/Body/News/NewsDetail";
 import DetailMovie from "./components/Body/detailMovie";
 import AdminPage from "./components/Body/Admin";
-import Client from "./components/Body/Admin/pages/client/Client";
 import Error from "./components/Body/Error";
 import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
-import HomeAdmin from "./components/Body/Admin/pages/home/Index";
+import HomeAdmin from "./components/Body/Admin/components/home/Index";
 import { handleRefreshWeb } from "./apiRequest";
-import{ useEffect } from "react";
+import { useEffect } from "react";
+import { Article } from "./components/Body/Admin/components/article/Article";
+import { Movie } from "./components/Body/Admin/components/movie/Movie";
+import { AddMovie } from "./components/Body/Admin/components/addMovie/index";
+import { SlideShow } from "./components/Body/Admin/components/slideShow/SlideShow";
+import { AddArticle } from "./components/Body/Admin/components/addArticle/index";
+import { AddSlideShow } from "./components/Body/Admin/components/addSlideShow/index";
+import { AddVoucher } from "./components/Body/Admin/components/addVoucher/index";
+
+import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -44,10 +52,10 @@ const PageHome = () => {
 };
 
 function App() {
-  const { setOpenSetting, setQuery, user,setUser } = useGlobalContext();
+  const { setOpenSetting, setQuery, user, setUser } = useGlobalContext();
   useEffect(() => {
     const getUser = async () => {
-        setUser(await handleRefreshWeb() || null);
+      setUser((await handleRefreshWeb()) || null);
     };
     getUser();
   }, []);
@@ -77,7 +85,14 @@ function App() {
         {!!user?.isAdmin && (
           <Route path="/adminPage" element={<AdminPage />}>
             <Route path="" element={<HomeAdmin />} />
-            <Route path="client" element={<Client />} />
+            <Route path="article" element={<Article />} />
+            <Route path="movie" element={<Movie />} />
+            <Route path="slideShow" element={<SlideShow />} />
+            <Route path="addMovie" element={<AddMovie />} />
+            <Route path="addSlideShow" element={<AddSlideShow />} />
+            <Route path="addVoucher" element={<AddVoucher />} />
+            <Route path="addArticle" element={<AddArticle />} />
+            <Route path="voucher" element={<Voucher />} />
           </Route>
         )}
       </Route>

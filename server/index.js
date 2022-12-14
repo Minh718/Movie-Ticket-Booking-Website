@@ -1,14 +1,14 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-const cookieParser = require('cookie-parser');
-const userRouter = require('./routes/user')
-const movieRouter = require('./routes/movie')
-const roomRouter = require('./routes/room')
-const showRouter = require('./routes/show')
-const showtimeRouter = require('./routes/showtime')
-const articleRouter = require("./routes/article")
-const commentRouter = require("./routes/comment")
+const express = require("express");
+const cors = require("cors");
+const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const userRouter = require("./routes/user");
+const movieRouter = require("./routes/movie");
+const roomRouter = require("./routes/room");
+const showRouter = require("./routes/show");
+const showtimeRouter = require("./routes/showtime");
+const articleRouter = require("./routes/article");
+const commentRouter = require("./routes/comment");
 
 const port = 8800;
 const app = express();
@@ -28,7 +28,6 @@ app.use("/api/show", showRouter);
 app.use("/api/showtime", showtimeRouter);
 app.use("/api/articles", articleRouter);
 app.use("/api/comments", commentRouter);
-
 
 app.listen(port, (req, res) => {
   console.log("đã kết nối cổng 8800");

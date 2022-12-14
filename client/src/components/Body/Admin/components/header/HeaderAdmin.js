@@ -1,7 +1,7 @@
 import { FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
-import { useGlobalContext } from "../../../../context";
+import { useGlobalContext } from "../../../../../context";
 function HeaderAdmin({ openBar, setOpenBar }) {
   return (
     <div id="header">
