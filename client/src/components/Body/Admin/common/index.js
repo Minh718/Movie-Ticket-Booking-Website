@@ -20,11 +20,17 @@ function Common({ children, openBar }) {
               Quản lý Show
               {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 2 ? "click-down active" : "click-down"}>
-              <Link to="/AdminPage/show">Thêm Show</Link>
+            <div
+              className={index === 2 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/show")}
+            >
+              Thêm Show
             </div>
-            <div className={index === 2 ? "click-down active" : "click-down"}>
-              <Link to="/AdminPage/show">Danh sách Show</Link>
+            <div
+              className={index === 2 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/show")}
+            >
+              Danh sách Show
             </div>
           </div>
           <div>
@@ -78,12 +84,18 @@ function Common({ children, openBar }) {
               Lịch chiếu
               {index === 6 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
-            <div className={index === 6 ? "click-down active" : "click-down"}>
-            <Link to="/AdminPage/showtime">Thêm giờ chiếu</Link>
+            <div
+              className={index === 6 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/showtime")}
+            >
+              Thêm lịch chiếu
             </div>
-            <div className={index === 6 ? "click-down active" : "click-down"}>
-            <Link to="/AdminPage/showtime">Danh sách lịch chiếu</Link>  
-            </div>  
+            <div
+              className={index === 6 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/showtime")}
+            >
+              Danh sách lịch chiếu
+            </div> 
           </div>
         </div>
         <div className="ctn-btn-out">

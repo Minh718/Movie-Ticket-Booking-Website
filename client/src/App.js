@@ -97,7 +97,6 @@ function App() {
             <Route path="addArticle" element={<AddArticle />} />
             <Route path="voucher" element={<Voucher />} />
             <Route path="editVoucher" element={<EditVoucher />} />
-            <Route path="client" element={<Client />} />
             <Route path="show" element={<ShowManagement />} />
             <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
