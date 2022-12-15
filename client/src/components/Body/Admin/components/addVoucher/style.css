@@ -1,0 +1,46 @@
+.container-addVoucher {
+  padding: 40px;
+}
+.label-addVoucher {
+  width: 120px;
+}
+.container-addVoucher input {
+  padding: 5px 10px;
+}
+.container-addVoucher > h2 {
+  padding-bottom: 12px;
+}
+.container-addVoucher > div {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+}
+.lable-date {
+  width: 133px;
+}
+.container-addVoucher .voucher {
+  max-width: 240px;
+  width: 80%;
+}
+.container-addVoucher .height-100 {
+  padding: 6px;
+}
+.value-discount {
+  width: 200px;
+  margin-right: 5px;
+}
+.btn-discount {
+  padding: 5px 10px;
+  border-color: transparent;
+  transition: all 0.3s linear;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-right: 20px;
+}
+.btn-discount:hover {
+  opacity: 0.7;
+}
+
+.end-date-voucher {
+  padding: 5px 10px;
+}

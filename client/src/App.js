@@ -28,6 +28,8 @@ import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
 import HomeAdmin from "./components/Body/Admin/components/home/Index";
+import ShowManagement from "./components/Body/Admin/components/ShowManagement/index";
+import ShowTimeManagement  from "./components/Body/Admin/components/ShowTimeManagement/index"
 import { handleRefreshWeb } from "./apiRequest";
 import { useEffect } from "react";
 import { Article } from "./components/Body/Admin/components/article/Article";
@@ -39,6 +41,7 @@ import { AddSlideShow } from "./components/Body/Admin/components/addSlideShow/in
 import { AddVoucher } from "./components/Body/Admin/components/addVoucher/index";
 
 import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
+import { EditVoucher } from "./components/Body/Admin/components/addVoucher/EditVoucher";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -93,6 +96,9 @@ function App() {
             <Route path="addVoucher" element={<AddVoucher />} />
             <Route path="addArticle" element={<AddArticle />} />
             <Route path="voucher" element={<Voucher />} />
+            <Route path="editVoucher" element={<EditVoucher />} />
+            <Route path="show" element={<ShowManagement />} />
+            <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
         )}
       </Route>

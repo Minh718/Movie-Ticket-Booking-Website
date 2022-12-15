@@ -2,14 +2,14 @@ import "./index.css";
 import { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useGlobalContext } from "../../../../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { Button } from "reactstrap";
 function Common({ children, openBar }) {
   const navigate = useNavigate();
   const { setUser } = useGlobalContext();
   const [index, setIndex] = useState(0);
   return (
-    <div class="common-page">
+    <div className="common-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>
         <div>
           <div>
@@ -17,20 +17,20 @@ function Common({ children, openBar }) {
               className="accordion"
               onClick={() => (index !== 2 ? setIndex(2) : setIndex(0))}
             >
-              Quản lý movie
+              Quản lý Show
               {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div
               className={index === 2 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/addMovie")}
+              onClick={() => navigate("/adminPage/show")}
             >
-              Thêm movie
+              Thêm Show
             </div>
             <div
               className={index === 2 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/movie")}
+              onClick={() => navigate("/adminPage/show")}
             >
-              Danh sách movies
+              Danh sách Show
             </div>
           </div>
           <div>
@@ -86,16 +86,16 @@ function Common({ children, openBar }) {
             </div>
             <div
               className={index === 6 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/addSlideShow")}
+              onClick={() => navigate("/adminPage/showtime")}
             >
-              Thêm giờ chiếu
+              Thêm lịch chiếu
             </div>
             <div
               className={index === 6 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/slideShow")}
+              onClick={() => navigate("/adminPage/showtime")}
             >
               Danh sách lịch chiếu
-            </div>
+            </div> 
           </div>
         </div>
         <div className="ctn-btn-out">

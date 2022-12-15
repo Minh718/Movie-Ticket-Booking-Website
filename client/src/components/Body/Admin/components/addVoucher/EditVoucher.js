@@ -1,20 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
-import { insertVoucher } from "../../../../../apiRequest";
+import moment from "moment";
+import { insertVoucher, updateVoucher } from "../../../../../apiRequest";
 import "./style.css";
-export const AddVoucher = () => {
-  const [endDate, setEndDate] = useState(null);
-  const [suffix, setSuffix] = useState("k");
+import { useLocation, useNavigate } from "react-router-dom";
+export const EditVoucher = () => {
+  const voucher = useLocation().state?.voucher;
+  const [endDate, setEndDate] = useState();
+  const [suffix, setSuffix] = useState("");
   const [name, setName] = useState("");
   const [value, setValue] = useState("");
   const [point, setPoint] = useState("");
   const [maximum, setMaximum] = useState(null);
+  const navigate = useNavigate();
   const handleSubmit = async () => {
     try {
-      await insertVoucher({
+      await updateVoucher({
+        idVoucher: voucher.idVoucher,
         name,
         value,
         maximum,
@@ -24,19 +29,28 @@ export const AddVoucher = () => {
           endDate.getMonth() + 1
         }-${endDate.getDate()}`,
       });
-      setEndDate(null);
-      setName("");
-      setValue("");
-      setPoint("");
-      setMaximum("");
+      navigate("/adminPage/voucher");
       // await insertVoucher({name, value, maximum, suffix, end_date: `${end_date.getFullYear}-${end_date.getMonth + 1}-${end_date.getDate}`})
     } catch (err) {
       console.log(err);
     }
   };
+  useEffect(() => {
+    if (!voucher) {
+      navigate("/adminPage/voucher");
+    } else {
+      setName(voucher.name);
+      //   setEndDate(new Date(voucher.end_date));
+      setEndDate(moment(voucher.end_date, "DD/MM/YYY").toDate());
+      setMaximum(voucher.maximum);
+      setValue(voucher.value);
+      setPoint(voucher.point);
+      setSuffix(voucher.suffix);
+    }
+  }, []);
   return (
     <div className="container-addVoucher">
-      <h2>Thêm voucher</h2>
+      <h2>Sửa voucher</h2>
       <div>
         <label htmlFor="voucher" className="label-addVoucher">
           Tên mã giảm giá:
@@ -64,32 +78,27 @@ export const AddVoucher = () => {
         />
         <select
           value={suffix}
-          onChange={(e) => {
-            setSuffix(e.target.value);
-            e.target.value === "k" && setMaximum(0);
-          }}
+          onChange={(e) => setSuffix(e.target.value)}
           className="height-100"
         >
           <option value="k">k</option>
           <option value={"%"}>%</option>
         </select>
       </div>
-      {suffix === "%" && (
-        <div>
-          <label htmlFor="value-discount" className="label-addVoucher">
-            Giảm tối đa:
-          </label>
-          <input
-            type="number"
-            value={maximum}
-            onChange={(e) => setMaximum(e.target.value)}
-            className="value-discount"
-            name="value-discount"
-            placeholder="Số tiền giảm tối đa"
-          />
-          <div>k</div>
-        </div>
-      )}
+      <div>
+        <label htmlFor="value-discount" className="label-addVoucher">
+          Giảm tối đa:
+        </label>
+        <input
+          type="number"
+          value={maximum}
+          onChange={(e) => setMaximum(e.target.value)}
+          className="value-discount"
+          name="value-discount"
+          placeholder="Số tiền giảm tối đa"
+        />
+        <div>k</div>
+      </div>
       <div>
         <label htmlFor="value-discount" className="label-addVoucher">
           Số điểm đổi:
@@ -114,7 +123,13 @@ export const AddVoucher = () => {
         />
       </div>
       <button className="btn-discount" onClick={handleSubmit}>
-        Thêm discount
+        Lưu thây đổi
+      </button>
+      <button
+        className="btn-discount"
+        onClick={() => navigate("/adminPage/voucher")}
+      >
+        Hủy
       </button>
     </div>
   );

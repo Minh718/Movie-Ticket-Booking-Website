@@ -31,6 +31,7 @@ CREATE TABLE `tbl_user` (
   `password` varchar(50) NOT NULL,
   `gender` varchar(5) DEFAULT NULL,
   `isAdmin` tinyint DEFAULT '0',
+  `point` int DEFAULT '0',
   PRIMARY KEY (`idUser`),
   UNIQUE KEY `phone` (`phone`),
   UNIQUE KEY `email` (`email`)
@@ -43,7 +44,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'1','1','0123456789','cuthemongcho380@gmail.com','123456789','nam',1);
+INSERT INTO `tbl_user` VALUES (1,'1','1','0123456789','cuthemongcho380@gmail.com','123456789','nam',1,0);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -56,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-05 22:22:02
+-- Dump completed on 2022-12-14 23:53:45

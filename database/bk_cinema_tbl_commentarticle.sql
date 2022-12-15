@@ -25,8 +25,9 @@ DROP TABLE IF EXISTS `tbl_commentarticle`;
 CREATE TABLE `tbl_commentarticle` (
   `idUser` int NOT NULL,
   `idArticle` int NOT NULL,
-  `content` text,
-  PRIMARY KEY (`idUser`,`idArticle`),
+  `content` varchar(250) NOT NULL,
+  `date_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`idUser`,`idArticle`,`content`,`date_create`),
   KEY `idArticle` (`idArticle`),
   CONSTRAINT `tbl_commentarticle_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `tbl_user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_commentarticle_ibfk_2` FOREIGN KEY (`idArticle`) REFERENCES `tbl_article` (`idArticle`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -51,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-05 22:22:02
+-- Dump completed on 2022-12-14 23:53:44

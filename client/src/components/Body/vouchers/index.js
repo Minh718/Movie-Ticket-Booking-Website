@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
 import { Link } from "react-router-dom";
 
 import "./style.css";
 export default function Vouchers() {
+  const [vouchers, useVouchers] = useState([]);
   return (
     <div className="page-voucher">
       <Breadcrumb listTag="div">
