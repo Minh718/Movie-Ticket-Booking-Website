@@ -1,0 +1,42 @@
+#add-news-page {
+	display: flex;
+	flex-direction: row;
+}
+
+#add-news-page>div {
+	margin-left: 20px;
+	flex: 1;
+}
+
+#add-news-page .input-title {
+	display: block;
+	color: #3d5a80;
+	margin-top: 10px;
+	margin-bottom: 6px;
+}
+
+#add-news-page input,
+#add-news-page textarea {
+	width: 100%;
+	border-radius: 4px;
+	padding: 8px;
+	resize: none;
+	outline: none;
+	background: #A8B5C9;
+	border: 2px solid #3D5A80;
+}
+
+#add-news-page .post-btn,
+#add-news-page .preview-btn {
+	margin-left: 8px;
+	float: right;
+}
+
+#add-news-page .preview-area {
+	margin-right: 20px;
+}
+
+#add-news-page .preview-img {
+	width: 100%;
+	margin: 20px 0;
+}

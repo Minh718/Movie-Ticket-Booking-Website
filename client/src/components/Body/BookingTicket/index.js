@@ -85,7 +85,8 @@ function BookingTicket() {
       setShow(resShow.data[0]);
       const jsonMoive = await res.json();
       setMovie(jsonMoive);
-      if (canPlaceTicket) {
+      if (canPlaceTicket)
+      {
         const resDates = await axios.get(
           `/movies/${idMovie}/dates`
         );
@@ -114,7 +115,8 @@ function BookingTicket() {
       );
       setOpenHour(true);
     };
-    if (selectedDate !== "") {
+    if (selectedDate !== "")
+    {
       fetchHours();
     }
   }, [selectedDate]);
@@ -180,7 +182,7 @@ function BookingTicket() {
                       setCanBooking(true);
                       setSelectedHour(e.value);
                     }}
-                    // noOptionsMessage={() => "Vui lòng chọn ngày"}
+                  // noOptionsMessage={() => "Vui lòng chọn ngày"}
                   />
                 )}
                 {canBooking && (

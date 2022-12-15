@@ -9,7 +9,7 @@ function Common({ children, openBar }) {
   const { setUser } = useGlobalContext();
   const [index, setIndex] = useState(0);
   return (
-    <div class="common-page">
+    <div className="common-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>
         <div>
           <div>
