@@ -24,6 +24,32 @@ const showtimeController = {
         }catch(err){
             res.status(500).json(err);
         }
+    },
+    getAllShowTime : async (req,res) =>{
+        const connection = await createConnection();
+        try{
+            const sql = `SELECT idShow,idMovie,title,dateShow,idHour,hour 
+            FROM 
+            (SELECT S.idShow,idMovie,dateShow,idHour,hour FROM tbl_hour_show S JOIN tbl_show M ON S.idShow =  M.idShow) AS Temp 
+            JOIN tbl_movie ON tbl_movie.id = Temp.idMovie`;
+            const showDate = await connection.query(sql);
+            res.status(200).json(showDate);
+        }catch(err){
+            res.status(500).json(err);
+        }
+    },
+    deleteShowtime : async (req,res)=>{
+        const connection = await createConnection();
+        const showID = req.body.showID;
+        const hourID = req.body.hourID;
+        try{
+            const sql = `DELETE FROM tbl_hour_show WHERE idShow = ${showID} AND idHour = ${hourID}`
+            console.log(sql);
+            const result = await connection.query(sql);
+            res.status(200).json(result);
+        }catch(err){
+            res.status(500).json(err);
+        }
     }
 }
 
