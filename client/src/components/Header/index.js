@@ -35,12 +35,10 @@ function Header() {
       setIsLoadding(false);
     };
     let mySetTimeout;
-    if (query)
-    {
+    if (query) {
       setIsLoadding(true);
       mySetTimeout = setTimeout(() => fetchMovies(), 300);
-    } else
-    {
+    } else {
       setIsLoadding(false);
 
       setMovies([]);
@@ -48,7 +46,6 @@ function Header() {
 
     return () => clearTimeout(mySetTimeout);
   }, [query]);
-  console.log(openBar);
   return (
     <div id="header">
       <div className="header-left">
@@ -133,7 +130,7 @@ function Header() {
                     to="/"
                     onClick={async (e) => {
                       e.preventDefault();
-                      await logoutUser()
+                      await logoutUser();
                       setUser(null);
                     }}
                   >

@@ -29,7 +29,7 @@ import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
 import HomeAdmin from "./components/Body/Admin/components/home/Index";
 import ShowManagement from "./components/Body/Admin/components/ShowManagement/index";
-import ShowTimeManagement  from "./components/Body/Admin/components/ShowTimeManagement/index"
+import ShowTimeManagement from "./components/Body/Admin/components/ShowTimeManagement/index";
 import { handleRefreshWeb } from "./apiRequest";
 import { useEffect } from "react";
 import { Article } from "./components/Body/Admin/components/article/Article";
@@ -97,6 +97,7 @@ function App() {
             <Route path="addArticle" element={<AddArticle />} />
             <Route path="voucher" element={<Voucher />} />
             <Route path="editVoucher" element={<EditVoucher />} />
+            <Route path="movie" element={<Movie />} />
             <Route path="show" element={<ShowManagement />} />
             <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
