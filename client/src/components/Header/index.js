@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Button, Spinner } from "reactstrap";
 import { useGlobalContext } from "../../context";
 import { logoutUser } from "../../apiRequest";
+import { url_database } from "../Body/api";
 import "./index.css";
 function Header() {
   const {
@@ -26,15 +27,20 @@ function Header() {
       const res = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&query=${parsedQuery}&page=1&include_adult=false`
       );
+      // const res = await fetch(
+      //   url_database + '/articles'
+      // );
       const resJson = await res.json();
       setMovies(resJson.results);
       setIsLoadding(false);
     };
     let mySetTimeout;
-    if (query) {
+    if (query)
+    {
       setIsLoadding(true);
       mySetTimeout = setTimeout(() => fetchMovies(), 300);
-    } else {
+    } else
+    {
       setIsLoadding(false);
 
       setMovies([]);
@@ -47,7 +53,7 @@ function Header() {
     <div id="header">
       <div className="header-left">
         <Link to={"/"}>
-          <img className="logo-web" src="./BK-cinema_1.png" />
+          <img className="logo-web" src="./BK-cinema_1.png" alt="logo" />
         </Link>
         {/* <div className="right-part"> */}
 
