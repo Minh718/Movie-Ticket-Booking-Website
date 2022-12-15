@@ -29,6 +29,8 @@ import Vouchers from "./components/Body/vouchers";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
 import HomeAdmin from "./components/Body/Admin/pages/home/Index";
+import ShowManagement from "./components/Body/Admin/components/ShowManagement/index";
+import ShowTimeManagement  from "./components/Body/Admin/components/ShowTimeManagement/index"
 import { handleRefreshWeb } from "./apiRequest";
 import{ useEffect } from "react";
 //Tim icon o day https://react-icons.github.io/react-icons
@@ -78,6 +80,8 @@ function App() {
           <Route path="/adminPage" element={<AdminPage />}>
             <Route path="" element={<HomeAdmin />} />
             <Route path="client" element={<Client />} />
+            <Route path="show" element={<ShowManagement />} />
+            <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
         )}
       </Route>

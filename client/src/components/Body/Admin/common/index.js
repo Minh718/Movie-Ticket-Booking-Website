@@ -2,47 +2,29 @@ import "./index.css";
 import { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useGlobalContext } from "../../../../context";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 import { Button } from "reactstrap";
 function Common({ children, openBar }) {
   const navigate = useNavigate();
   const { setUser } = useGlobalContext();
   const [index, setIndex] = useState(0);
   return (
-    <div class="common-page">
+    <div className="common-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>
         <div>
           <div>
             <div
               className="accordion"
-              onClick={() => (index !== 1 ? setIndex(1) : setIndex(0))}
-            >
-              Quản lý Tài khoản
-              {index === 1 ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            <div className={index === 1 ? "click-down active" : "click-down"}>
-              Thêm tài khoản
-            </div>
-            <div
-              className={index === 1 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/client")}
-            >
-              Danh sách khách hàng
-            </div>
-          </div>
-          <div>
-            <div
-              className="accordion"
               onClick={() => (index !== 2 ? setIndex(2) : setIndex(0))}
             >
-              Quản lý movie
+              Quản lý Show
               {index === 2 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div className={index === 2 ? "click-down active" : "click-down"}>
-              Thêm movie
+              <Link to="/AdminPage/show">Thêm Show</Link>
             </div>
             <div className={index === 2 ? "click-down active" : "click-down"}>
-              Danh sách movies
+              <Link to="/AdminPage/show">Danh sách Show</Link>
             </div>
           </div>
           <div>
@@ -58,21 +40,6 @@ function Common({ children, openBar }) {
             </div>
             <div className={index === 3 ? "click-down active" : "click-down"}>
               Danh sách tin tức
-            </div>
-          </div>
-          <div>
-            <div
-              className="accordion"
-              onClick={() => (index !== 4 ? setIndex(4) : setIndex(0))}
-            >
-              Slides
-              {index === 4 ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            <div className={index === 4 ? "click-down active" : "click-down"}>
-              Thêm slide
-            </div>
-            <div className={index === 4 ? "click-down active" : "click-down"}>
-              Danh sách slide
             </div>
           </div>
           <div>
@@ -99,11 +66,11 @@ function Common({ children, openBar }) {
               {index === 6 ? <FaAngleUp /> : <FaAngleDown />}
             </div>
             <div className={index === 6 ? "click-down active" : "click-down"}>
-              Thêm giờ chiếu
+            <Link to="/AdminPage/showtime">Thêm giờ chiếu</Link>
             </div>
             <div className={index === 6 ? "click-down active" : "click-down"}>
-              Danh sách lịch chiếu
-            </div>
+            <Link to="/AdminPage/showtime">Danh sách lịch chiếu</Link>  
+            </div>  
           </div>
         </div>
         <div className="ctn-btn-out">
