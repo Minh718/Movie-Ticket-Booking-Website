@@ -88,14 +88,16 @@ export default function HomeAdmin() {
                   {" "}
                   <Button
                     color="primary"
-                    onClick={() => navigate("/adminPage/addSlideShow")}
+                    // onClick={() => navigate("/adminPage/addSlideShow")}
+                    onClick={() => navigate("/adminPage/showtime")}
                   >
                     Thêm giờ chiếu
                   </Button>{" "}
                   <Button
                     color="primary"
                     outline
-                    onClick={() => navigate("/adminPage/slideShow")}
+                    // onClick={() => navigate("/adminPage/slideShow")}
+                    onClick={() => navigate("/adminPage/show")}
                   >
                     Danh sách giờ chiếu
                   </Button>
