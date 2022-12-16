@@ -5,7 +5,7 @@ export default function createConnection(){
     const connection = mysql.createConnection({
         host: 'localhost',
         user: 'root',
-        password: 'bluewolf123',
+        password: 'khang',
         database: 'bk_cinema'
     });
 
