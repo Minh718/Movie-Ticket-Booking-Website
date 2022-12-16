@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "idArticle": 1,
+      "username": "IAmAUser",
+      "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "date_create": "2022-12-15T11:08:32"
+    },
+    {
+      "idArticle": 1,
+      "username": "loremIpsum",
+      "content": "Phasellus interdum, purus eu euismod condimentum, eros metus pharetra risus, quis dignissim tortor felis sit amet dui. Mauris posuere non ante et fermentum. Sed sed ornare diam. Aenean dignissim hendrerit lorem in hendrerit. Sed semper et risus at auctor. Vestibulum laoreet id felis vel vestibulum. Morbi id eros efficitur, finibus magna eu, convallis augue. Nunc id ante risus. Etiam dui metus, ullamcorper non tempor quis, commodo et enim.",
+      "date_create": "2022-12-15T14:38:01"
+    },
+    {
+      "idArticle": 1,
+      "username": "Anonymous",
+      "content": "Vestibulum sed urna ac eros pellentesque dapibus vitae id arcu. Praesent erat nisi, dignissim eu gravida ac, pulvinar vitae magna. Integer quis lacinia arcu, vel luctus ex.",
+      "date_create": "2022-12-15T21:56:40"
+    },
+    {
+      "idArticle": 2,
+      "username": "melon_husk",
+      "content": "Vivamus nisi massa, tincidunt eget ante sed, suscipit dictum mi.",
+      "date_create": "2022-12-16T07:17:22"
+    }
+  ]
+}
