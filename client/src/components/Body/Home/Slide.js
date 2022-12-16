@@ -173,7 +173,7 @@ export default function Slide() {
           }}
         />
         <div className="btn-buy-ticket">
-          {canPlaceTicket == true ? (
+          {canPlaceTicket === true ? (
             <Link
               to="/seatSelection"
               className="orange-btn"

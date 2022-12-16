@@ -1,43 +1,63 @@
 .breadcrumb {
   color: #ccc;
 }
+
 .current-bread {
   text-decoration: none;
   color: #000;
 }
+
 .container-profile {
   padding: 40px 30px;
 }
+
+.container-profile input {
+  padding: 6px 10px;
+  outline: none;
+  border-radius: 4px;
+  color: #212529;
+  border: 1px solid #ced4da;
+  background: #fff;
+}
+
 .prev-bread {
   color: #ccc;
 }
+
 .prev-bread,
 .current-bread {
   cursor: pointer;
 }
+
 .form-profile {
   margin-top: 30px;
-  width: 500px;
+  width: 700px;
 }
-.form-profile > h2 {
+
+.form-profile>h2 {
   margin-bottom: 15px;
 }
+
 .control-info {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 15px;
   width: 100%;
 }
+
 .control-info .two {
-  width: 30%;
+  width: 50%;
 }
+
 .control-info .one {
-  width: 65%;
+  width: 55%;
 }
+
 .control-info .full {
   width: 100%;
 }
+
 .input-div {
   background: #ccc;
   width: 100%;
@@ -45,6 +65,7 @@
   border-color: transparent;
   margin-top: 5px;
 }
+
 .btn-save {
   cursor: pointer;
   padding: 2px 7px;
@@ -55,6 +76,17 @@
   transition: all 0.3s linear;
   text-transform: uppercase;
 }
+
 .btn-save:hover {
   opacity: 0.7;
 }
+
+
+.container-profile .password-show-btn {
+  position: absolute;
+  right: 0;
+}
+
+/* .container-profile .password-input {
+  position: relative;
+} */

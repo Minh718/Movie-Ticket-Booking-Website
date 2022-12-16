@@ -32,7 +32,7 @@ CREATE TABLE `tbl_voucher` (
   `suffix` varchar(1) NOT NULL,
   `point` int NOT NULL DEFAULT '10',
   PRIMARY KEY (`idVoucher`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `tbl_voucher` (
 
 LOCK TABLES `tbl_voucher` WRITE;
 /*!40000 ALTER TABLE `tbl_voucher` DISABLE KEYS */;
-INSERT INTO `tbl_voucher` VALUES (7,'Nạp lần đầu','2022-12-17',10,'2022-12-14',20,'%',10),(8,'Đăng nhập lần đâu','2022-12-16',22,'2022-12-14',32,'k',10);
+INSERT INTO `tbl_voucher` VALUES (10,'Nạp lần đầu','2022-12-29',12,'2022-12-16',15,'%',22),(11,'Đăng nhập lần đâu','2022-12-22',12,'2022-12-16',0,'k',22),(12,'nạp lần cuối','2022-12-29',55,'2022-12-16',0,'k',22),(13,'giảm cuối tháng','2022-12-31',20,'2022-12-16',0,'k',10);
 /*!40000 ALTER TABLE `tbl_voucher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-14 23:53:45
+-- Dump completed on 2022-12-16 21:08:14

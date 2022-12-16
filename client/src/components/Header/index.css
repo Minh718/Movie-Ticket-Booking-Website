@@ -6,38 +6,47 @@
   background-color: #293241;
   padding: 0 80px;
 }
+
 .header-left .container-btn-bar {
   color: #fff;
   font-size: 25px;
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
+
 .active-bar {
   transform: rotate(90deg);
 }
+
 .logo-web {
   height: 100px;
   object-fit: cover;
 }
+
 #header .title {
   color: #e5e5e5;
   margin-bottom: 0;
   font-size: 32px;
 }
+
 a {
   text-decoration: none !important;
 }
+
 #header .user-btn * {
   color: white;
 }
+
 #header .user-btn {
   position: relative;
 }
+
 #header .right-part {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
+
 .nav-left {
   display: flex;
   align-items: center;
@@ -77,6 +86,7 @@ a {
 
   z-index: 99;
 }
+
 .setting-user a {
   text-decoration: none;
   padding: 7px 15px;
@@ -85,13 +95,16 @@ a {
   font-size: 20px;
   transition: all 0.3s ease-out;
 }
-.setting-user > a:hover {
+
+.setting-user>a:hover {
   background-color: #a8b5c9;
 }
-.setting-user > a:last-child {
+
+.setting-user>a:last-child {
   border-top: 1px solid #ccc;
   margin-bottom: 10px;
 }
+
 .btn-setting {
   cursor: pointer;
   background: transparent;
@@ -103,13 +116,16 @@ a {
   color: #fff;
   padding-left: 1rem;
 }
+
 a {
   text-decoration: none;
 }
+
 .right-nav {
   display: flex;
   align-items: center;
 }
+
 .nav-middle {
   display: flex;
   align-items: center;
@@ -122,6 +138,7 @@ a {
   border-radius: 20px;
   background: #eeeeee;
 }
+
 #header .search-input {
   text-decoration: none;
   width: 100%;
@@ -129,11 +146,13 @@ a {
   border-color: transparent;
   background: transparent;
 }
+
 .icon-search svg {
   cursor: pointer;
   margin-top: -2px;
   margin-right: 10px;
 }
+
 .contaier-movies-search {
   position: absolute;
   z-index: 99;
@@ -144,29 +163,41 @@ a {
   max-height: 450px;
   overflow-y: scroll;
 }
+
+
+
+
 .container-single-movie {
-  display: flex;
+  /* display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 150px;
-  margin-bottom: 10px;
+  height: 150px; */
+  margin: 24px;
+  padding: 10px;
   color: #000;
+  background-color: #ccc;
+  border-radius: 4px;
 }
+
 .container-single-movie .title-movie {
   font-size: 22px;
   font-weight: 600;
   opacity: 0.8;
 }
-.container-single-movie .title-movie + p {
+
+.container-single-movie .title-movie+p {
   opacity: 0.7;
 }
+
 .contaier-movies-search .container-single-movie {
   padding: 10px 20px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   cursor: pointer;
 }
+
 .contaier-movies-search .container-img img {
   object-fit: cover;
+  width: 30px;
   width: 150px;
   height: 150px;
 }

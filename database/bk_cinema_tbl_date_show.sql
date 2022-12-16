@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `tbl_date_show`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_date_show` (
   `idShow` int NOT NULL,
-  `dateShow` varchar(11) NOT NULL,
+  `dateShow` date NOT NULL,
   PRIMARY KEY (`idShow`,`dateShow`),
   CONSTRAINT `tbl_date_show_ibfk_1` FOREIGN KEY (`idShow`) REFERENCES `tbl_show` (`idShow`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -36,7 +36,6 @@ CREATE TABLE `tbl_date_show` (
 
 LOCK TABLES `tbl_date_show` WRITE;
 /*!40000 ALTER TABLE `tbl_date_show` DISABLE KEYS */;
-INSERT INTO `tbl_date_show` VALUES (1,'19-11-2022'),(1,'20-11-2022'),(1,'21-11-2022'),(1,'25-11-2022');
 /*!40000 ALTER TABLE `tbl_date_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-14 23:53:44
+-- Dump completed on 2022-12-16 21:08:14

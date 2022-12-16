@@ -1,3 +1,4 @@
+
 .news-grand-container {
   margin: auto;
   margin-top: 5vh;
@@ -12,16 +13,18 @@
 .news-detail-title {
   text-align: center;
   margin: 10px;
+  max-width: 80%;
+  font-weight: bolder;
 }
 
 .news-detail-info {
   font-weight: normal;
   align-self: flex-end;
-  margin-right: 10px;
+  margin-right: 120px;
 }
 
 .news-detail-info-special {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 .news-detail-image {
@@ -32,6 +35,7 @@
 
 .news-detail-content {
   font-weight: normal;
+  font-size: large;
   margin: 0 10%;
   text-align: justify;
   text-indent: 10%;
@@ -43,7 +47,8 @@
 
 .news-detail-source {
   font-weight: 500;
-  margin: 10px 0;
+  font-size: small;
+  align-self: center;
 }
 
 .news-detail-more-actions {
@@ -53,20 +58,38 @@
   flex-grow: 0;
   flex-shrink: 0;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  align-self: flex-start;
+  margin-left: 100px;
 }
 
 .news-detail-action {
   border-radius: 5px;
   border: none;
-  background-color: #ee6c4d;
-  color: white;
+  color: black;
+  background-color: #a8b5c9;
   padding: 10px;
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .news-detail-action:hover {
-  background-color: #eb4820;
   cursor: pointer;
+}
+
+.news-detail-action-enter {
+  border-radius: 5px;
+  color: #0dcaf0;
+  border: 1px solid #0dcaf0;
+  background-color: white;
+  padding: 10px;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.news-detail-action-enter:hover {
+  color: black;
+  background-color: #0dcaf0;
 }
 
 .news-detail-comment-section {
@@ -109,7 +132,7 @@
 .news-detail-comment-container {
   display: flex;
   justify-content: space-between;
-  background-color: #e0fbfc;
+  background-color: #edfefe;
   border-radius: 10px;
   padding: 10px;
   margin-top: 10px;
@@ -125,7 +148,7 @@
   flex-shrink: 0;
   display: flex;
   justify-content: center;
-  margin-right: 10px;
+  margin-left: 30px;
 }
 
 .news-detail-comment-avatar {
@@ -141,6 +164,8 @@
 }
 
 .news-detail-comment-author {
+  font-size: larger;
+  font-weight: bold;
 }
 
 .news-detail-comment-content {
@@ -150,21 +175,22 @@
 
 .news-detail-comment-actions {
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: flex-start;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
 .news-detail-comment-action {
   border-radius: 5px;
+  margin-bottom: 5px;
   border: none;
-  background-color: #ee6c4d;
-  color: white;
+  background-color: #edfefe;
+  color: black;
   padding: 5px;
   margin-right: 10px;
 }
 
 .news-detail-comment-action:hover {
-  background-color: #eb4820;
   cursor: pointer;
 }

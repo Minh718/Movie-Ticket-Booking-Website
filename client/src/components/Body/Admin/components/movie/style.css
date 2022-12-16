@@ -1,0 +1,19 @@
+.wrap- .all-movie {
+	display: flex;
+	flex-flow: wrap;
+}
+
+.wrap- .container-single-movie {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.wrap- .container-single-movie .movie-img {
+	width: 200px;
+}
+
+.wrap- .title-movie {
+	width: 200px;
+	word-wrap: break-word;
+}

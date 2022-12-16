@@ -1,18 +1,20 @@
 const mysql = require("mysql");
 const createConnection = () => {
   const connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "bk_cinema",
+    host: 'localhost',
+    user: 'root',
+    password: 'password',
+    database: 'bk_cinema'
   });
 
   const query = (sql) => {
     return new Promise((resolve, reject) => {
       connection.query(sql, (error, result) => {
-        if (error) {
+        if (error)
+        {
           reject(error);
-        } else {
+        } else
+        {
           resolve(result);
         }
       });
@@ -22,9 +24,11 @@ const createConnection = () => {
   const end = () => {
     return new Promise((resolve, reject) => {
       connection.end((error) => {
-        if (error) {
+        if (error)
+        {
           reject();
-        } else {
+        } else
+        {
           resolve();
         }
       });
@@ -33,13 +37,16 @@ const createConnection = () => {
 
   return new Promise((resolve, reject) => {
     connection.connect((error) => {
-      if (error) {
+      if (error)
+      {
         reject(error);
-      } else {
+      } else
+      {
         resolve({ query, end });
       }
     });
   });
 };
 
+module.exports = createConnection;
 module.exports = createConnection;

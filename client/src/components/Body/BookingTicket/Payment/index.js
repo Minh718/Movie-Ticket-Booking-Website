@@ -2,10 +2,11 @@ import "./index.css";
 import { Link, useLocation } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../../../../context";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select from "react-select";
 import { QrPayment } from "./QrPayment";
 import BreadcrumbPayment from "../../BreadcrumbTicket";
+import { url_database } from "../../api";
 
 function Payment() {
   // const selectChairs = useLocation().state.movie;
@@ -14,12 +15,26 @@ function Payment() {
   const date = useLocation().state.date;
   const hour = useLocation().state.hour;
   const idShow = useLocation().state.idShow;
-  const price = useLocation().state.price;
+  const [price, setPrice] = useState(useLocation().state.price);
+  const savedPrice = useLocation().state.price;
   const [errorPayment, setErrorPayment] = useState(false);
 
   const [openPaymentQR, setOpenPaymentQR] = useState(false);
   const room = useLocation().state.room;
   const [methodPayment, setMethodPayment] = useState("");
+  const [vouchers, setVouchers] = useState([]);
+
+  useEffect(() => {
+    fetch(url_database + '/vouchers')
+      .then(res => res.json())
+      .then(data => {
+        setVouchers(data.map(item => {
+          return {label: item.name + ` - giảm ${item.value}%`, value: item.value}
+        }))
+      })
+  }, [])
+
+
   const { user } = useGlobalContext();
   const handlePayment = () => {
     if (methodPayment.length === 0) {
@@ -28,6 +43,11 @@ function Payment() {
       setOpenPaymentQR(true);
     }
   };
+
+  const handleVoucherClick = (e) => {
+    setPrice((parseInt(savedPrice) * (1 - e.value / 100)).toFixed(0) + '.000')
+  }
+
   return (
     <>
       <BreadcrumbPayment index={2} />
@@ -54,14 +74,16 @@ function Payment() {
               <span className="payment-title">Mã khuyến mại</span>
               <Select
                 placeholder="Chọn mã khuyến mại"
-                options={[
-                  { value: "Ví điện tử MoMo", label: "Ví điện tử MoMo" },
-                  {
-                    value: "Thanh toán ngân hàng",
-                    label: "Thanh toán ngân hàng",
-                  },
-                ]}
+                // options={[
+                //   { value: "Ví điện tử MoMo", label: "Ví điện tử MoMo" },
+                //   {
+                //     value: "Thanh toán ngân hàng",
+                //     label: "Thanh toán ngân hàng",
+                //   },
+                // ]}
+                options={vouchers}
                 className="paymentMethods"
+                onChange={handleVoucherClick}
                 // onChange={(e) => {
                 //   setCanBooking(true);
                 //   setSelectedHour(e.value);
