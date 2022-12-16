@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import "./NewsDetails.css";
-//import data from "../json/data.json";
+import { BsFillArrowRightCircleFill, BsFillChatLeftTextFill, BsFillShareFill, BsFlag, BsFlagFill, BsNewspaper } from "react-icons/bs";
 import { useNavigate, useParams } from "react-router-dom";
 import { url_database } from "../api";
+import commentsData from "../json/comments.json";
+const comments = commentsData.data;
 const NewsDetail = () => {
   const [art, setArt] = useState({})
   const articleId = useParams().id;
@@ -19,37 +21,30 @@ const NewsDetail = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // const item = data.data[articleId];
-  // const commentList = item.comments.map((cmt, index) => (
-  //   <div className="news-detail-comment-container" key={index}>
-  //     <div className="news-detail-comment-left">
-  //       <img
-  //         src={cmt.avatar ? cmt.avatar : "http://genk.mediacdn.vn/k:thumb_w/640/2015/screen-shot-2015-07-30-at-2-31-57-pm-1438334096188/cau-chuyen-ve-nguoi-tao-ra-chu-ech-xanh-than-thanh.png"}
-  //         alt=""
-  //         className="news-detail-comment-avatar"
-  //       />
-  //     </div>
-  //     <div className="news-detail-comment-right">
-  //       <h1 className="news-detail-comment-author">{cmt.author}</h1>
-  //       <h6 className="news-detail-comment-content">{cmt.content}</h6>
-  //       <div className="news-detail-comment-actions">
-  //         <button className="news-detail-comment-action ">
-  //           Upvote ({cmt.votesDeficit})
-  //         </button>
-  //         <button className="news-detail-comment-action">Downvote</button>
-  //         <button className="news-detail-comment-action">Báo cáo</button>
-  //       </div>
-  //     </div>
-  //   </div>
-  // ));
+  const articleComments = comments.filter(comment => comment.idArticle == articleId)
+  const commentListRendered = articleComments.map((cmt, index) => (
+    <div className="news-detail-comment-container" key={index}>
+      <div className="news-detail-comment-left">
+        <img
+          src={"https://secure.gravatar.com/avatar/93048951a869d36af5ed25b84bfe0a90?s=150&r=g&d=https://actoolsource.com/wp-content/plugins/userswp/assets/images/no_profile.png"}
+          alt="Avatar"
+          className="news-detail-comment-avatar"
+        />
+      </div>
+      <div className="news-detail-comment-right">
+        <h1 className="news-detail-comment-author">{cmt.username}</h1>
+        <h6 className="news-detail-comment-content">{cmt.content}</h6>
+        
+      </div>
+      <div className="news-detail-comment-actions">
+          <button className="news-detail-comment-action"><BsFlagFill className="button-icon-comment"/></button>
+      </div>
+    </div>
+  ));
 
   return (
     <main className="news-page news-grand-container">
       <h1 className="news-detail-title">{art.title}</h1>
-      <h6 className="news-detail-info">
-        {/* Bởi <span className="news-detail-info-special">{art.author}</span> vào{" "} */}
-        {/* <span className="news-detail-info-special">{art.timestamp}</span>. */}
-      </h6>
       <img
         className="news-detail-image"
         src={art.img}
@@ -62,13 +57,11 @@ const NewsDetail = () => {
           </p>
         )) : ""}
       </article>
-      {/* <p className="news-detail-source">Nguồn: {item.source}</p> */}
       <div className="news-detail-more-actions">
-        {/* <button className="news-detail-action">Thích ({item.likes})</button> */}
-        <button onClick={() => document.getElementById('commentSection').scrollIntoView()} className="news-detail-action">Bình luận</button>
-        <button className="news-detail-action">Chia sẻ</button>
-        <button className="news-detail-action" onClick={() => navigate("/news")}>Tin tức khác</button>
-        <button className="news-detail-action">Báo cáo</button>
+        <button onClick={() => document.getElementById('commentSection').scrollIntoView()} className="news-button">Bình luận <BsFillChatLeftTextFill className="button-icon"/></button>
+        <button className="news-button">Chia sẻ <BsFillShareFill className="button-icon"/></button>
+        <button className="news-button" onClick={() => navigate("/news")}>Tin tức khác <BsNewspaper className="button-icon"/></button>
+        <button className="news-button">Báo cáo <BsFlagFill className="button-icon"/></button>
       </div>
       <div className="news-detail-comment-section" id="commentSection">
         <h1 className="news-detail-comment-header">Bình luận</h1>
@@ -81,16 +74,16 @@ const NewsDetail = () => {
           <p className="news-detail-comment-tos">
             Hãy tuân thủ tiêu chuẩn cộng đồng của chúng tôi.
           </p>
-          <button type="submit" className="news-detail-action">
-            Đăng
+          <button type="submit" className="news-button">
+            Đăng <BsFillArrowRightCircleFill className="button-icon"/>
           </button>
         </div>
         <div className="news-detail-comments-list">
-          {/* {item.comments.length ? (
-            commentList
+          {articleComments.length ? (
+            commentListRendered
           ) : (
             <p>Hãy là người đầu tiên bình luận về bài viết này.</p>
-          )} */}
+          )}
         </div>
       </div>
     </main>
