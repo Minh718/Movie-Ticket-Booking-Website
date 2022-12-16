@@ -1,0 +1,36 @@
+.container-notify {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1999;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.form-notify {
+  padding: 20px;
+  border-radius: 12px;
+  background: #fff;
+  min-width: 200px;
+  font-size: 35px;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  animation: aniOpen 0.8s ease;
+  /* transform: translateY(200%); */
+  transform: translateY(0%);
+}
+
+@keyframes aniOpen {
+  0% {
+    transform: translateY(-200%);
+    height: 200px;
+  }
+  100% {
+    transform: translateY(0%);
+    height: 95px;
+  }
+}

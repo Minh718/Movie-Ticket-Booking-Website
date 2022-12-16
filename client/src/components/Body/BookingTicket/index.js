@@ -7,75 +7,21 @@ import { useEffect, useState } from "react";
 import Select from "react-select";
 import axios from "axios";
 import { FaGenderless } from "react-icons/fa";
+import moment from "moment";
 
 function BookingTicket() {
-  // console.log(useLocation());
   const idMovie = useLocation().state.idMovie;
   const canPlaceTicket = useLocation().state.canPlaceTicket || false;
   const { moviesArePlaying } = useGlobalContext();
   const [movie, setMovie] = useState(null);
-  const [selectedDate, setSelectdDate] = useState("");
+  const [selectedDate, setSelectdDate] = useState(null);
   const [dateOptions, setDateOptions] = useState([]);
   const [selectedHour, setSelectedHour] = useState("");
   const [hourOptions, setHoursOptions] = useState([]);
   const [openHour, setOpenHour] = useState(false);
-  // const [selectedShowtime, setSeectedShowtime] = useState({
-  //   date: "",
-  //   time: "",
-  // });
-  // const [dateOptions, setDateOptions] = useState([]);
-  // const [timeOptions, setTimeOptions] = useState([]);
   const [canBooking, setCanBooking] = useState(false);
   const [show, setShow] = useState(null);
   const navigate = useNavigate();
-  // const [allShowtime, setAllShowtime] = useState([
-  //   {
-  //     date: "15/10/2022",
-  //     time: ["09:30", "13:30", "15:30", "20:30"],
-  //   },
-  //   {
-  //     date: "16/10/2022",
-  //     time: ["09:30", "13:30", "15:30", "20:30"],
-  //   },
-  //   {
-  //     date: "17/10/2022",
-  //     time: ["09:30", "13:30", "15:30", "20:30"],
-  //   },
-  //   {
-  //     date: "18/10/2022",
-  //     time: ["09:30", "13:30", "15:30", "20:30"],
-  //   },
-  //   {
-  //     date: "19/10/2022",
-  //     time: ["09:30", "13:30", "15:30", "20:30"],
-  //   },
-  // ]);
-
-  // useEffect(() => {
-  //   setDateOptions(
-  //     allShowtime.map((item) => ({ value: item.date, label: item.date }))
-  //   );
-  //   if (selectedShowtime.date) {
-  //     setTimeOptions([
-  //       { value: "09:30", label: "09:30" },
-  //       { value: "13:30", label: "13:30" },
-  //     ]);
-  //   }
-  // }, [allShowtime, selectedShowtime.date]);
-
-  // useEffect(() => {
-  //   if (selectedShowtime.time) {
-  //     setCanBooking(true);
-  //   }
-  // }, [selectedShowtime.time]);
-
-  // function handleDateSelect(option) {
-  //   setSelectedShowtime({ ...selectedShowtime, date: option.value });
-  // }
-
-  // function handleTimeSelect(option) {
-  //   setSelectedShowtime({ ...selectedShowtime, time: option.value });
-  // }
   useEffect(() => {
     (async () => {
       const res = await fetch(
@@ -85,15 +31,18 @@ function BookingTicket() {
       setShow(resShow.data[0]);
       const jsonMoive = await res.json();
       setMovie(jsonMoive);
-      if (canPlaceTicket)
-      {
+      if (canPlaceTicket) {
         const resDates = await axios.get(
-          `/movies/${idMovie}/dates`
+          `/movies/${resShow.data[0].idShow}/dates`
         );
+        console.log(resDates.data);
         setDateOptions(
           resDates.data.map((date) => ({
-            value: date.dateShow,
-            label: date.dateShow,
+            value: {
+              dateShow: date.dateShow,
+              dateShowRender: date.dateShowRender,
+            },
+            label: date.dateShowRender,
           }))
         );
       }
@@ -104,9 +53,10 @@ function BookingTicket() {
     setOpenHour(false);
     setSelectedHour("");
     const fetchHours = async () => {
-      const resHours = await axios.get(
-        `/movies/${idMovie}/${selectedDate}/hours`
-      );
+      const resHours = await axios.post(`/movies/hours`, {
+        dateShow: selectedDate.dateShow,
+        idShow: show.idShow,
+      });
       setHoursOptions(
         resHours.data.map((hour) => ({
           value: hour.hour,
@@ -115,8 +65,8 @@ function BookingTicket() {
       );
       setOpenHour(true);
     };
-    if (selectedDate !== "")
-    {
+    if (selectedDate) {
+      console.log(selectedDate);
       fetchHours();
     }
   }, [selectedDate]);
@@ -182,7 +132,7 @@ function BookingTicket() {
                       setCanBooking(true);
                       setSelectedHour(e.value);
                     }}
-                  // noOptionsMessage={() => "Vui lòng chọn ngày"}
+                    // noOptionsMessage={() => "Vui lòng chọn ngày"}
                   />
                 )}
                 {canBooking && (
@@ -193,7 +143,7 @@ function BookingTicket() {
                     color="black"
                     state={{
                       show,
-                      movie,
+                      idMovie,
                       hour: selectedHour,
                       date: selectedDate,
                     }}

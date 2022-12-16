@@ -1,7 +1,7 @@
 import "./index.css";
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 import { BiBookAdd } from "react-icons/bi";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Select from "react-select";
 import {
   getAllMovies,
@@ -9,16 +9,19 @@ import {
   getAllShows,
   addShow,
   deleteShow,
+  getAllMoviesLeft,
 } from "../../../../../apiRequest";
 import axios from "axios";
-export default function ShowManagement() {
+import { useNavigate, useOutletContext } from "react-router-dom";
+export default function AddShow() {
   const [idMovie, setIdMovie] = useState(null);
   const [price, setPrice] = useState(null);
   const [room, setRoom] = useState(null);
   const [shows, setShows] = useState(null);
-
+  const navigate = useNavigate();
   const [roomOptions, setRoomOptions] = useState([]);
   const [movieOptions, setMovieOptions] = useState([]);
+  const { setOption } = useOutletContext();
   const fetchShows = async () => {
     const resShows = await getAllShows();
     setShows(
@@ -37,7 +40,8 @@ export default function ShowManagement() {
 
   useEffect(() => {
     const fetchMovies = async () => {
-      const resMovies = await getAllMovies();
+      const resMovies = await getAllMoviesLeft();
+      console.log(resMovies);
       setMovieOptions(
         resMovies.map((movie) => ({
           value: movie.id,
@@ -61,15 +65,18 @@ export default function ShowManagement() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(idMovie);
     const newShow = {
       idMovie: idMovie,
       price: parseInt(price),
       room: room,
     };
+    console.log(newShow);
     await addShow(newShow);
-    await fetchShows();
+
+    setOption({ isOpen: true, text: "Thêm show thành công", color: "#38E54D" });
+    navigate("/adminPage/show");
   };
-  console.log(shows);
   return (
     <div className="show-management">
       <div className="show-header">
@@ -86,15 +93,19 @@ export default function ShowManagement() {
             setIdMovie(e.value);
           }}
         />
-        <input
-          name="dateShow"
-          id="dateShow"
-          className="select_tag"
-          placeholder="Nhập giá"
-          onChange={(e) => {
-            setPrice(e.target.value);
-          }}
-        ></input>
+        <div className="container-input-price">
+          <input
+            name="dateShow"
+            id="dateShow"
+            className="price-show-input"
+            placeholder="Nhập giá"
+            onChange={(e) => {
+              setPrice(e.target.value);
+            }}
+            value={price}
+          ></input>
+          <span className="vnd-end-input">VNĐ</span>
+        </div>
         <Select
           name="room"
           id="room"
@@ -104,38 +115,12 @@ export default function ShowManagement() {
           onChange={(e) => {
             setRoom(e.value);
           }}
+          // defaultValue={room}
         />
-        <button type="submit">Thêm show</button>
+        <div className="select_tag">
+          <button type="submit">Thêm show</button>
+        </div>
       </form>
-      <div className="show-container">
-        <ul className="show-info">
-          {shows?.map((show) => {
-            return (
-              <li>
-                <div className="info-container">
-                  <p>{show.showID}</p>
-                  <p>{show.movieID}</p>
-                  <p>{show.name}</p>
-                  <p>{show.price}</p>
-                  <p>{show.room}</p>
-                </div>
-                <div className="show-modify">
-                  <AiFillEdit className="show-mod edit-show" />
-                  <AiFillDelete
-                    className="show-mod delete-show"
-                    onClick={async () => {
-                      await deleteShow({
-                        showID: show.showID,
-                      });
-                      await fetchShows();
-                    }}
-                  />
-                </div>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
     </div>
   );
 }

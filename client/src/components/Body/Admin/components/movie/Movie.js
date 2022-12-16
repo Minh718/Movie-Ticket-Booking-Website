@@ -1,54 +1,78 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Spinner } from "reactstrap";
+import React, { useEffect, useState } from "react";
+import { FaTrashAlt } from "react-icons/fa";
+import { useOutletContext } from "react-router-dom";
+import {
+  deleteMovie,
+  deleteShow,
+  getAllMovies,
+} from "../../../../../apiRequest";
+import { url_img } from "../../../api";
 import "./style.css";
 export const Movie = () => {
   const [movies, setMovies] = useState([]);
-  const [isLoadding, setIsLoadding] = useState(false);
-  const img_url = "http://image.tmdb.org/t/p/w500";
-  const [query, setQuery] = useState("a");
+  const { setOption } = useOutletContext();
   useEffect(() => {
-    const fetchMovies = async () => {
-      const parsedQuery = query.replaceAll(" ", "+");
-      const res = await fetch(
-        `https://api.themoviedb.org/3/search/movie?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&query=${parsedQuery}&page=1&include_adult=false`
-      );
-      const resJson = await res.json();
-      // console.log(resJson);
-      setMovies(resJson.results);
-    };
-
-    fetchMovies();
-  }, [query]);
+    (async () => {
+      try {
+        setMovies(await getAllMovies());
+        // console.log(await getAllMovies());
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+  const handleDeleteMovie = async (id) => {
+    try {
+      await deleteMovie(id);
+      setMovies(movies.filter((movie) => movie.id !== id));
+      setOption({
+        isOpen: true,
+        text: "Xóa movie thành công",
+        color: "#D2001A",
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
-    <div className="wrap-">
-      {isLoadding ? (
-        <div
-          className="container-single-movie"
-          style={{ justifyContent: "center" }}
-        >
-          <Spinner>Loading...</Spinner>
-        </div>
-      ) : query.length !== 0 && movies.length === 0 ? (
-        <div
-          className="container-single-movie"
-          style={{ justifyContent: "center" }}
-        >
-          <h3>Không tìm thấy kết quả</h3>
-        </div>
-      ) : (
-        movies?.map((movie) => (
-          <div key={movie.id} className="container-single-movie">
-            <div>
-              <p className="title-movie">{movie.title}</p>
-              <p>{movie.release_date}</p>
-            </div>
-            <div className="container-img">
-              <img src={img_url + movie.poster_path}></img>
-            </div>
-          </div>
-        ))
-      )}
+    <div className="container_table_voucher" style={{ textAlign: "center" }}>
+      <h1>Bảng quản lý movies</h1>
+      <table className="table_voucher">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Tên movie</th>
+            {/* <th>Poster movie</th> */}
+            <th>Backdrop movie</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {movies.map((movie) => (
+            <tr>
+              <td>{movie.id}</td>
+              <td>{movie?.title}</td>
+              {/* <td>
+                <img
+                  src={url_img + movie?.poster_path}
+                  className="img_poster_show"
+                />
+              </td> */}
+              <td>
+                <img
+                  src={url_img + movie?.backdrop_path}
+                  className="img_poster_show"
+                />
+              </td>
+              <td>
+                <div style={{ padding: "5px", cursor: "pointer" }}>
+                  <FaTrashAlt onClick={() => handleDeleteMovie(movie.id)} />
+                </div>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

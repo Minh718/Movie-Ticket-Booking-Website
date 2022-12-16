@@ -27,11 +27,11 @@ export const QrPayment = ({
   }, [countdown]);
   const handlePaymentQR = async () => {
     try {
-      console.log(chairList)
+      console.log(chairList);
       await axios.post(`/movies/tickets`, {
         chairList,
         idShow,
-        date,
+        date: date.dateShow,
         hour,
       });
       setIsSuccess(true);

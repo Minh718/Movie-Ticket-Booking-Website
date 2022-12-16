@@ -1,68 +1,45 @@
-import React, { useState,useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 import {
   Carousel,
+  CarouselCaption,
   CarouselControl,
   CarouselIndicators,
   CarouselItem,
-  CarouselCaption,
 } from "reactstrap";
-import Select from "react-select";
+import { getAllShows, getMovieDates, getMovieHours } from "../../../apiRequest";
 import { useGlobalContext } from "../../../context";
-import "./index.css";
 import { img_url } from "../api";
-import { getAllShows,getMovieDates, getMovieDateHours} from "../../../apiRequest";
-import axios from "axios";
-const Thumbnails = [
-  {
-    id: "v1",
-    src: "/images/Thumbnail1.jpg",
-  },
-  {
-    id: "v2",
-    src: "/images/Thumbnail2.jpg",
-  },
-  {
-    id: "v3",
-    src: "/images/Thumbnail3.jpg",
-  },
-  {
-    id: "v4",
-    src: "/images/Thumbnail4.jpg",
-  },
-  {
-    id: "v5",
-    src: "/images/Thumbnail5.jpg",
-  },
-  {
-    id: "v6",
-    src: "/images/Thumbnail6.jpg",
-  },
-];
+import "./index.css";
+
 export default function Slide() {
-  const { moviesArePlaying,user } = useGlobalContext();
+  const { moviesArePlaying, user } = useGlobalContext();
   const [activeIndex, setActiveIndex] = useState(0);
   const [animating, setAnimating] = useState(false);
 
-  const [idMovie, setIdMovie] = useState(null); 
-  const [date, setDate] = useState(null); 
-  const [hour, setHour] = useState(null); 
+  const [date, setDate] = useState(null);
+  const [hour, setHour] = useState(null);
 
   const [dateOptions, setDateOptions] = useState([]);
   const [movieOptions, setMovieOptions] = useState([]);
   const [hourOptions, setHoursOptions] = useState([]);
-
+  const [price, setPrice] = useState([]);
   const [movie, setMovie] = useState(null);
   const [show, setShow] = useState(null);
 
-  const [canPlaceTicket,setCanPlaceTicket] = useState(false)
+  const [canPlaceTicket, setCanPlaceTicket] = useState(false);
 
   useEffect(() => {
     const fetchShows = async () => {
-      const resShows = await await getAllShows();
+      const resShows = await getAllShows();
       setMovieOptions(
         resShows.map((show) => ({
-          value: show.idMovie,
+          value: {
+            idShow: show.idShow,
+            price: show.price,
+            idMovie: show.idMovie,
+          },
           label: show.title,
         }))
       );
@@ -72,30 +49,27 @@ export default function Slide() {
 
   useEffect(() => {
     const fetchDates = async () => {
-      const resDates = await getMovieDates(idMovie);
-      const res = await fetch(
-        `https://api.themoviedb.org/3/movie/${idMovie}?api_key=14ccdb96456935bbb41591e99697d262`
-      );
-      const resShow = await axios.get(`/movies/${idMovie}/show`);
-      setShow(resShow.data[0]);
-      const jsonMoive = await res.json();
-      setMovie(jsonMoive);
-
+      const resDates = await getMovieDates(show.idShow);
       setDateOptions(
         resDates.map((date) => ({
-          value: date.dateShow,
-          label: date.dateShow,
+          value: {
+            dateShow: date.dateShow,
+            dateShowRender: date.dateShowRender,
+          },
+          label: date.dateShowRender,
         }))
       );
     };
-    if (idMovie){
+    if (show) {
       fetchDates();
     }
-  }, [idMovie]);
-
+  }, [show]);
   useEffect(() => {
     const fetchHours = async () => {
-      const resHours = await getMovieDateHours(idMovie,date);
+      const resHours = await getMovieHours({
+        idShow: show.idShow,
+        dateShow: date.dateShow,
+      });
       setHoursOptions(
         resHours.map((hour) => ({
           value: hour.hour,
@@ -103,11 +77,10 @@ export default function Slide() {
         }))
       );
     };
-    if (date){
+    if (date) {
       fetchHours();
     }
   }, [date]);
-
 
   const movies = moviesArePlaying.slice(0, 7);
   const next = () => {
@@ -140,7 +113,7 @@ export default function Slide() {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
-  }
+  };
   return (
     <div className="slider-container">
       <Carousel activeIndex={activeIndex} next={next} previous={previous}>
@@ -162,60 +135,63 @@ export default function Slide() {
         />
       </Carousel>
 
-      <form className="quick-booking" action="/historyTicket" onSubmit={handleSubmitForm}>
+      <form
+        className="quick-booking"
+        action="/historyTicket"
+        onSubmit={handleSubmitForm}
+      >
         <span>MUA VÉ NHANH</span>
-        <Select name="movie" id="movie" className = "select_tag"
-                  placeholder="Chọn film"
-                  options={movieOptions}
-                  onChange={(e) => {
-                    setIdMovie(e.value);
-                  }}
-                />
-        <Select name="date" id="date" className = "select_tag"
-                  placeholder="Chọn ngày"
-                  options={dateOptions}
-                  onChange={(e) => {
-                    setDate(e.value);
-                  }}
-                />
-        <Select name="time" id="time" className = "select_tag"
-                  placeholder="Chọn ngày"
-                  options={hourOptions}
-                  onChange={(e) => {
-                    setCanPlaceTicket(true);
-                    setHour(e.value);
-                  }}
-                />   
+        <Select
+          name="movie"
+          id="movie"
+          className="select_tag"
+          placeholder="Chọn film"
+          options={movieOptions}
+          onChange={(e) => {
+            setShow(e.value);
+          }}
+        />
+        <Select
+          name="date"
+          id="date"
+          className="select_tag"
+          placeholder="Chọn ngày"
+          options={dateOptions}
+          onChange={(e) => {
+            setDate(e.value);
+          }}
+        />
+        <Select
+          name="time"
+          id="time"
+          className="select_tag"
+          placeholder="Chọn ngày"
+          options={hourOptions}
+          onChange={(e) => {
+            setCanPlaceTicket(true);
+            setHour(e.value);
+          }}
+        />
         <div className="btn-buy-ticket">
-          { canPlaceTicket == true ? 
-              <Link
-                    to="/seatSelection"
-                    className="orange-btn"
-                    color="black"
-                    state={{
-                      show,
-                      movie,
-                      hour: hour,
-                      date: date,
-                    }}
-                  >
-                    Mua vé
-                  </Link>:
+          {canPlaceTicket == true ? (
             <Link
-                  to="/"
-                  className="orange-btn"
-                  color="black"
-                  state={{
-                    show,
-                    movie,
-                    hour: hour,
-                    date: date,
-                  }}
-                >
-                  Mua vé
-                </Link>
-          }
-
+              to="/seatSelection"
+              className="orange-btn"
+              color="black"
+              state={{
+                show,
+                idMovie: show.idMovie,
+                hour: hour,
+                date: date,
+              }}
+            >
+              Mua vé
+            </Link>
+          ) : (
+            <button to="/" className="orange-btn" color="black" disabled>
+              Mua vé
+            </button>
+          )}
         </div>
       </form>
     </div>

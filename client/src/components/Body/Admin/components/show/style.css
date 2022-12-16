@@ -1,0 +1,19 @@
+.img_poster_show {
+  width: 130px;
+  object-fit: cover;
+}
+.btn-place_slideshow {
+  padding: 5px 10px;
+  border-color: #0e5e6f;
+  border-radius: 5px;
+  background-color: #0e5e6f;
+  color: #fff;
+  transition: 0.3s all linear;
+  font-weight: bold;
+}
+.btn-place_slideshow:hover {
+  border-color: #0e5e6f;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #0e5e6f;
+}

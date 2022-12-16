@@ -1,6 +1,7 @@
 .container_table_voucher > h1 {
   text-align: center;
   margin-top: 10px;
+  font-size: 30px;
 }
 .table_voucher {
   width: 90%;
@@ -10,13 +11,13 @@
 }
 .table_voucher td,
 .table_voucher th {
-  padding: 8px;
+  padding: 2px;
 }
 .container_table_voucher .container-btns button {
   padding: 3px;
   margin-left: 10px;
   border-color: transparent;
-  background: transparent;
+  /* background: transparent; */
 }
 .container_table_voucher .container-btns {
   margin-left: -10px;

@@ -1,6 +1,6 @@
 import "./index.css";
 import axios from "axios";
-import { Link, useLocation,Navigate } from "react-router-dom";
+import { Link, useLocation, Navigate } from "react-router-dom";
 import { AiFillStar } from "react-icons/ai";
 import { useEffect, useState, useRef } from "react";
 import { Button, Spinner } from "reactstrap";
@@ -11,11 +11,12 @@ const column = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const row = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const placedSeat = ["A5", "B4", "C5"];
 function BookingSeat() {
-  const movie = useLocation().state.movie;
+  const idMovie = useLocation().state.idMovie;
   const show = useLocation().state.show;
   const hour = useLocation().state.hour;
   const date = useLocation().state.date;
   const { user } = useGlobalContext();
+  const [movie, setMovie] = useState(null);
   // const seatRef = useRef();
   const seatClassNames = ["seat-empty", "seat-selected", "seat-sold"];
   const [selectedSeatList, setSelectedSeatList] = useState([]);
@@ -23,11 +24,24 @@ function BookingSeat() {
   const [room, setRoom] = useState("01");
   useEffect(() => {
     (async () => {
+      try {
+        const res = await fetch(
+          `https://api.themoviedb.org/3/movie/${idMovie}?api_key=14ccdb96456935bbb41591e99697d262`
+        );
+        const resMovie = await res.json();
+        setMovie(resMovie);
+      } catch (err) {
+        console.log(err);
+      }
+    })();
+  }, []);
+  useEffect(() => {
+    (async () => {
       const res = await axios.get(
-        `${url_database}/movies/${show?.idShow}/${date}/${hour}/room`
+        `${url_database}/movies/${show?.idShow}/${date?.dateShow}/${hour}/room`
       );
       const resChairs = await axios.get(
-        `${url_database}/movies/${show?.idShow}/${date}/${hour}/chairs`
+        `${url_database}/movies/${show?.idShow}/${date?.dateShow}/${hour}/chairs`
       );
       const newPlacedSeats = resChairs.data.map((chair) => chair.chair);
       const result = [];
@@ -48,24 +62,6 @@ function BookingSeat() {
     })();
   }, []);
   const [seatArray, setSeatArray] = useState(null);
-  // const handlePlacedSeatArr = () => {
-  //   const result = [];
-  //   column.forEach((character, index) => {
-  //     for (let i = 1; i < 11; i++) {}
-  //   });
-  // };
-
-  // function handleIncreaseSeatCount() {
-  //   if (seatCount < 5) setSeatCount(seatCount + 1);
-  // }
-  // console.log(selectedSeatList);
-  // function handleDecreaseSeatCount() {
-  //   if (seatCount === selectedSeatList.length) {
-  //     return;
-  //   }
-
-  //   if (seatCount > 0) setSeatCount(seatCount - 1);
-  // }
   const handleShowSelectedSeat = () => {
     if (selectedSeatList.length === 0) return "Chưa chọn";
     else {
@@ -171,13 +167,13 @@ function BookingSeat() {
         </div>
 
         <div className="right-part booking-movie-card">
-          <h1 className="movie-title">{movie.title}</h1>
+          <h1 className="movie-title">{movie?.title}</h1>
 
           <div className="movie-rate">
             <AiFillStar color="yellow" />
-            <span className="movie-rate-star">{movie.vote_average}/10</span>
+            <span className="movie-rate-star">{movie?.vote_average}/10</span>
             <span className="movie-rate-count">
-              ({movie.vote_count} đánh giá)
+              ({movie?.vote_count} đánh giá)
             </span>
           </div>
 
@@ -192,9 +188,9 @@ function BookingSeat() {
             </div>
             <div className="booking-info-row">
               <h3>Suất chiếu: </h3>
-              <span>{date}</span>
-              <span> | </span>
               <span>{hour}</span>
+              <span> | </span>
+              <span>{date.dateShowRender}</span>
             </div>
             {/* <div className="booking-info-row">
               <h3>Số lượng ghế: </h3>
@@ -221,29 +217,27 @@ function BookingSeat() {
               <h3>Tổng đơn hàng: </h3>
               <span className="ticket-price">{handlePrice()}đ</span>
             </div>
-              { 
-              user?<Link
-                    to="/seatSelection/payment"
-                    className="orange-btn"
-                    state={{
-                      selectedSeatList,
-                      movie,
-                      room,
-                      date,
-                      hour,
-                      idShow: show.idShow,
-                      price: handlePrice(),
-                    }}
-                  >
-                    Đặt vé
-                  </Link> : <Link
-                    to="/login"
-                    className="orange-btn"
-                  >
-                    Đặt vé
-                  </Link>
-              }
-            
+            {user ? (
+              <Link
+                to="/seatSelection/payment"
+                className="orange-btn"
+                state={{
+                  selectedSeatList,
+                  movie,
+                  room,
+                  date,
+                  hour,
+                  idShow: show.idShow,
+                  price: handlePrice(),
+                }}
+              >
+                Đặt vé
+              </Link>
+            ) : (
+              <Link to="/login" className="orange-btn">
+                Đặt vé
+              </Link>
+            )}
           </div>
         </div>
       </div>

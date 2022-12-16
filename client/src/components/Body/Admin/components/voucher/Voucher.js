@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { deleteVoucherById, getAllVouchers } from "../../../../../apiRequest";
 import { FaTrashAlt, FaEdit } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import "./style.css";
 export const Voucher = () => {
   const navigate = useNavigate();
   const [vouchers, setVouchers] = useState([]);
+  const { setOption } = useOutletContext();
   useEffect(() => {
     (async () => {
       try {
@@ -22,6 +23,11 @@ export const Voucher = () => {
       setVouchers(
         vouchers.filter((voucher) => voucher.idVoucher !== idVoucher)
       );
+      setOption({
+        isOpen: true,
+        text: "Xóa voucher thành công",
+        color: "#CB1C8D",
+      });
     } catch (err) {
       console.log(err);
     }

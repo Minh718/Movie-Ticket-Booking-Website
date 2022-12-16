@@ -1,47 +1,45 @@
-import { Header, Footer, Body, BookingSeat } from "./components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect } from "react";
 import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Navigate,
   createBrowserRouter,
   createRoutesFromElements,
+  Navigate,
   Outlet,
+  Route,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./components/Body/Home/index";
-import LoginPage from "./components/Body/Login/index";
-import NewsPage from "./components/Body/News/index";
-import MoviesPage from "./components/Body/Movies/index";
-import SupportPage from "./components/Body/Support/index";
-import UserPage from "./components/Body/User/index";
-import BookingTicket from "./components/Body/BookingTicket/index";
-import { useGlobalContext } from "./context";
-import Profile from "./components/Body/profile";
-import "bootstrap/dist/css/bootstrap.min.css";
-import HistoryTicket from "./components/Body/historyTicket";
-import NewsDetail from "./components/Body/News/NewsDetail";
-import DetailMovie from "./components/Body/detailMovie";
-import AdminPage from "./components/Body/Admin";
-import Error from "./components/Body/Error";
-import Vouchers from "./components/Body/vouchers";
-import Payment from "./components/Body/BookingTicket/Payment";
-import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
-import HomeAdmin from "./components/Body/Admin/components/home/Index";
-import ShowManagement from "./components/Body/Admin/components/ShowManagement/index";
-import ShowTimeManagement from "./components/Body/Admin/components/ShowTimeManagement/index";
 import { handleRefreshWeb } from "./apiRequest";
-import { useEffect } from "react";
-import { Article } from "./components/Body/Admin/components/article/Article";
-import { Movie } from "./components/Body/Admin/components/movie/Movie";
-import { AddMovie } from "./components/Body/Admin/components/addMovie/index";
-import { SlideShow } from "./components/Body/Admin/components/slideShow/SlideShow";
+import { BookingSeat, Footer, Header } from "./components";
+import AdminPage from "./components/Body/Admin";
 import { AddArticle } from "./components/Body/Admin/components/addArticle/index";
+import { AddMovie } from "./components/Body/Admin/components/addMovie/index";
 import { AddSlideShow } from "./components/Body/Admin/components/addSlideShow/index";
 import { AddVoucher } from "./components/Body/Admin/components/addVoucher/index";
+import { Article } from "./components/Body/Admin/components/article/Article";
+import HomeAdmin from "./components/Body/Admin/components/home/Index";
+import { Movie } from "./components/Body/Admin/components/movie/Movie";
+import ShowTimeManagement from "./components/Body/Admin/components/ShowTimeManagement/index";
+import { SlideShow } from "./components/Body/Admin/components/slideShow/SlideShow";
+import BookingTicket from "./components/Body/BookingTicket/index";
+import Payment from "./components/Body/BookingTicket/Payment";
+import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
+import DetailMovie from "./components/Body/detailMovie";
+import HistoryTicket from "./components/Body/historyTicket";
+import Home from "./components/Body/Home/index";
+import LoginPage from "./components/Body/Login/index";
+import MoviesPage from "./components/Body/Movies/index";
+import NewsPage from "./components/Body/News/index";
+import NewsDetail from "./components/Body/News/NewsDetail";
+import Profile from "./components/Body/profile";
+import SupportPage from "./components/Body/Support/index";
+import UserPage from "./components/Body/User/index";
+import Vouchers from "./components/Body/vouchers";
+import { useGlobalContext } from "./context";
 
-import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
 import { EditVoucher } from "./components/Body/Admin/components/addVoucher/EditVoucher";
+import AddShow from "./components/Body/Admin/components/ShowManagement/index";
+import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
+import { Show, Shows } from "./components/Body/Admin/components/show";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -98,7 +96,8 @@ function App() {
             <Route path="voucher" element={<Voucher />} />
             <Route path="editVoucher" element={<EditVoucher />} />
             <Route path="movie" element={<Movie />} />
-            <Route path="show" element={<ShowManagement />} />
+            <Route path="addShow" element={<AddShow />} />
+            <Route path="show" element={<Shows />} />
             <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
         )}

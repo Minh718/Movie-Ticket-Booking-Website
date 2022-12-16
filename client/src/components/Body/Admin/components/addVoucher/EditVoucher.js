@@ -6,7 +6,7 @@ import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import moment from "moment";
 import { insertVoucher, updateVoucher } from "../../../../../apiRequest";
 import "./style.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 export const EditVoucher = () => {
   const voucher = useLocation().state?.voucher;
   const [endDate, setEndDate] = useState();
@@ -16,6 +16,8 @@ export const EditVoucher = () => {
   const [point, setPoint] = useState("");
   const [maximum, setMaximum] = useState(null);
   const navigate = useNavigate();
+  const { setOption } = useOutletContext();
+
   const handleSubmit = async () => {
     try {
       await updateVoucher({
@@ -30,6 +32,11 @@ export const EditVoucher = () => {
         }-${endDate.getDate()}`,
       });
       navigate("/adminPage/voucher");
+      setOption({
+        isOpen: true,
+        text: "Sửa voucher thành công",
+        color: "#ADE792",
+      });
       // await insertVoucher({name, value, maximum, suffix, end_date: `${end_date.getFullYear}-${end_date.getMonth + 1}-${end_date.getDate}`})
     } catch (err) {
       console.log(err);

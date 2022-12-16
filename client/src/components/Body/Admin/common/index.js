@@ -43,7 +43,7 @@ function Common({ children, openBar }) {
             </div>
             <div
               className={index === 2 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/show")}
+              onClick={() => navigate("/adminPage/addShow")}
             >
               Thêm Show
             </div>
@@ -95,27 +95,6 @@ function Common({ children, openBar }) {
               onClick={() => navigate("/adminPage/voucher")}
             >
               Danh sách voucher
-            </div>
-          </div>
-          <div>
-            <div
-              className="accordion"
-              onClick={() => (index !== 6 ? setIndex(6) : setIndex(0))}
-            >
-              Lịch chiếu
-              {index === 6 ? <FaAngleUp /> : <FaAngleDown />}
-            </div>
-            <div
-              className={index === 6 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/showtime")}
-            >
-              Thêm lịch chiếu
-            </div>
-            <div
-              className={index === 6 ? "click-down active" : "click-down"}
-              onClick={() => navigate("/adminPage/showtime")}
-            >
-              Danh sách lịch chiếu
             </div>
           </div>
         </div>

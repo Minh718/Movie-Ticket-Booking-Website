@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { Spinner } from "reactstrap";
 import { getAllMovies, insertMovie } from "../../../../../apiRequest";
 import { url_database } from "../../../api";
@@ -15,6 +15,8 @@ export const AddMovie = () => {
   const [isQuering, setIsQuering] = useState(false);
   const [casts, setCasts] = useState([]);
   const [info, setInfo] = useState(null);
+  const { setOption } = useOutletContext();
+
   useEffect(() => {
     (async () => {
       const data = await getAllMovies();
@@ -51,6 +53,11 @@ export const AddMovie = () => {
         setQuery("");
         setIsViewMovie(false);
         setIdMoviesInDb([...idMoviesInDb, movie.id]);
+        setOption({
+          isOpen: true,
+          text: "Thêm movie thành công",
+          color: "#F96666",
+        });
         // setMovie(null);
       } catch (err) {
         console.log(err);

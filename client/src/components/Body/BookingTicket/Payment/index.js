@@ -120,9 +120,9 @@ function Payment() {
               </div>
               <div className="booking-info-row">
                 <h3>Suất chiếu: </h3>
-                <span>{date}</span>
-                <span> | </span>
                 <span>{hour}</span>
+                <span> | </span>
+                <span>{date.dateShowRender}</span>
               </div>
               <div className="booking-info-row">
                 <h3>Số lượng ghế: </h3>

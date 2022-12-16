@@ -1,6 +1,18 @@
 const createConnection = require("../config/database");
 
 const movieController = {
+  getAllMoviesLeft: async (req, res) => {
+    const connection = await createConnection();
+    try {
+      const sql = `SELECT * FROM tbl_movie WHERE id NOT IN (SELECT idMovie FROM tbl_show) `;
+      const result = await connection.query(sql);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(500).json(err);
+    } finally {
+      await connection.end();
+    }
+  },
   getAllMovie: async (req, res) => {
     const connection = await createConnection();
     try {
@@ -11,6 +23,18 @@ const movieController = {
       res.status(500).json(err);
     } finally {
       await connection.end();
+    }
+  },
+  deleteMovie: async (req, res) => {
+    const connection = await createConnection();
+    const id = req.params.id;
+    try {
+      const sql = `DELETE FROM tbl_movie WHERE id = ${id}`;
+      console.log(sql);
+      const result = await connection.query(sql);
+      res.status(200).json(result);
+    } catch (err) {
+      res.status(500).json(err);
     }
   },
   insertMovie: async (req, res) => {
@@ -32,10 +56,11 @@ const movieController = {
     }
   },
   getMovieDate: async (req, res) => {
-    const idMovie = req.params.idMovie;
+    const idShow = req.params.idShow;
     const connection = await createConnection();
     try {
-      const sql = `SELECT dateShow from tbl_show natural JOIN tbl_date_show WHERE idMovie = ${idMovie}`;
+      const sql = `SELECT DISTINCT DATE_FORMAT(dateShow, "%Y-%m-%d") as dateShow , DATE_FORMAT(dateShow, "%d-%m-%Y") as dateShowRender FROM tbl_hour_show WHERE idShow = '${idShow}' AND dateShow > Current_date() ORDER BY dateShow asc`;
+      console.log(sql);
       const result = await connection.query(sql);
       res.status(200).json(result);
     } catch (err) {
@@ -58,11 +83,13 @@ const movieController = {
     }
   },
   getMovieHours: async (req, res) => {
-    const idMovie = req.params.idMovie;
-    const date = req.params.date;
+    const idShow = req.body.idShow;
+    const dateShow = req.body.dateShow;
+    console.log(idShow, dateShow);
     const connection = await createConnection();
     try {
-      const sql = `SELECT hour from tbl_show natural JOIN tbl_date_show natural JOIN tbl_hour_show WHERE idMovie = ${idMovie} AND dateShow = '${date}'`;
+      const sql = `SELECT time_format(hour, '%H:%i') as hour FROM tbl_hour_show WHERE idShow = '${idShow}' AND dateShow = '${dateShow}'order by hour asc;`;
+      // console.log(sql);
       const result = await connection.query(sql);
       res.status(200).json(result);
     } catch (err) {

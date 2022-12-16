@@ -5,30 +5,47 @@ import "react-datepicker/dist/react-datepicker-cssmodules.css";
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 import { insertVoucher } from "../../../../../apiRequest";
 import "./style.css";
+import moment from "moment";
+import { useOutletContext } from "react-router-dom";
 export const AddVoucher = () => {
   const [endDate, setEndDate] = useState(null);
   const [suffix, setSuffix] = useState("k");
   const [name, setName] = useState("");
   const [value, setValue] = useState("");
   const [point, setPoint] = useState("");
-  const [maximum, setMaximum] = useState(null);
+  const [maximum, setMaximum] = useState(0);
+  const { setOption } = useOutletContext();
   const handleSubmit = async () => {
     try {
+      console.log(
+        name,
+        value,
+        maximum,
+        suffix,
+        point,
+        moment(endDate).format("YYYY-MM-DD")
+      );
       await insertVoucher({
         name,
         value,
         maximum,
         suffix,
         point,
-        end_date: `${endDate.getFullYear()}-${
-          endDate.getMonth() + 1
-        }-${endDate.getDate()}`,
+        end_date: moment(endDate).format("YYYY-MM-DD"),
+        // end_date: `${endDate.getFullYear()}-${
+        //   endDate.getMonth() + 1
+        // }-${endDate.getDate()}`,
       });
       setEndDate(null);
       setName("");
       setValue("");
       setPoint("");
-      setMaximum("");
+      setMaximum(0);
+      setOption({
+        isOpen: true,
+        text: "Thêm voucher thành công",
+        color: "#C689C6",
+      });
       // await insertVoucher({name, value, maximum, suffix, end_date: `${end_date.getFullYear}-${end_date.getMonth + 1}-${end_date.getDate}`})
     } catch (err) {
       console.log(err);
