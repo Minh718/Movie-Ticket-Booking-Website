@@ -179,7 +179,7 @@ export default function Slide() {
                   }}
                 />
         <Select name="time" id="time" className = "select_tag"
-                  placeholder="Chọn ngày"
+                  placeholder="Chọn giờ"
                   options={hourOptions}
                   onChange={(e) => {
                     setCanPlaceTicket(true);
@@ -187,7 +187,7 @@ export default function Slide() {
                   }}
                 />   
         <div className="btn-buy-ticket">
-          { canPlaceTicket == true ? 
+          { canPlaceTicket === true ? 
               <Link
                     to="/seatSelection"
                     className="orange-btn"
