@@ -37,17 +37,19 @@ export const Movie = () => {
           <h3>Không tìm thấy kết quả</h3>
         </div>
       ) : (
-        movies?.map((movie) => (
-          <div key={movie.id} className="container-single-movie">
-            <div>
-              <p className="title-movie">{movie.title}</p>
-              <p>{movie.release_date}</p>
+        <div className="all-movie">
+          {movies?.map((movie) => (
+            <div key={movie.id} className="container-single-movie">
+              <div>
+                <p className="title-movie">{movie.title}</p>
+                <p>{movie.release_date}</p>
+              </div>
+              <div className="container-img">
+                <img className="movie-img" src={img_url + movie.poster_path} alt='movie-img'></img>
+              </div>
             </div>
-            <div className="container-img">
-              <img src={img_url + movie.poster_path}></img>
-            </div>
-          </div>
-        ))
+          ))}
+        </div>
       )}
     </div>
   );
