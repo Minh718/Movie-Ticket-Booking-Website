@@ -8,7 +8,6 @@ export const Article = () => {
   const [sum, setSum] = useState('');
   const [content, setContent] = useState('');
   const [img, setImg] = useState('');
-  const [reload, setReload] = useState(false);
 
   const [news, setNews] = useState([])
 
@@ -48,6 +47,7 @@ export const Article = () => {
       .then(data => {
         //console.log(data)
         alert("Lưu thành công")
+        getNewsFromAPI();
       })
       .catch(er => {
         //console.log(er)
@@ -68,7 +68,7 @@ export const Article = () => {
         {
           alert("Xoá thành công")
           //window.location.reload();
-          setReload(!reload)
+          getNewsFromAPI();
         }
       })
       .catch(er => {
@@ -77,11 +77,15 @@ export const Article = () => {
       })
   }
 
-  useEffect(() => {
+  const getNewsFromAPI = () => {
     fetch(url_database + '/articles/')
       .then(res => res.json())
       .then(data => setNews([...data]));
-  })
+  }
+
+  useEffect(() => {
+    getNewsFromAPI();
+  }, [])
 
   return (
     <div id="update-news-page">
