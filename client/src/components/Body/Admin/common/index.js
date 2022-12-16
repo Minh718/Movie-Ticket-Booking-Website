@@ -2,7 +2,7 @@ import "./index.css";
 import { useState, useEffect } from "react";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { useGlobalContext } from "../../../../context";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "reactstrap";
 function Common({ children, openBar }) {
   const navigate = useNavigate();
@@ -12,6 +12,27 @@ function Common({ children, openBar }) {
     <div className="common-page">
       <div className={openBar ? "left-page" : "left-page move-left-page"}>
         <div>
+          <div>
+            <div
+              className="accordion"
+              onClick={() => (index !== 1 ? setIndex(1) : setIndex(0))}
+            >
+              Quản lý movie
+              {index === 1 ? <FaAngleUp /> : <FaAngleDown />}
+            </div>
+            <div
+              className={index === 1 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/addMovie")}
+            >
+              Thêm movie
+            </div>
+            <div
+              className={index === 1 ? "click-down active" : "click-down"}
+              onClick={() => navigate("/adminPage/movie")}
+            >
+              Danh sách movies
+            </div>
+          </div>
           <div>
             <div
               className="accordion"
@@ -95,7 +116,7 @@ function Common({ children, openBar }) {
               onClick={() => navigate("/adminPage/showtime")}
             >
               Danh sách lịch chiếu
-            </div> 
+            </div>
           </div>
         </div>
         <div className="ctn-btn-out">
