@@ -1,89 +1,91 @@
-.show-management{
-    display:flex;
-    flex-direction: column;
-    width:100%;
-    height:100%;
+.show-management {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  max-width: 1024px;
 }
 
-.show-management .show-header{
-    display:flex;
+.show-management .show-header {
+  display: flex;
 }
-.show-management .show-header p{
-    font-size: 3em;
-    margin: auto;
-    font-weight: bold;   
+.show-management .show-header p {
+  font-size: 3em;
+  margin: auto;
+  font-weight: bold;
 }
 
 .show-management .show-info {
-    display:flex;
-    flex-direction: column;
-    list-style-type: none;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.show-management .show-info li{
-    display:flex;
-    background-color:  #293241;
-    margin: 1rem;
-    padding: 0.3rem;
-    border-radius: 0.3rem;
-    justify-content:center;
-    align-items:center;
+.show-management .show-info li {
+  display: flex;
+  background-color: #293241;
+  margin: 1rem;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  justify-content: center;
+  align-items: center;
 }
-.show-management .show-info li .info-container{
-    display: flex;
-    font-size: 1.2rem;
+.show-management .show-info li .info-container {
+  display: flex;
+  font-size: 1.2rem;
 }
 .show-management .show-info li .info-container p {
-    background-color: rgb(231, 197, 58);
-    margin: 0rem 2rem;
-    padding: 0.2rem;
-    border-radius: 0.2rem;
-    width: 10rem;
-    height: 2.5rem;
-    text-align: center;
+  background-color: rgb(231, 197, 58);
+  margin: 0rem 2rem;
+  padding: 0.2rem;
+  border-radius: 0.2rem;
+  width: 10rem;
+  height: 2.5rem;
+  text-align: center;
 }
 .show-management .show-info li .show-modify {
-    margin: 0rem 2rem;
-    padding: 0.2rem;
+  margin: 0rem 2rem;
+  padding: 0.2rem;
 }
-.show-management .show-info li .show-modify .show-mod{
-    font-size: 2rem;
-    margin: 0rem 0.3rem;
-    color:white;
+.show-management .show-info li .show-modify .show-mod {
+  font-size: 2rem;
+  margin: 0rem 0.3rem;
+  color: white;
 }
-.show-management .show-info li .show-modify .show-mod:hover{
-    transform: scale(1.2);
-    cursor: pointer;
-}
-
-.add-show-form{
-    display:flex;
-    justify-content: center;
-}
-.add-show-form #dateShow{
-    padding-left:1rem;
-}
-.add-show-form .select_tag{
-    width: 20%;
-    margin: 2rem 1rem;
-}
-.add-show-form button{
-    height: 3rem;
-    margin-top: 1.7rem;
-    margin-left: 1rem;
-    width: 7rem;
-    border-radius: 0.5rem;
-    color: rgb(231, 197, 58);
-    border: 1px solid rgb(231, 197, 58);
-    background-color: #293241;
-    font-weight: bold;
+.show-management .show-info li .show-modify .show-mod:hover {
+  transform: scale(1.2);
+  cursor: pointer;
 }
 
-.add-show-form button:hover{
-    color: #293241;
-    background-color: rgb(231, 197, 58);
-    transition: all 0.3s linear;
+.add-show-form {
+  display: flex;
+  justify-content: center;
+}
+.add-show-form #dateShow {
+  padding-left: 1rem;
+}
+.add-show-form .select_tag {
+  width: 20%;
+  margin: 2rem 1rem;
+}
+.add-show-form button {
+  height: 3rem;
+  margin-top: 1.7rem;
+  margin-left: 1rem;
+  width: 7rem;
+  border-radius: 0.5rem;
+  color: rgb(231, 197, 58);
+  border: 1px solid rgb(231, 197, 58);
+  background-color: #293241;
+  font-weight: bold;
+}
+
+.add-show-form button:hover {
+  color: #293241;
+  background-color: rgb(231, 197, 58);
+  transition: all 0.3s linear;
 }
