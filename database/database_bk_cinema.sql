@@ -1,4 +1,5 @@
 drop database if exists `bk_cinema`;
+create database bk_cinema;
 use bk_cinema;
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
@@ -46,7 +47,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'Nhóm','7','0123456789','cuthemongcho380@gmail.com','123456789','nam',1,35);
+INSERT INTO `tbl_user` VALUES (1,'Nhóm','7','0123456789','cuthemongcho380@gmail.com','123456789','nam',1,17);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -59,7 +60,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:15
+-- Dump completed on 2022-12-18  1:46:03
+
 
 
 
@@ -112,7 +114,62 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:14
+-- Dump completed on 2022-12-18  1:46:03
+
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+--
+-- Host: 127.0.0.110    Database: bk_cinema
+-- ------------------------------------------------------
+-- Server version	8.0.30
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `tbl_movie`
+--
+
+DROP TABLE IF EXISTS `tbl_movie`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tbl_movie` (
+  `id` int NOT NULL,
+  `title` varchar(50) NOT NULL,
+  `poster_path` varchar(100) NOT NULL,
+  `backdrop_path` varchar(100) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_movie`
+--
+
+LOCK TABLES `tbl_movie` WRITE;
+/*!40000 ALTER TABLE `tbl_movie` DISABLE KEYS */;
+INSERT INTO `tbl_movie` VALUES (9387,'Conan the Barbarian','/7bXLZQpeC5mCCBV0LvY8sgvvybg.jpg','/fNp2ikvY8WZTyVbK1iXW84RLbO5.jpg'),(19995,'Avatar','/jRXYjXNq0Cs2TcJjLkki24MLp7u.jpg','/Yc9q6QuWrMp9nuDm5R8ExNqbEq.jpg'),(46334,'Captain Conan','/5prF2brzZEFSqBC5v8d7AemMIQE.jpg','/8ohEXPkeEvP19l0k1ecPAkzgewb.jpg'),(76600,'Avatar: The Way of Water','/94xxm5701CzOdJdUEdIuwqZaowx.jpg','/198vrF8k7mfQ4FjDJsBmdQcaiyq.jpg'),(436270,'Black Adam','/pFlaoHTZeyNkG83vxsAJiGzfSsa.jpg','/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg'),(508947,'Turning Red','/qsdjk9oAKSQMWs0Vt5Pyfh6O4GZ.jpg','/fOy2Jurz9k6RnJnMUMRDAgBwru2.jpg'),(513399,'Super Crazy','/xKT9Mv1SB7pW9TLOcmhcm9BH4Pc.jpg','/aRJHSbquRfzi2WfelJuwksXLCCg.jpg'),(900667,'One Piece Film Red','/m80kPdrmmtEh9wlLroCp0bwUGH0.jpg','/54PmeEzQMvpojpJBku61ZGQnWUX.jpg');
+/*!40000 ALTER TABLE `tbl_movie` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2022-12-18  1:46:04
+
 
 
 
@@ -148,7 +205,7 @@ CREATE TABLE `tbl_show` (
   PRIMARY KEY (`idShow`),
   KEY `room` (`room`),
   CONSTRAINT `tbl_show_ibfk_1` FOREIGN KEY (`room`) REFERENCES `tbl_room` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +214,7 @@ CREATE TABLE `tbl_show` (
 
 LOCK TABLES `tbl_show` WRITE;
 /*!40000 ALTER TABLE `tbl_show` DISABLE KEYS */;
-INSERT INTO `tbl_show` VALUES (38,736526,95000,'04'),(39,873126,95000,'03'),(40,988233,42000,'03'),(41,1013860,95000,'04'),(42,724495,52000,'04'),(43,436270,80000,'02'),(44,1024546,20000,'03'),(45,747803,1234,'03'),(46,76600,95000,'04'),(47,1049233,22000,'03');
+INSERT INTO `tbl_show` VALUES (48,9387,12,'01'),(49,436270,2000,'02'),(50,508947,95000,'04'),(51,513399,50000,'01'),(52,46334,50000,'02'),(53,76600,80000,'04');
 /*!40000 ALTER TABLE `tbl_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -170,13 +227,8 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:15
+-- Dump completed on 2022-12-18  1:46:05
 
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
---
--- Host: 127.0.0.110    Database: bk_cinema
--- ------------------------------------------------------
--- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -253,7 +305,7 @@ CREATE TABLE `tbl_hour_show` (
   `hour` time NOT NULL,
   PRIMARY KEY (`idHour`),
   KEY `tbl_hour_show_ibfk_1` (`idShow`,`dateShow`)
-) ENGINE=InnoDB AUTO_INCREMENT=134 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -262,7 +314,7 @@ CREATE TABLE `tbl_hour_show` (
 
 LOCK TABLES `tbl_hour_show` WRITE;
 /*!40000 ALTER TABLE `tbl_hour_show` DISABLE KEYS */;
-INSERT INTO `tbl_hour_show` VALUES (35,'2022-12-20',40,'17:00:00'),(35,'2022-12-20',41,'23:00:00'),(35,'2022-12-20',42,'13:00:00'),(35,'2022-12-20',43,'11:00:00'),(35,'2022-12-20',44,'15:00:00'),(35,'2022-12-19',45,'15:00:00'),(35,'2022-12-19',46,'23:00:00'),(35,'2022-12-21',47,'19:00:00'),(35,'2022-12-21',48,'17:00:00'),(35,'2022-12-20',49,'19:00:00'),(35,'2022-12-21',50,'23:00:00'),(36,'2022-12-18',51,'11:00:00'),(36,'2022-12-18',52,'13:00:00'),(36,'2022-12-18',53,'23:00:00'),(36,'2022-12-18',54,'15:00:00'),(36,'2022-12-18',55,'17:00:00'),(36,'2022-12-18',56,'19:00:00'),(30,'2022-12-17',57,'11:00:00'),(30,'2022-12-17',58,'13:00:00'),(30,'2022-12-17',59,'23:00:00'),(30,'2022-12-17',60,'17:00:00'),(36,'2022-12-20',61,'17:00:00'),(36,'2022-12-20',62,'15:00:00'),(36,'2022-12-20',63,'13:00:00'),(36,'2022-12-20',64,'23:00:00'),(38,'2022-12-17',65,'11:00:00'),(38,'2022-12-17',66,'13:00:00'),(38,'2022-12-17',67,'15:00:00'),(38,'2022-12-17',68,'17:00:00'),(39,'2022-12-17',69,'11:00:00'),(39,'2022-12-17',70,'13:00:00'),(39,'2022-12-17',71,'15:00:00'),(39,'2022-12-17',72,'17:00:00'),(40,'2022-12-17',73,'09:00:00'),(40,'2022-12-17',74,'21:00:00'),(40,'2022-12-17',75,'19:00:00'),(40,'2022-12-17',76,'23:00:00'),(38,'2022-12-19',77,'13:00:00'),(38,'2022-12-19',78,'15:00:00'),(38,'2022-12-19',79,'17:00:00'),(38,'2022-12-19',80,'19:00:00'),(38,'2022-12-19',81,'21:00:00'),(39,'2022-12-20',82,'17:00:00'),(39,'2022-12-20',83,'15:00:00'),(39,'2022-12-20',84,'13:00:00'),(42,'2022-12-18',85,'11:00:00'),(42,'2022-12-18',86,'13:00:00'),(42,'2022-12-18',87,'17:00:00'),(42,'2022-12-18',88,'19:00:00'),(41,'2022-12-21',89,'17:00:00'),(41,'2022-12-21',90,'13:00:00'),(41,'2022-12-21',91,'11:00:00'),(44,'2022-12-22',92,'17:00:00'),(43,'2022-12-22',93,'17:00:00'),(43,'2022-12-22',94,'15:00:00'),(43,'2022-12-22',95,'13:00:00'),(43,'2022-12-22',96,'11:00:00'),(43,'2022-12-22',97,'09:00:00'),(43,'2022-12-22',98,'07:00:00'),(43,'2022-12-22',99,'19:00:00'),(43,'2022-12-22',100,'21:00:00'),(43,'2022-12-22',101,'23:00:00'),(44,'2022-12-21',102,'07:00:00'),(44,'2022-12-21',103,'09:00:00'),(44,'2022-12-21',104,'11:00:00'),(44,'2022-12-21',105,'13:00:00'),(44,'2022-12-21',106,'15:00:00'),(44,'2022-12-21',107,'17:00:00'),(44,'2022-12-21',108,'19:00:00'),(44,'2022-12-21',109,'21:00:00'),(44,'2022-12-21',110,'23:00:00'),(44,'2022-12-19',111,'07:00:00'),(44,'2022-12-19',112,'09:00:00'),(44,'2022-12-19',113,'11:00:00'),(44,'2022-12-19',114,'13:00:00'),(44,'2022-12-19',115,'15:00:00'),(44,'2022-12-19',116,'17:00:00'),(44,'2022-12-19',117,'19:00:00'),(44,'2022-12-19',118,'21:00:00'),(44,'2022-12-19',119,'23:00:00'),(45,'2022-12-20',120,'07:00:00'),(45,'2022-12-20',121,'09:00:00'),(45,'2022-12-20',122,'11:00:00'),(45,'2022-12-20',123,'19:00:00'),(45,'2022-12-20',124,'21:00:00'),(45,'2022-12-20',125,'23:00:00'),(47,'2022-12-22',126,'07:00:00'),(47,'2022-12-22',127,'09:00:00'),(47,'2022-12-22',128,'11:00:00'),(47,'2022-12-22',129,'13:00:00'),(47,'2022-12-22',130,'15:00:00'),(47,'2022-12-22',131,'19:00:00'),(47,'2022-12-22',132,'21:00:00'),(47,'2022-12-22',133,'23:00:00');
+INSERT INTO `tbl_hour_show` VALUES (35,'2022-12-20',40,'17:00:00'),(35,'2022-12-20',41,'23:00:00'),(35,'2022-12-20',42,'13:00:00'),(35,'2022-12-20',43,'11:00:00'),(35,'2022-12-20',44,'15:00:00'),(35,'2022-12-19',45,'15:00:00'),(35,'2022-12-19',46,'23:00:00'),(35,'2022-12-21',47,'19:00:00'),(35,'2022-12-21',48,'17:00:00'),(35,'2022-12-20',49,'19:00:00'),(35,'2022-12-21',50,'23:00:00'),(36,'2022-12-18',51,'11:00:00'),(36,'2022-12-18',52,'13:00:00'),(36,'2022-12-18',53,'23:00:00'),(36,'2022-12-18',54,'15:00:00'),(36,'2022-12-18',55,'17:00:00'),(36,'2022-12-18',56,'19:00:00'),(30,'2022-12-17',57,'11:00:00'),(30,'2022-12-17',58,'13:00:00'),(30,'2022-12-17',59,'23:00:00'),(30,'2022-12-17',60,'17:00:00'),(36,'2022-12-20',61,'17:00:00'),(36,'2022-12-20',62,'15:00:00'),(36,'2022-12-20',63,'13:00:00'),(36,'2022-12-20',64,'23:00:00'),(38,'2022-12-17',65,'11:00:00'),(38,'2022-12-17',66,'13:00:00'),(38,'2022-12-17',67,'15:00:00'),(38,'2022-12-17',68,'17:00:00'),(39,'2022-12-17',69,'11:00:00'),(39,'2022-12-17',70,'13:00:00'),(39,'2022-12-17',71,'15:00:00'),(39,'2022-12-17',72,'17:00:00'),(40,'2022-12-17',73,'09:00:00'),(40,'2022-12-17',74,'21:00:00'),(40,'2022-12-17',75,'19:00:00'),(40,'2022-12-17',76,'23:00:00'),(38,'2022-12-19',77,'13:00:00'),(38,'2022-12-19',78,'15:00:00'),(38,'2022-12-19',79,'17:00:00'),(38,'2022-12-19',80,'19:00:00'),(38,'2022-12-19',81,'21:00:00'),(39,'2022-12-20',82,'17:00:00'),(39,'2022-12-20',83,'15:00:00'),(39,'2022-12-20',84,'13:00:00'),(42,'2022-12-18',85,'11:00:00'),(42,'2022-12-18',86,'13:00:00'),(42,'2022-12-18',87,'17:00:00'),(42,'2022-12-18',88,'19:00:00'),(41,'2022-12-21',89,'17:00:00'),(41,'2022-12-21',90,'13:00:00'),(41,'2022-12-21',91,'11:00:00'),(44,'2022-12-22',92,'17:00:00'),(43,'2022-12-22',93,'17:00:00'),(43,'2022-12-22',94,'15:00:00'),(43,'2022-12-22',95,'13:00:00'),(43,'2022-12-22',96,'11:00:00'),(43,'2022-12-22',97,'09:00:00'),(43,'2022-12-22',98,'07:00:00'),(43,'2022-12-22',99,'19:00:00'),(43,'2022-12-22',100,'21:00:00'),(43,'2022-12-22',101,'23:00:00'),(44,'2022-12-21',102,'07:00:00'),(44,'2022-12-21',103,'09:00:00'),(44,'2022-12-21',104,'11:00:00'),(44,'2022-12-21',105,'13:00:00'),(44,'2022-12-21',106,'15:00:00'),(44,'2022-12-21',107,'17:00:00'),(44,'2022-12-21',108,'19:00:00'),(44,'2022-12-21',109,'21:00:00'),(44,'2022-12-21',110,'23:00:00'),(44,'2022-12-19',111,'07:00:00'),(44,'2022-12-19',112,'09:00:00'),(44,'2022-12-19',113,'11:00:00'),(44,'2022-12-19',114,'13:00:00'),(44,'2022-12-19',115,'15:00:00'),(44,'2022-12-19',116,'17:00:00'),(44,'2022-12-19',117,'19:00:00'),(44,'2022-12-19',118,'21:00:00'),(44,'2022-12-19',119,'23:00:00'),(45,'2022-12-20',120,'07:00:00'),(45,'2022-12-20',121,'09:00:00'),(45,'2022-12-20',122,'11:00:00'),(45,'2022-12-20',123,'19:00:00'),(45,'2022-12-20',124,'21:00:00'),(45,'2022-12-20',125,'23:00:00'),(47,'2022-12-22',126,'07:00:00'),(47,'2022-12-22',127,'09:00:00'),(47,'2022-12-22',128,'11:00:00'),(47,'2022-12-22',129,'13:00:00'),(47,'2022-12-22',130,'15:00:00'),(47,'2022-12-22',131,'19:00:00'),(47,'2022-12-22',132,'21:00:00'),(47,'2022-12-22',133,'23:00:00'),(53,'2022-12-22',134,'07:00:00'),(53,'2022-12-22',135,'09:00:00'),(53,'2022-12-22',136,'11:00:00'),(53,'2022-12-22',137,'13:00:00'),(53,'2022-12-22',138,'15:00:00'),(53,'2022-12-22',139,'17:00:00'),(53,'2022-12-22',140,'19:00:00'),(53,'2022-12-22',141,'21:00:00'),(53,'2022-12-22',142,'23:00:00'),(53,'2022-12-20',143,'07:00:00'),(53,'2022-12-20',144,'09:00:00'),(53,'2022-12-20',145,'11:00:00'),(53,'2022-12-20',146,'13:00:00'),(53,'2022-12-20',147,'15:00:00'),(53,'2022-12-20',148,'17:00:00'),(53,'2022-12-20',149,'19:00:00'),(53,'2022-12-20',150,'21:00:00'),(53,'2022-12-20',151,'23:00:00'),(50,'2022-12-21',152,'07:00:00'),(50,'2022-12-21',153,'09:00:00'),(50,'2022-12-21',154,'11:00:00'),(50,'2022-12-21',155,'13:00:00'),(50,'2022-12-21',156,'15:00:00'),(50,'2022-12-21',157,'17:00:00'),(50,'2022-12-21',158,'19:00:00'),(50,'2022-12-21',159,'21:00:00'),(50,'2022-12-21',160,'23:00:00'),(49,'2022-12-21',161,'15:00:00'),(49,'2022-12-21',162,'17:00:00'),(50,'2022-12-23',163,'07:00:00'),(50,'2022-12-23',164,'09:00:00'),(50,'2022-12-23',165,'11:00:00'),(50,'2022-12-23',166,'13:00:00'),(50,'2022-12-23',167,'15:00:00'),(50,'2022-12-23',168,'17:00:00'),(50,'2022-12-23',169,'19:00:00'),(50,'2022-12-23',170,'21:00:00'),(50,'2022-12-23',171,'23:00:00');
 /*!40000 ALTER TABLE `tbl_hour_show` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -275,9 +327,11 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:15
+-- Dump completed on 2022-12-18  1:46:04
 
 
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+--
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
 -- Host: 127.0.0.110    Database: bk_cinema
@@ -311,7 +365,7 @@ CREATE TABLE `tbl_ticket` (
   KEY `idUser` (`idUser`),
   CONSTRAINT `tbl_ticket_ibfk_1` FOREIGN KEY (`idHour`) REFERENCES `tbl_hour_show` (`idHour`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_ticket_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `tbl_user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -320,7 +374,7 @@ CREATE TABLE `tbl_ticket` (
 
 LOCK TABLES `tbl_ticket` WRITE;
 /*!40000 ALTER TABLE `tbl_ticket` DISABLE KEYS */;
-INSERT INTO `tbl_ticket` VALUES (31,77,1);
+INSERT INTO `tbl_ticket` VALUES (32,144,1),(33,165,1);
 /*!40000 ALTER TABLE `tbl_ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -333,9 +387,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:15
-
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+-- Dump completed on 2022-12-18  1:46:04
 --
 -- Host: 127.0.0.110    Database: bk_cinema
 -- ------------------------------------------------------
@@ -446,7 +498,6 @@ UNLOCK TABLES;
 
 -- Dump completed on 2022-12-17 20:46:14
 
-
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
 -- Host: 127.0.0.110    Database: bk_cinema
@@ -485,7 +536,7 @@ CREATE TABLE `tbl_chair` (
 
 LOCK TABLES `tbl_chair` WRITE;
 /*!40000 ALTER TABLE `tbl_chair` DISABLE KEYS */;
-INSERT INTO `tbl_chair` VALUES ('F7',31);
+INSERT INTO `tbl_chair` VALUES ('C10',32),('C7',32),('C8',32),('C9',32),('E10',33),('E7',33),('E8',33),('E9',33);
 /*!40000 ALTER TABLE `tbl_chair` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -498,9 +549,13 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:14
+-- Dump completed on 2022-12-18  1:46:04
 
 
+-- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
+--
+-- Host: 127.0.0.110    Database: bk_cinema
+-- ------------------------------------------------------
 -- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
 --
 -- Host: 127.0.0.110    Database: bk_cinema
@@ -535,7 +590,7 @@ CREATE TABLE `tbl_voucher` (
   `suffix` varchar(1) NOT NULL,
   `point` int NOT NULL DEFAULT '10',
   PRIMARY KEY (`idVoucher`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -544,7 +599,7 @@ CREATE TABLE `tbl_voucher` (
 
 LOCK TABLES `tbl_voucher` WRITE;
 /*!40000 ALTER TABLE `tbl_voucher` DISABLE KEYS */;
-INSERT INTO `tbl_voucher` VALUES (10,'Nạp lần đầu','2022-12-29',12,'2022-12-16',15,'%',22),(11,'Đăng nhập lần đâu','2022-12-16',12,'2022-12-16',0,'k',22),(12,'nạp lần cuối','2022-12-17',80,'2022-12-16',0,'k',73),(13,'Lần đầu mua vé','2022-12-31',20,'2022-12-16',0,'k',10),(14,'Dẫn ny xem phim','2022-12-29',20,'2022-12-17',0,'k',12);
+INSERT INTO `tbl_voucher` VALUES (10,'Nạp lần đầu','2022-12-29',12,'2022-12-16',15,'%',22),(11,'Đăng nhập lần đâu','2022-12-16',12,'2022-12-16',0,'k',22),(12,'nạp lần cuối','2022-12-17',80,'2022-12-16',0,'k',73),(13,'Lần đầu mua vé','2022-12-31',20,'2022-12-16',0,'k',10),(14,'Dẫn ny xem phim','2022-12-29',20,'2022-12-17',0,'k',12),(15,'Giáng sinh','2022-12-30',20,'2022-12-18',0,'k',19),(16,'giảm cuối tháng mì tôm','2022-12-28',23,'2022-12-18',42,'%',12);
 /*!40000 ALTER TABLE `tbl_voucher` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -557,10 +612,7 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-17 20:46:14
-
--- MySQL dump 10.13  Distrib 8.0.30, for Win64 (x86_64)
---
+-- Dump completed on 2022-12-18  1:46:04
 -- Host: 127.0.0.110    Database: bk_cinema
 -- ------------------------------------------------------
 -- Server version	8.0.30
@@ -624,7 +676,8 @@ IN vPoint INT
 BEGIN
 INSERT INTO tbl_voucheruser (idUser, idVoucher) values (vIdUser, vIdVoucher);
 UPDATE tbl_user SET point = point - vpoint WHERE idUser = vIdUser;
-END
+END; $$
+DELIMITER
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `get_all_tickets_user`(
@@ -634,7 +687,8 @@ BEGIN
 SELECT idMovie, room, TIME_FORMAT(hour, "%H:%i") as hour, DATE_FORMAT(dateShow, '%d/%m/%Y') as dateShow , price, idTicket
 FROM tbl_ticket natural join tbl_hour_show natural join tbl_show 
 where idUser = vIdUser;
-END
+END; $$
+DELIMITER
 
 DELIMITER $$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `take_all_hours_in_room`(
@@ -649,7 +703,7 @@ SELECT TIME_FORMAT(hour, "%H:%i") as hour FROM tbl_hour_show NATURAL JOIN tbl_sh
 ELSE 
 SELECT TIME_FORMAT(hour, "%H:%i") as hour FROM tbl_hour_show NATURAL JOIN tbl_show WHERE room = vroom AND dateShow = vDateShow AND idShow = vidShow;
 END IF;
-END
+END;
 
 
 
