@@ -1,5 +1,5 @@
 import { AiFillStar } from "react-icons/ai";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../../../../context";
 import BreadcrumbPayment from "../../BreadcrumbTicket";
 import "./style.css";
@@ -12,6 +12,7 @@ function PaymentSuccess() {
   const price = useLocation().state.price;
   const room = useLocation().state.room;
   const { user } = useGlobalContext();
+  const navigate = useNavigate();
   return (
     <>
       <BreadcrumbPayment index={3} />
@@ -21,6 +22,13 @@ function PaymentSuccess() {
             <h2>Đặt vé thành công</h2>
             <p>Quét mã này tài rạp chiếu phim để đổi lấy vé của bạn.</p>
             <img src="https://www.investopedia.com/thmb/hJrIBjjMBGfx0oa_bHAgZ9AWyn0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png" />
+
+            <section>
+              <button onClick={() => navigate("/")}>Về trang chủ</button>
+              <button onClick={() => navigate("/historyTicket")}>
+                Xem đơn hàng
+              </button>
+            </section>
           </div>
           <div className="left-part-bottom">
             <div>Thông tin vé cũng được gửi về:</div>

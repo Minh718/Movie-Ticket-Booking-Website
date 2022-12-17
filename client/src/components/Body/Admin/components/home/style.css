@@ -1,72 +1,7 @@
-.height0pxx2 {
-  height: 20px;
-}
-.height1pxx2 {
-  height: 13px;
-}
-.height2pxx2 {
-  height: 23px;
-}
-.height3pxx2 {
-  height: 12px;
-}
-.height4pxx2 {
-  height: 17px;
-}
-.height5pxx2 {
-  height: 10px;
-}
-.height6pxx2 {
-  height: 12px;
-}
-.height7pxx2 {
-  height: 14px;
-}
-.height8pxx2 {
-  height: 16px;
-}
-.height9pxx2 {
-  height: 18px;
-}
-.height10pxx2 {
-  height: 20px;
-}
-.height11pxx2 {
-  height: 22px;
-}
-.height12pxx2 {
-  height: 24px;
-}
-.height13pxx2 {
-  height: 26px;
-}
-.height14pxx2 {
-  height: 28px;
-}
-.height15pxx2 {
-  height: 30px;
-}
-.height16pxx2 {
-  height: 32px;
-}
-.height17pxx2 {
-  height: 34px;
-}
-.height18pxx2 {
-  height: 36px;
-}
-.height19pxx2 {
-  height: 38px;
-}
-.height20pxx2 {
-  height: 40px;
-}
-
 .body-page-admin .statistics {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
-  max-width: 1200px;
   margin: auto;
 }
 .title-page-admin {
@@ -83,7 +18,7 @@
 .body-title-page-admin {
   margin-top: 10px;
   padding-left: 15px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 }
 .bottom-title-page-admin {
   margin-top: 10px;
@@ -91,9 +26,10 @@
   margin-bottom: 0;
 }
 .page-admin {
-  background: #ccc;
   height: 100%;
   padding: 0 20px;
+  max-width: 1080px;
+  margin: auto;
 }
 .statistics .statistic {
   padding: 30px 25px 25px;
@@ -158,7 +94,7 @@
 
 .body-page-admin .bottom-page-admin {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
   padding: 0 30px;
 

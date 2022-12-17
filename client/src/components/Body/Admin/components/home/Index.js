@@ -4,21 +4,6 @@ import { Button, Card, CardBody, CardText, CardTitle } from "reactstrap";
 import "./style.css";
 export default function HomeAdmin() {
   const navigate = useNavigate();
-  const createStatistic = (bgColor) => {
-    return (
-      <div className="img-statis">
-        {new Array(10).fill(0).map((data) => {
-          return (
-            <div
-              className={`height${Math.floor(
-                Math.random() * 20
-              )}pxx2 columns-${bgColor}`}
-            ></div>
-          );
-        })}
-      </div>
-    );
-  };
   return (
     <>
       <div className="page-admin">
@@ -89,9 +74,9 @@ export default function HomeAdmin() {
                   <Button
                     color="primary"
                     // onClick={() => navigate("/adminPage/addSlideShow")}
-                    onClick={() => navigate("/adminPage/showtime")}
+                    onClick={() => navigate("/adminPage/show")}
                   >
-                    Thêm giờ chiếu
+                    Thêm show
                   </Button>{" "}
                   <Button
                     color="primary"
@@ -99,7 +84,7 @@ export default function HomeAdmin() {
                     // onClick={() => navigate("/adminPage/slideShow")}
                     onClick={() => navigate("/adminPage/show")}
                   >
-                    Danh sách giờ chiếu
+                    Danh sách cácshow
                   </Button>
                 </div>
               </CardBody>

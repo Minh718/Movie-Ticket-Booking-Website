@@ -97,6 +97,10 @@ export const getAllUserVouchers = async (idUser) => {
   const data = await axios.get(`${url_database}/vouchers/${idUser}/user`);
   return data.data;
 };
+export const getAllUserTickets = async (idUser) => {
+  const data = await axios.get(`${url_database}/tickets/${idUser}`);
+  return data.data[0];
+};
 
 export const deleteVoucherById = async (idVoucher) => {
   console.log(idVoucher);

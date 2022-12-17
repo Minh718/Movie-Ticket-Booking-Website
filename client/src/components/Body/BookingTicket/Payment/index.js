@@ -1,16 +1,16 @@
-import "./index.css";
-import { Link, useLocation } from "react-router-dom";
-import { AiFillStar } from "react-icons/ai";
-import { useGlobalContext } from "../../../../context";
 import { useEffect, useState } from "react";
+import { AiFillStar } from "react-icons/ai";
+import { useLocation } from "react-router-dom";
 import Select from "react-select";
-import { QrPayment } from "./QrPayment";
-import BreadcrumbPayment from "../../BreadcrumbTicket";
-import { url_database } from "../../api";
 import { getAllUserVouchers } from "../../../../apiRequest";
+import { useGlobalContext } from "../../../../context";
+import BreadcrumbPayment from "../../BreadcrumbTicket";
+import "./index.css";
+import { QrPayment } from "./QrPayment";
 
 function Payment() {
   // const selectChairs = useLocation().state.movie;
+  const [idVoucher, setIdVoucher] = useState(null);
   const selectedSeatList = useLocation().state.selectedSeatList;
   const movie = useLocation().state.movie;
   const date = useLocation().state.date;
@@ -51,6 +51,7 @@ function Payment() {
   };
 
   const handleVoucherClick = (e) => {
+    setIdVoucher(e.value.idVoucher);
     if (e.value.suffix === "%") {
       const down = parseInt(savedPrice) * e.value.value;
       if (down > e.value.maximum) {
@@ -92,21 +93,9 @@ function Payment() {
               <span className="payment-title">Mã khuyến mại</span>
               <Select
                 placeholder="Chọn mã khuyến mại"
-                // options={[
-                //   { value: "Ví điện tử MoMo", label: "Ví điện tử MoMo" },
-                //   {
-                //     value: "Thanh toán ngân hàng",
-                //     label: "Thanh toán ngân hàng",
-                //   },
-                // ]}
                 options={vouchers}
                 className="paymentMethods"
                 onChange={handleVoucherClick}
-                // onChange={(e) => {
-                //   setCanBooking(true);
-                //   setSelectedHour(e.value);
-                // }}
-                // noOptionsMessage={() => "Vui lòng chọn ngày"}
               />
             </label>
             <label className="payment-label">
@@ -204,6 +193,7 @@ function Payment() {
           idShow={idShow}
           room={room}
           price={price}
+          idVoucher={idVoucher}
           setOpenPaymentQR={setOpenPaymentQR}
         />
       )}

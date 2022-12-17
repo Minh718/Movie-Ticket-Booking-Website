@@ -33,7 +33,8 @@ const voucherController = {
     const connection = await createConnection();
     const idUser = req.params.idUser;
     try {
-      const sql = `select idVoucher ,name, value, maximum, point, suffix, DATE_FORMAT(start_date, '%d/%m/%Y') as start_date, DATE_FORMAT(end_date, '%d/%m/%Y') as end_date from tbl_voucher NATURAL JOIN tbl_voucheruser where end_date >= CURRENT_DATE() AND idUser = '${idUser}' order by end_date asc`;
+      const sql = `select idVoucher ,name, value, maximum, point, suffix, DATE_FORMAT(start_date, '%d/%m/%Y') as start_date, DATE_FORMAT(end_date, '%d/%m/%Y') as end_date from tbl_voucher NATURAL JOIN tbl_voucheruser 
+      where end_date >= CURRENT_DATE() AND idUser = '${idUser}' AND isUse = 0 order by end_date asc`;
       const result = await connection.query(sql);
       res.status(200).json(result);
     } catch (err) {

@@ -134,7 +134,7 @@ const movieController = {
     const hour = req.body.hour;
     const chairList = req.body.chairList;
     const idUser = req.cookies?.idUser;
-
+    const idVoucher = req.body.idVoucher;
     const connection = await createConnection();
 
     try {
@@ -157,12 +157,17 @@ const movieController = {
               `INSERT INTO tbl_chair (idTicket, chair) VALUES (${idTicket[0].idTicket}, '${chair}')`
             );
           });
-          const res1 = await connection.query(
+          await connection.query(
             `UPDATE tbl_user set point = point + '${
               chairList.length * 2
             }' where idUser = '${idUser}' `
           );
-          console.log(res1);
+          if (idVoucher) {
+            await connection.query(
+              `UPDATE tbl_voucheruser set isUse = 1 where idUser = '${idUser}' AND idVoucher = '${idVoucher}' `
+            );
+          }
+
           res.status(200).json("Add ticket success");
         } else {
           const idTicket = ticket[0].idTicket;
@@ -174,6 +179,11 @@ const movieController = {
           await connection.query(
             `UPDATE tbl_user set point = point + 2 where idUser = '${idUser}' `
           );
+          if (idVoucher) {
+            await connection.query(
+              `UPDATE tbl_voucheruser set isUse = 1 where idUser = '${idUser}' AND idVoucher = '${idVoucher}' `
+            );
+          }
           res.status(200).json("Add ticket chair success");
         }
       }

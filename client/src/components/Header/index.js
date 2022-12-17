@@ -3,21 +3,13 @@ import { FaSearch } from "react-icons/fa";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Button, Spinner } from "reactstrap";
-import { useGlobalContext } from "../../context";
 import { logoutUser } from "../../apiRequest";
+import { useGlobalContext } from "../../context";
 import { url_database } from "../Body/api";
 import "./index.css";
 function Header() {
-  const {
-    openSetting,
-    setOpenSetting,
-    user,
-    setUser,
-    query,
-    setQuery,
-    openBar,
-    setOpenBar,
-  } = useGlobalContext();
+  const { openSetting, setOpenSetting, user, setUser, query, setQuery } =
+    useGlobalContext();
   const [movies, setMovies] = useState([]);
   const [isLoadding, setIsLoadding] = useState(false);
   const img_url = "http://image.tmdb.org/t/p/w500";
@@ -27,9 +19,6 @@ function Header() {
       const res = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&query=${parsedQuery}&page=1&include_adult=false`
       );
-      // const res = await fetch(
-      //   url_database + '/articles'
-      // );
       const resJson = await res.json();
       setMovies(resJson.results);
       setIsLoadding(false);
@@ -50,7 +39,11 @@ function Header() {
     <div id="header">
       <div className="header-left">
         <Link to={"/"}>
-          <img className="logo-web" src="./BK-cinema_1.png" alt="logo" />
+          <img
+            className="logo-web"
+            src={url_database + "/img/bk-cinema.png"}
+            alt="logo"
+          />
         </Link>
         {/* <div className="right-part"> */}
 

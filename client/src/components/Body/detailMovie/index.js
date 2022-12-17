@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import "./style.css";
 import { img_url } from "../api";
+import "./style.css";
 export default function DetailMovie() {
   const [casts, setCasts] = useState([]);
   const [infoMovie, setInfoMovie] = useState({});

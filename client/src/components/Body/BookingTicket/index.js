@@ -1,13 +1,11 @@
-import "./index.css";
-import { Link, useNavigate, useLocation } from "react-router-dom";
-import { img_url, url_database } from "../api";
-import { AiFillStar } from "react-icons/ai";
-import { useGlobalContext } from "../../../context";
-import { useEffect, useState } from "react";
-import Select from "react-select";
 import axios from "axios";
-import { FaGenderless } from "react-icons/fa";
-import moment from "moment";
+import { useEffect, useState } from "react";
+import { AiFillStar } from "react-icons/ai";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import Select from "react-select";
+import { useGlobalContext } from "../../../context";
+import { img_url } from "../api";
+import "./index.css";
 
 function BookingTicket() {
   const idMovie = useLocation().state.idMovie;
@@ -35,7 +33,6 @@ function BookingTicket() {
         const resDates = await axios.get(
           `/movies/${resShow.data[0].idShow}/dates`
         );
-        console.log(resDates.data);
         setDateOptions(
           resDates.data.map((date) => ({
             value: {
@@ -66,7 +63,6 @@ function BookingTicket() {
       setOpenHour(true);
     };
     if (selectedDate) {
-      console.log(selectedDate);
       fetchHours();
     }
   }, [selectedDate]);

@@ -1,47 +1,24 @@
-import "./index.css";
-import { AiFillEdit, AiFillDelete } from "react-icons/ai";
-import { BiBookAdd } from "react-icons/bi";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import Select from "react-select";
 import {
-  getAllMovies,
-  getAllRooms,
-  getAllShows,
   addShow,
-  deleteShow,
   getAllMoviesLeft,
+  getAllRooms,
 } from "../../../../../apiRequest";
-import axios from "axios";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import "./index.css";
 export default function AddShow() {
-  const [idMovie, setIdMovie] = useState(null);
-  const [price, setPrice] = useState(null);
-  const [room, setRoom] = useState(null);
-  const [shows, setShows] = useState(null);
+  const [idMovie, setIdMovie] = useState("");
+  const [price, setPrice] = useState("");
+  const [room, setRoom] = useState("");
   const navigate = useNavigate();
   const [roomOptions, setRoomOptions] = useState([]);
   const [movieOptions, setMovieOptions] = useState([]);
   const { setOption } = useOutletContext();
-  const fetchShows = async () => {
-    const resShows = await getAllShows();
-    setShows(
-      resShows.map((show) => ({
-        showID: show.idShow,
-        movieID: show.idMovie,
-        price: show.price,
-        name: show.title,
-        room: show.room,
-      }))
-    );
-  };
-  useEffect(() => {
-    fetchShows();
-  }, []);
 
   useEffect(() => {
     const fetchMovies = async () => {
       const resMovies = await getAllMoviesLeft();
-      console.log(resMovies);
       setMovieOptions(
         resMovies.map((movie) => ({
           value: movie.id,
@@ -65,13 +42,11 @@ export default function AddShow() {
   }, []);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(idMovie);
     const newShow = {
       idMovie: idMovie,
       price: parseInt(price),
       room: room,
     };
-    console.log(newShow);
     await addShow(newShow);
 
     setOption({ isOpen: true, text: "Thêm show thành công", color: "#38E54D" });

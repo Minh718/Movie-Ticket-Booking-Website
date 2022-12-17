@@ -123,7 +123,6 @@ export const AddMovie = () => {
                   <div
                     onClick={() => {
                       setMovie(movie1);
-                      console.log(movie1);
                       setMovies([]);
                       setQuery(movie1.title);
                       setIsViewMovie(true);

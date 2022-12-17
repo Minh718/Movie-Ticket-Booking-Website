@@ -17,14 +17,6 @@ export const AddVoucher = () => {
   const { setOption } = useOutletContext();
   const handleSubmit = async () => {
     try {
-      console.log(
-        name,
-        value,
-        maximum,
-        suffix,
-        point,
-        moment(endDate).format("YYYY-MM-DD")
-      );
       await insertVoucher({
         name,
         value,

@@ -13,33 +13,26 @@ import { BookingSeat, Footer, Header } from "./components";
 import AdminPage from "./components/Body/Admin";
 import { AddArticle } from "./components/Body/Admin/components/addArticle/index";
 import { AddMovie } from "./components/Body/Admin/components/addMovie/index";
-import { AddSlideShow } from "./components/Body/Admin/components/addSlideShow/index";
 import { AddVoucher } from "./components/Body/Admin/components/addVoucher/index";
 import { Article } from "./components/Body/Admin/components/article/Article";
 import HomeAdmin from "./components/Body/Admin/components/home/Index";
 import { Movie } from "./components/Body/Admin/components/movie/Movie";
-import ShowTimeManagement from "./components/Body/Admin/components/ShowTimeManagement/index";
-import { SlideShow } from "./components/Body/Admin/components/slideShow/SlideShow";
 import BookingTicket from "./components/Body/BookingTicket/index";
 import Payment from "./components/Body/BookingTicket/Payment";
 import PaymentSuccess from "./components/Body/BookingTicket/PaymentCuccess";
-import DetailMovie from "./components/Body/detailMovie";
 import HistoryTicket from "./components/Body/historyTicket";
 import Home from "./components/Body/Home/index";
 import LoginPage from "./components/Body/Login/index";
-import MoviesPage from "./components/Body/Movies/index";
 import NewsPage from "./components/Body/News/index";
 import NewsDetail from "./components/Body/News/NewsDetail";
 import Profile from "./components/Body/profile";
-import SupportPage from "./components/Body/Support/index";
-import UserPage from "./components/Body/User/index";
 import Vouchers from "./components/Body/vouchers";
 import { useGlobalContext } from "./context";
 
 import { EditVoucher } from "./components/Body/Admin/components/addVoucher/EditVoucher";
+import { Shows } from "./components/Body/Admin/components/show";
 import AddShow from "./components/Body/Admin/components/ShowManagement/index";
 import { Voucher } from "./components/Body/Admin/components/voucher/Voucher";
-import { Show, Shows } from "./components/Body/Admin/components/show";
 //Tim icon o day https://react-icons.github.io/react-icons
 
 const PageHome = () => {
@@ -67,7 +60,6 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/news" element={<NewsPage />} />
-          <Route path="movies" element={<MoviesPage />} />
           {!user && <Route path="*" element={<LoginPage />} />}
           {user && (
             <Route path="">
@@ -75,7 +67,6 @@ function App() {
                 path="login"
                 element={user ? <Navigate to={"/"} /> : <LoginPage />}
               />
-              <Route path="user" element={<UserPage />} />
               <Route path="booking" element={<BookingTicket />} />
               <Route path="seatSelection" element={<BookingSeat />} />
               <Route path="seatSelection/payment" element={<Payment />} />
@@ -83,7 +74,6 @@ function App() {
               <Route path="profile" element={<Profile />} />
               <Route path="historyTicket" element={<HistoryTicket />} />
               <Route path="vouchers" element={<Vouchers />} />
-              <Route path="/detailMovie/:id" element={<DetailMovie />} />
               <Route path="news/:id" element={<NewsDetail />} />
             </Route>
           )}
@@ -93,17 +83,13 @@ function App() {
             <Route path="" element={<HomeAdmin />} />
             <Route path="article" element={<Article />} />
             <Route path="movie" element={<Movie />} />
-            <Route path="slideShow" element={<SlideShow />} />
             <Route path="addMovie" element={<AddMovie />} />
-            <Route path="addSlideShow" element={<AddSlideShow />} />
             <Route path="addVoucher" element={<AddVoucher />} />
             <Route path="addArticle" element={<AddArticle />} />
             <Route path="voucher" element={<Voucher />} />
             <Route path="editVoucher" element={<EditVoucher />} />
-            <Route path="movie" element={<Movie />} />
             <Route path="addShow" element={<AddShow />} />
             <Route path="show" element={<Shows />} />
-            <Route path="showtime" element={<ShowTimeManagement />} />
           </Route>
         )}
       </Route>

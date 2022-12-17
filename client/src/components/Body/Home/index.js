@@ -1,45 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import data from "../json/data.json";
+import { url_database } from "../api";
 import Article from "./Article";
 import "./index.css";
 import Movie from "./Movie";
 import Slide from "./Slide";
-import { url_database } from "../api";
 
-// const articles = data.data.slice(0, 6);
-const movieStore = [
-  {
-    id: "m1",
-    url: "/images/movie1.jpg",
-    name: "Kimetsu no Yaiba",
-  },
-  {
-    id: "m2",
-    url: "/images/movie2.jpg",
-    name: "jujutsu kaisen",
-  },
-  {
-    id: "m3",
-    url: "/images/movie3.jpg",
-    name: "Hero academy",
-  },
-  {
-    id: "m4",
-    url: "/images/movie4.jpg",
-    name: "Your name",
-  },
-  {
-    id: "m5",
-    url: "/images/movie5.jpg",
-    name: "Josee to Tora to Sakana-tachi",
-  },
-  {
-    id: "m6",
-    url: "/images/movie6.jpg",
-    name: "Ame wo Tsugeru Hyouryuu Danchi",
-  },
-];
 const voucherStore = [
   {
     id: "v1",
@@ -77,10 +43,10 @@ const voucherStore = [
 const Home = () => {
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-    fetch(url_database + '/articles')
-      .then(res => res.json())
-      .then(data => setArticles(data.slice(0, 6)))
-  }, [])
+    fetch(url_database + "/articles")
+      .then((res) => res.json())
+      .then((data) => setArticles(data.slice(0, 6)));
+  }, []);
 
   return (
     <div className="home-page">

@@ -1,18 +1,17 @@
-import "./index.css";
 import { FastField, Form, Formik } from "formik";
-import * as Yup from "yup";
-import { Link } from "react-router-dom";
-import { useGlobalContext } from "../../../context";
 import React, { useRef, useState } from "react";
-import InputField from "../../../customField/InputField/InputField";
 import { Button } from "reactstrap";
-import Register from "../register3";
+import * as Yup from "yup";
 import { loginUser } from "../../../apiRequest";
+import { useGlobalContext } from "../../../context";
+import InputField from "../../../customField/InputField/InputField";
+import Register from "../register3";
+import "./index.css";
 const LoginPage = () => {
   const [openRegister, setOpenRegister] = useState(false);
   const refPassword = useRef();
   const refPhoneEmail = useRef();
-  const { user,setUser } = useGlobalContext();
+  const { setUser } = useGlobalContext();
   return (
     <>
       <div className="page-login">
@@ -21,7 +20,7 @@ const LoginPage = () => {
         </div>
         <div className="container-form">
           <h1>Đăng nhập</h1>
-          <Formik 
+          <Formik
             initialValues={{
               phoneEmail: "",
               password: "",
@@ -38,7 +37,6 @@ const LoginPage = () => {
                 setUser(await loginUser(values));
               } catch (err) {
                 const res = err.response.data;
-                console.log(res);
                 if (!res.phoneEmail) {
                   setFieldError(
                     "phoneEmail",

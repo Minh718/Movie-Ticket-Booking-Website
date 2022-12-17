@@ -8,10 +8,27 @@
   max-width: 900px;
   margin: auto;
   margin-top: 20px;
+  color: #557153;
 }
 .table_voucher td,
 .table_voucher th {
   padding: 2px;
+}
+.table_voucher table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table_voucher td,
+.table_voucher th {
+  border: 2px solid #6d9886;
+  /* text-align: left; */
+  padding: 2px 4px;
+}
+
+.table_voucher tr:nth-child(even) {
+  background-color: #fefcf3;
 }
 .container_table_voucher .container-btns button {
   padding: 3px;
@@ -22,4 +39,20 @@
 .container_table_voucher .container-btns {
   margin-left: -10px;
   text-align: center;
+}
+.btn-select-all-hours {
+  margin-top: 10px;
+  font-size: 13px;
+  min-width: 40px;
+  padding: 5px 10px;
+  border: 2px solid #68b984;
+  color: #fff;
+  font-weight: bold;
+  background: #68b984;
+  transition: all 0.3s ease;
+}
+
+.btn-select-all-hours.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }

@@ -1,12 +1,12 @@
-import "./index.css";
 import axios from "axios";
-import { Link, useLocation, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
-import { useEffect, useState, useRef } from "react";
-import { Button, Spinner } from "reactstrap";
+import { Link, useLocation } from "react-router-dom";
+import { Spinner } from "reactstrap";
+import { useGlobalContext } from "../../../../context";
 import { url_database } from "../../api";
 import BreadcrumbPayment from "../../BreadcrumbTicket";
-import { useGlobalContext } from "../../../../context";
+import "./index.css";
 const column = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const row = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 const placedSeat = ["A5", "B4", "C5"];
@@ -77,11 +77,6 @@ function BookingSeat() {
       selectedSeatList.filter((seat) => seat !== column[i] + j)
     );
   };
-  // useEffect(() => {
-  //   seatRef.current.innerText =
-  //     selectedSeatList.length > 0 ? selectedSeatList : "Chưa chọn";
-  // }, []);
-  // console.log(selectedSeatList);
   function handleSeatClick(i, j) {
     switch (seatArray[i][j]) {
       case 1: {
@@ -90,13 +85,8 @@ function BookingSeat() {
         break;
       }
       case 0: {
-        // if (seatCount > selectedSeatList.length) {
         seatArray[i][j] = 1;
-        // selectedSeatList.push(
-        //   String.fromCharCode("A".charCodeAt(0) + i) + (j + 1)
-        // );
         selectedSeatList.push(column[i] + j);
-        // }
         break;
       }
       default:

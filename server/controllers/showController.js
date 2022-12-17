@@ -4,7 +4,7 @@ const showController = {
   getAllShows: async (req, res) => {
     const connection = await createConnection();
     try {
-      const sql = `SELECT * FROM tbl_show JOIN tbl_movie on id = idMovie
+      const sql = `SELECT * FROM tbl_show JOIN tbl_movie on id = idMovie order by idShow desc
             `;
       console.log(sql);
       const result = await connection.query(sql);

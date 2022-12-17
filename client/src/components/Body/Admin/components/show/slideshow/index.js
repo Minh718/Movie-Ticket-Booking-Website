@@ -145,6 +145,36 @@ export const SlideShow = ({ idShow, room, close }) => {
                   </button>
                 );
             })}
+            <div>
+              {/* {hours.length === hoursOfShow.length + hoursDifShow.length ? ( */}
+              <button
+                onClick={() =>
+                  setChoosedHours(
+                    hours.filter(
+                      (hour) =>
+                        !hoursOfShow?.includes(hour) &&
+                        !hoursDifShow?.includes(hour)
+                    )
+                  )
+                }
+                className={
+                  hours.length ===
+                  hoursOfShow?.length +
+                    hoursDifShow?.length +
+                    choosedHours?.length
+                    ? "disabled btn-select-all-hours"
+                    : "btn-select-all-hours"
+                }
+              >
+                Select All
+              </button>
+              {/* ) : (
+                <button
+                >
+                  {hour}
+                </button>
+              )} */}
+            </div>
           </div>
         </>
       )}

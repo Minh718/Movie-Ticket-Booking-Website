@@ -14,6 +14,7 @@ export const QrPayment = ({
   room,
   movie,
   price,
+  idVoucher,
 }) => {
   const [countdown, setCountdown] = useState(360);
   const navigate = useNavigate();
@@ -27,12 +28,12 @@ export const QrPayment = ({
   }, [countdown]);
   const handlePaymentQR = async () => {
     try {
-      console.log(chairList);
       await axios.post(`/movies/tickets`, {
         chairList,
         idShow,
         date: date.dateShow,
         hour,
+        idVoucher,
       });
       setIsSuccess(true);
       setTimeout(() => {

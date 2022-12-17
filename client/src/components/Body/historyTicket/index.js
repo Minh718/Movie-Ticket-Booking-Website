@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 import { Breadcrumb, BreadcrumbItem, Button } from "reactstrap";
-
+import { useGlobalContext } from "../../../context";
+import { getAllUserTickets } from "../../../apiRequest";
+import { Ticket } from "./Ticket";
 export default function HistoryTicket() {
+  const [tickets, setTickets] = useState([]);
+  const { user } = useGlobalContext();
+  useEffect(() => {
+    (async () => {
+      setTickets(await getAllUserTickets(user.idUser));
+    })();
+  }, []);
   return (
     <div className="container-profile">
       <Breadcrumb listTag="div">
@@ -14,42 +23,11 @@ export default function HistoryTicket() {
           Lịch sử giao dịch
         </BreadcrumbItem>
       </Breadcrumb>
-      <div className="table-tickets">
+      <div className="container-tickets">
         <h2>Lịch sử giao dịch</h2>
-        <table className="table-ticket">
-          <tr>
-            <th>Ngày</th>
-            <th>Giờ</th>
-            <th>Giá</th>
-            <th>Phim</th>
-            <th>qrcode</th>
-          </tr>
-          <tr>
-            <td>20-12-2020</td>
-            <td>8:00</td>
-            <td>59.000đ</td>
-            <td>film red</td>
-            <td>
-              <img
-                className="img-qrcode"
-                src="https://www.qrcode-gen.com/images/qrcode-default.png"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>30-10-1945</td>
-            <td>12:00</td>
-
-            <td>98999đ</td>
-            <td>phim nhím</td>
-            <td>
-              <img
-                className="img-qrcode"
-                src="https://www.qrcode-gen.com/images/qrcode-default.png"
-              />
-            </td>
-          </tr>
-        </table>
+        {tickets.map((ticket) => (
+          <Ticket key={ticket.idTicket} ticket={ticket} />
+        ))}
       </div>
     </div>
   );
