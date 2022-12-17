@@ -44,7 +44,7 @@ CREATE TABLE `tbl_user` (
 
 LOCK TABLES `tbl_user` WRITE;
 /*!40000 ALTER TABLE `tbl_user` DISABLE KEYS */;
-INSERT INTO `tbl_user` VALUES (1,'1','1','0123456789','cuthemongcho380@gmail.com','123456789','nam',1,0);
+INSERT INTO `tbl_user` VALUES (1,'Nhóm','7','0123456789','cuthemongcho380@gmail.com','123456789','nam',1,19);
 /*!40000 ALTER TABLE `tbl_user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 21:08:14
+-- Dump completed on 2022-12-17  7:56:00

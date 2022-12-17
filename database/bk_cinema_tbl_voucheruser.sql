@@ -38,6 +38,7 @@ CREATE TABLE `tbl_voucheruser` (
 
 LOCK TABLES `tbl_voucheruser` WRITE;
 /*!40000 ALTER TABLE `tbl_voucheruser` DISABLE KEYS */;
+INSERT INTO `tbl_voucheruser` VALUES (1,10),(1,13);
 /*!40000 ALTER TABLE `tbl_voucheruser` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 21:08:14
+-- Dump completed on 2022-12-17  7:55:59

@@ -36,7 +36,7 @@ CREATE TABLE `tbl_chair` (
 
 LOCK TABLES `tbl_chair` WRITE;
 /*!40000 ALTER TABLE `tbl_chair` DISABLE KEYS */;
-INSERT INTO `tbl_chair` VALUES ('A0',18),('A1',18),('A10',18),('A2',18),('A3',18),('A4',18),('A5',18),('A6',18),('A7',18),('A8',18),('A9',18),('B0',18),('B10',18),('C0',18),('C10',18),('D0',18),('D10',18),('D2',18),('D8',18),('D9',18),('E0',18),('E10',18),('E2',18),('E4',18),('F0',18),('F10',18),('F2',18),('F8',18),('F9',18),('G0',18),('G10',18),('G4',18),('G5',18),('H0',18),('H1',18),('H10',18),('H2',18),('H3',18),('H4',18),('H5',18),('H6',18),('H7',18),('H8',18),('H9',18),('G8',21),('G9',21),('A7',22),('A8',22),('B7',22),('B8',22),('B8',23),('C8',23),('D8',23),('E9',23),('A10',24),('B10',24),('C10',24),('D10',24),('C9',25),('D10',25),('D9',25),('E10',25);
+INSERT INTO `tbl_chair` VALUES ('C10',26),('C8',26),('C9',26),('C10',27),('C9',27),('D9',27),('E9',27);
 /*!40000 ALTER TABLE `tbl_chair` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 21:08:14
+-- Dump completed on 2022-12-17  7:56:00

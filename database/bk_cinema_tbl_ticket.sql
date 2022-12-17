@@ -31,7 +31,7 @@ CREATE TABLE `tbl_ticket` (
   KEY `idUser` (`idUser`),
   CONSTRAINT `tbl_ticket_ibfk_1` FOREIGN KEY (`idHour`) REFERENCES `tbl_hour_show` (`idHour`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_ticket_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `tbl_user` (`idUser`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `tbl_ticket` (
 
 LOCK TABLES `tbl_ticket` WRITE;
 /*!40000 ALTER TABLE `tbl_ticket` DISABLE KEYS */;
-INSERT INTO `tbl_ticket` VALUES (18,1,1),(21,2,1),(22,6,1),(23,5,1),(24,63,1),(25,62,1);
+INSERT INTO `tbl_ticket` VALUES (18,1,1),(21,2,1),(22,6,1),(23,5,1),(24,63,1),(25,62,1),(26,78,1),(27,91,1);
 /*!40000 ALTER TABLE `tbl_ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-16 21:08:13
+-- Dump completed on 2022-12-17  7:55:59

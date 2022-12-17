@@ -47,34 +47,11 @@ export const QrPayment = ({
           },
         });
       }, 1500);
-      // setIsSuccess(true);
-      //   setTimeout(()=>{
-      //     setOpenPaymentQR(false);
-      //   },2000)
     } catch (err) {
       console.log(err.response);
     }
   };
 
-  // if (isSuccess) {
-  //   return (
-  //     <div className="container-cs">
-  //       <div className="cs-main">
-  //         <h3 className="message-success">Giao dịch thành công</h3>
-  //         <div>
-  //           <Link to="/historyTicket">
-  //             <Button color="success">Đến lịch sử giao dịch</Button>
-  //           </Link>
-  //           <Link to="/">
-  //             <Button color="success" outline>
-  //               Về trang chủ
-  //             </Button>
-  //           </Link>
-  //         </div>
-  //       </div>
-  //     </div>
-  //   );
-  // }
   return (
     <div className="container-qr" onClick={() => setOpenPaymentQR(false)}>
       <div className="qr-main">

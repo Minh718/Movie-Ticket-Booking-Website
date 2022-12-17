@@ -65,23 +65,28 @@ function App() {
       <Route path="">
         <Route path="/" element={<PageHome />}>
           <Route path="/" element={<Home />} />
-          <Route
-            path="login"
-            element={user ? <Navigate to={"/"} /> : <LoginPage />}
-          />
+
           <Route path="/news" element={<NewsPage />} />
           <Route path="movies" element={<MoviesPage />} />
-          <Route path="support" element={<SupportPage />} />
-          <Route path="user" element={<UserPage />} />
-          <Route path="booking" element={<BookingTicket />} />
-          <Route path="seatSelection" element={<BookingSeat />} />
-          <Route path="seatSelection/payment" element={<Payment />} />
-          <Route path="paymentSuccess" element={<PaymentSuccess />} />
-          <Route path="profile" element={<Profile />} />
-          <Route path="historyTicket" element={<HistoryTicket />} />
-          <Route path="vouchers" element={<Vouchers />} />
-          <Route path="/detailMovie/:id" element={<DetailMovie />} />
-          <Route path="news/:id" element={<NewsDetail />} />
+          {!user && <Route path="*" element={<LoginPage />} />}
+          {user && (
+            <Route path="">
+              <Route
+                path="login"
+                element={user ? <Navigate to={"/"} /> : <LoginPage />}
+              />
+              <Route path="user" element={<UserPage />} />
+              <Route path="booking" element={<BookingTicket />} />
+              <Route path="seatSelection" element={<BookingSeat />} />
+              <Route path="seatSelection/payment" element={<Payment />} />
+              <Route path="paymentSuccess" element={<PaymentSuccess />} />
+              <Route path="profile" element={<Profile />} />
+              <Route path="historyTicket" element={<HistoryTicket />} />
+              <Route path="vouchers" element={<Vouchers />} />
+              <Route path="/detailMovie/:id" element={<DetailMovie />} />
+              <Route path="news/:id" element={<NewsDetail />} />
+            </Route>
+          )}
         </Route>
         {!!user?.isAdmin && (
           <Route path="/adminPage" element={<AdminPage />}>

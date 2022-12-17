@@ -157,6 +157,12 @@ const movieController = {
               `INSERT INTO tbl_chair (idTicket, chair) VALUES (${idTicket[0].idTicket}, '${chair}')`
             );
           });
+          const res1 = await connection.query(
+            `UPDATE tbl_user set point = point + '${
+              chairList.length * 2
+            }' where idUser = '${idUser}' `
+          );
+          console.log(res1);
           res.status(200).json("Add ticket success");
         } else {
           const idTicket = ticket[0].idTicket;
@@ -165,6 +171,9 @@ const movieController = {
               `INSERT INTO tbl_chair (idTicket, chair) VALUES (${idTicket}, '${chair}')`
             );
           });
+          await connection.query(
+            `UPDATE tbl_user set point = point + 2 where idUser = '${idUser}' `
+          );
           res.status(200).json("Add ticket chair success");
         }
       }

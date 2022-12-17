@@ -76,7 +76,10 @@ export const insertMovie = async (values) => {
   const data = await axios.post(`${url_database}/movies/insert`, values);
   return data.data[0];
 };
-
+export const convertVoucher = async (values) => {
+  const data = await axios.post(`${url_database}/vouchers/convert`, values);
+  return data.data[0];
+};
 export const updateVoucher = async (values) => {
   const data = await axios.post(`${url_database}/vouchers/update`, values);
   return data.data[0];
@@ -85,6 +88,16 @@ export const getAllVouchers = async () => {
   const data = await axios.get(`${url_database}/vouchers`);
   return data.data;
 };
+
+export const getAllVouchersLeft = async (idUser) => {
+  const data = await axios.get(`${url_database}/vouchers/${idUser}`);
+  return data.data;
+};
+export const getAllUserVouchers = async (idUser) => {
+  const data = await axios.get(`${url_database}/vouchers/${idUser}/user`);
+  return data.data;
+};
+
 export const deleteVoucherById = async (idVoucher) => {
   console.log(idVoucher);
   const data = await axios.get(`${url_database}/vouchers/delete/${idVoucher}`);

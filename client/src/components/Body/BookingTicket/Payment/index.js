@@ -7,6 +7,7 @@ import Select from "react-select";
 import { QrPayment } from "./QrPayment";
 import BreadcrumbPayment from "../../BreadcrumbTicket";
 import { url_database } from "../../api";
+import { getAllUserVouchers } from "../../../../apiRequest";
 
 function Payment() {
   // const selectChairs = useLocation().state.movie;
@@ -18,24 +19,29 @@ function Payment() {
   const [price, setPrice] = useState(useLocation().state.price);
   const savedPrice = useLocation().state.price;
   const [errorPayment, setErrorPayment] = useState(false);
-
+  const { user } = useGlobalContext();
   const [openPaymentQR, setOpenPaymentQR] = useState(false);
   const room = useLocation().state.room;
   const [methodPayment, setMethodPayment] = useState("");
   const [vouchers, setVouchers] = useState([]);
+  const [valueSub, setValueSub] = useState(null);
 
   useEffect(() => {
-    fetch(url_database + '/vouchers')
-      .then(res => res.json())
-      .then(data => {
-        setVouchers(data.map(item => {
-          return {label: item.name + ` - giảm ${item.value}%`, value: item.value}
-        }))
-      })
-  }, [])
+    (async () => {
+      const res = await getAllUserVouchers(user.idUser);
+      setVouchers(
+        res.map((voucher) => {
+          return {
+            value: voucher,
+            label: `Giảm ${voucher.value + voucher.suffix} cho ${
+              voucher.name
+            } ${voucher.suffix === "%" ? `(Tối đa ${voucher.maximum}k)` : ""}`,
+          };
+        })
+      );
+    })();
+  }, []);
 
-
-  const { user } = useGlobalContext();
   const handlePayment = () => {
     if (methodPayment.length === 0) {
       setErrorPayment(true);
@@ -45,8 +51,20 @@ function Payment() {
   };
 
   const handleVoucherClick = (e) => {
-    setPrice((parseInt(savedPrice) * (1 - e.value / 100)).toFixed(0) + '.000')
-  }
+    if (e.value.suffix === "%") {
+      const down = parseInt(savedPrice) * e.value.value;
+      if (down > e.value.maximum) {
+        setPrice((parseInt(savedPrice) - e.value.maximum).toFixed(0) + ".000");
+        setValueSub(e.value.maximum);
+      } else {
+        setPrice((parseInt(savedPrice) - down).toFixed(0) + ".000");
+        setValueSub(down);
+      }
+    } else {
+      setPrice((parseInt(savedPrice) - e.value.value).toFixed(0) + ".000");
+      setValueSub(e.value.value);
+    }
+  };
 
   return (
     <>
@@ -154,6 +172,12 @@ function Payment() {
                 <h3>Ghế đã chọn: </h3>
                 <span>{selectedSeatList.join(", ")}</span>
               </div>
+              {valueSub && (
+                <div className="booking-info-row">
+                  <h3>Voucher: </h3>
+                  <span>-{valueSub}k</span>
+                </div>
+              )}
               <div className="booking-info-row">
                 <h3>Tổng tiền: </h3>
                 <span className="ticket-price">{price}đ</span>
