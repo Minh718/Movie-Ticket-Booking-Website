@@ -165,7 +165,7 @@ export default function Slide() {
           name="time"
           id="time"
           className="select_tag"
-          placeholder="Chọn ngày"
+          placeholder="Chọn giờ"
           options={hourOptions}
           onChange={(e) => {
             setCanPlaceTicket(true);
