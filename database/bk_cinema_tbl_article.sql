@@ -24,10 +24,10 @@ DROP TABLE IF EXISTS `tbl_article`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tbl_article` (
   `idArticle` int NOT NULL AUTO_INCREMENT,
-  `title` varchar(100) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `summary` text,
   `content` longtext,
-  `img` varchar(40) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`idArticle`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

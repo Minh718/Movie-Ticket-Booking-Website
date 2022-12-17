@@ -16,7 +16,7 @@ function HeaderAdmin({ openBar, setOpenBar }) {
         </div>
 
         <Link to={"/adminPage"}>
-          <img className="logo-web" src="./BK-cinema_1.png" />
+          <img className="logo-web" src={"/BK-cinema_1.png"} />
         </Link>
 
         <div className="right-part">
