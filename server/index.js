@@ -35,6 +35,6 @@ app.use("/api/comments", commentRouter);
 app.use("/api/tickets", ticketRouter);
 app.use("/api/vouchers", voucherRouter);
 
-app.listen(port, (req, res) => {
+app.listen(process.env.PORT || port, (req, res) => {
   console.log("đã kết nối cổng 8800");
 });
