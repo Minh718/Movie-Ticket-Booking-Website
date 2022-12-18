@@ -7,6 +7,7 @@ export const fetchUpcomingMovies = (page) =>
   `https://api.themoviedb.org/3/movie/upcoming?api_key=14ccdb96456935bbb41591e99697d262&language=en-US&page=${page}&region=US`;
 export const fetchPopularMovies = (page) =>
   `https://api.themoviedb.org/3/movie/popular?api_key=14ccdb96456935bbb41591e99697d262&page=${page}`;
+// export const url_database = "https://bk-cinema-xxxx.vercel.app/api";
 export const url_database = "http://localhost:8800/api";
 
 export const url_img = "http://image.tmdb.org/t/p/w500";

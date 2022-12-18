@@ -70,7 +70,7 @@ export default function Register({ setOpenRegister }) {
           try {
             const { passwordConfirmation, ...rest } = values;
             await registerUser(rest);
-            setIsSuccess(true); 
+            setIsSuccess(true);
             setTimeout(() => {
               handleGoToLogin();
             }, 2000);
@@ -82,7 +82,7 @@ export default function Register({ setOpenRegister }) {
               setErrorRegister(false);
             }, 3000);
             setErrorRegister(true);
-            console.log(err.response);
+            console.log(err);
           }
         }}
       >

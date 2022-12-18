@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
-const cookieParser = require("cookie-parser");
-const path = require("path");
 const userRouter = require("./routes/user");
 const movieRouter = require("./routes/movie");
 const roomRouter = require("./routes/room");
@@ -15,14 +13,12 @@ const commentRouter = require("./routes/comment");
 
 const port = 8800;
 const app = express();
-app.use("/api/img", express.static(path.join(__dirname + "/img")));
-app.use(cookieParser());
+app.use(cors());
 app.use(
   express.urlencoded({
     extended: true,
   })
 );
-app.use(cors());
 app.use(morgan("common"));
 app.use(express.json());
 app.use("/api/users", userRouter);

@@ -3,7 +3,6 @@ import { FaSearch } from "react-icons/fa";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import { Link } from "react-router-dom";
 import { Button, Spinner } from "reactstrap";
-import { logoutUser } from "../../apiRequest";
 import { useGlobalContext } from "../../context";
 import { url_database } from "../Body/api";
 import "./index.css";
@@ -39,11 +38,7 @@ function Header() {
     <div id="header">
       <div className="header-left">
         <Link to={"/"}>
-          <img
-            className="logo-web"
-            src={url_database + "/img/bk-cinema.png"}
-            alt="logo"
-          />
+          <img className="logo-web" src={"/BK-cinema_1.png"} alt="logo" />
         </Link>
         {/* <div className="right-part"> */}
 
@@ -123,7 +118,6 @@ function Header() {
                     to="/"
                     onClick={async (e) => {
                       e.preventDefault();
-                      await logoutUser();
                       setUser(null);
                     }}
                   >

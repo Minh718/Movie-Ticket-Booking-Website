@@ -633,7 +633,7 @@ IN vIdUser INT
 BEGIN
 SELECT idMovie, room, TIME_FORMAT(hour, "%H:%i") as hour, DATE_FORMAT(dateShow, '%d/%m/%Y') as dateShow , price, idTicket
 FROM tbl_ticket natural join tbl_hour_show natural join tbl_show 
-where idUser = vIdUser;
+where idUser = vIdUser order by idTicket desc;
 END
 
 DELIMITER $$

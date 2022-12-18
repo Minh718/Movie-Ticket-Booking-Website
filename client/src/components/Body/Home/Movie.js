@@ -20,7 +20,7 @@ export default function Movie() {
     const fetchMovies = async () => {
       const resUpcongming = await fetch(fetchUpcomingMovies(1));
       //const resPlaying = await fetch(fetchPopularMovies(1));
-      const resPlaying = await axios.get("/movies");
+      const resPlaying = await axios.get(`${url_database}/movies`);
 
       const dataUpcongming = await resUpcongming.json();
       //const dataPlaying = await resPlaying.json();

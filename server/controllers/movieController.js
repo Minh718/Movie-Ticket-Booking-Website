@@ -133,7 +133,7 @@ const movieController = {
     const date = req.body.date;
     const hour = req.body.hour;
     const chairList = req.body.chairList;
-    const idUser = req.cookies?.idUser;
+    const idUser = req.body.idUser;
     const idVoucher = req.body.idVoucher;
     const connection = await createConnection();
 

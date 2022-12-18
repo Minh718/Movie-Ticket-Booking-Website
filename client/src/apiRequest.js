@@ -1,27 +1,21 @@
 import axios from "axios";
 import { url_database } from "../src/components/Body/api";
-
 export const loginUser = async (user) => {
-  const data = await axios.post("/users/login", user);
+  const data = await axios.post(`${url_database}/users/login`, user);
   console.log(data);
   return data.data[0];
 };
 export const handleRefreshWeb = async () => {
-  const data = await axios.post("/users");
+  const data = await axios.post(`${url_database}/users`);
   return data.data[0];
 };
 export const registerUser = async (newUser) => {
-  console.log(newUser);
-  const data = await axios.post("/users/register", newUser);
+  const data = await axios.post(`${url_database}/users/register`, newUser);
   return data.data[0];
 };
 
-export const logoutUser = async () => {
-  await axios.post(`/users/logout`);
-};
-
 export const getAllShows = async () => {
-  const data = await axios.get(`/show`);
+  const data = await axios.get(`${url_database}/show`);
   return data.data;
 };
 
@@ -59,11 +53,11 @@ export const deleteMovie = async (id) => {
 };
 
 export const getMovieDates = async (idMovie) => {
-  const data = await axios.get(`movies/${idMovie}/dates`);
+  const data = await axios.get(`${url_database}/movies/${idMovie}/dates`);
   return data.data;
 };
 export const getMovieHours = async (values) => {
-  const data = await axios.post(`movies/hours`, values);
+  const data = await axios.post(`${url_database}/movies/hours`, values);
   return data.data;
 };
 
@@ -91,10 +85,14 @@ export const getAllVouchers = async () => {
 
 export const getAllVouchersLeft = async (idUser) => {
   const data = await axios.get(`${url_database}/vouchers/${idUser}`);
+  console.log(data);
+
   return data.data;
 };
 export const getAllUserVouchers = async (idUser) => {
+  console.log(idUser);
   const data = await axios.get(`${url_database}/vouchers/${idUser}/user`);
+  console.log(data);
   return data.data;
 };
 export const getAllUserTickets = async (idUser) => {

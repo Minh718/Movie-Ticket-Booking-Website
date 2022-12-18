@@ -4,7 +4,7 @@ import { AiFillStar } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Select from "react-select";
 import { useGlobalContext } from "../../../context";
-import { img_url } from "../api";
+import { img_url, url_database } from "../api";
 import "./index.css";
 
 function BookingTicket() {
@@ -25,13 +25,13 @@ function BookingTicket() {
       const res = await fetch(
         `https://api.themoviedb.org/3/movie/${idMovie}?api_key=14ccdb96456935bbb41591e99697d262`
       );
-      const resShow = await axios.get(`/movies/${idMovie}/show`);
+      const resShow = await axios.get(`${url_database}/movies/${idMovie}/show`);
       setShow(resShow.data[0]);
       const jsonMoive = await res.json();
       setMovie(jsonMoive);
       if (canPlaceTicket) {
         const resDates = await axios.get(
-          `/movies/${resShow.data[0].idShow}/dates`
+          `${url_database}/movies/${resShow.data[0].idShow}/dates`
         );
         setDateOptions(
           resDates.data.map((date) => ({
@@ -50,7 +50,7 @@ function BookingTicket() {
     setOpenHour(false);
     setSelectedHour("");
     const fetchHours = async () => {
-      const resHours = await axios.post(`/movies/hours`, {
+      const resHours = await axios.post(`${url_database}/movies/hours`, {
         dateShow: selectedDate.dateShow,
         idShow: show.idShow,
       });
